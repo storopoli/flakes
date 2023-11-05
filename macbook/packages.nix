@@ -1,5 +1,10 @@
 { config, pkgs, lib, inputs, ... }:
 
+let
+  rust = pkgs.rust-bin.stable.latest.default.override {
+    targets = [ "wasm32-unknown-unknown" ];
+  };
+in
 {
   environment = {
     shells = with pkgs; [ fish ]; # Default Shell
@@ -51,7 +56,7 @@
       torsocks
 
       # programming
-      rust-bin.stable.latest.default
+      rust
       cargo-nextest
       cargo-cache
       cargo-show-asm
