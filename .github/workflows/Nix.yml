@@ -1,0 +1,28 @@
+name: Nix Darwin
+#concurrency:
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+jobs:
+  flake-test:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: "Install Nix ❄️"
+        uses: cachix/install-nix-action@v23
+        with:
+          github_access_token: ${{ secrets.TOKEN }}
+          nix_path: nixpkgs=channel:nixos-unstable
+
+      - name: "Nix Cache"
+        uses: DeterminateSystems/magic-nix-cache-action@main
+
+      - name: "Nix Flake Check"
+        run: nix flake check
+
+      - name: "Build NixOS config ❄️"
+        run: |
+          nix --experimental-features 'nix-command flakes' build -L  '.#darwinConfigurations.macbook_x86.system'

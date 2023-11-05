@@ -1,0 +1,132 @@
+[[language]]
+name = "rust"
+language-servers = ["rust-analyzer"]
+
+[language-server.rust-analyzer.config.check]
+command = "clippy"
+
+[language-server.rust-analyzer.config.cargo]
+features = "all"
+
+[[language]]
+name = "python"
+language-servers = ["ruff-lsp"]
+formatter = { command = "black", args = ["--quiet", "-"] }
+auto-format = true
+[language-server.ruff-lsp]
+command = "ruff-lsp"
+
+[[language]]
+name = "toml"
+language-servers = ["taplo"]
+formatter = { command = "taplo", args = ["fmt", "-"] }
+auto-format = true
+
+[[language]]
+name = "yaml"
+language-servers = ["yaml-language-server"]
+
+[language-server.yaml-language-server.config.yaml]
+format = { enable = true }
+validation = true
+
+[language-server.yaml-language-server.config.yaml.schemas]
+"https://json.schemastore.org/github-workflow.json" = ".github/workflows/*.{yml,yaml}"
+"https://raw.githubusercontent.com/ansible-community/schemas/main/f/ansible-tasks.json" = "roles/{tasks,handlers}/*.{yml,yaml}"
+
+[[language]]
+name = "nix"
+language-servers = ["nil"]
+formatter = { command = "nixpkgs-fmt" }
+auto-format = true
+
+[[language]]
+name = "fish"
+formatter = { command = "fish_indent" }
+auto-format = true
+
+[[language]]
+name = "markdown"
+language-servers = ["marksman", "ltex-ls"]
+formatter = { command = "dprint", args = ["fmt", "--stdin", "md"] }
+auto-format = true
+
+[language-server.ltex-ls.config.ltex]
+enabled = [
+  "bibtex",
+  "gitcommit",
+  "context",
+  "context.tex",
+  "html",
+  "latex",
+  "markdown",
+  "pandoc",
+  "typst",
+  "org",
+  "restructuredtext",
+  "rsweave",
+]
+language = "en-US"
+disabledRules = { "en-US" = ["PROFANITY"] }
+dictionary = { "en-US" = ["builtin"] }
+
+[[language]]
+name = "latex"
+auto-format = false
+language-servers = ["texlab", "ltex-ls"]
+
+[language-server.texlab.config.texlab.build]
+onSave = true
+executable = "tectonic"
+args = [
+  "-X",
+  "compile",
+  "%f",
+  "--synctex",
+  "--keep-logs",
+  "--keep-intermediates",
+]
+
+[[language]]
+name = "typst"
+scope = "source.typst"
+injection-regex = "typst"
+file-types = ["typst", "typ"]
+roots = []
+comment-token = "//"
+language-servers = ["typst-lsp", "ltex-ls"]
+indent = { tab-width = 2, unit = "  " }
+
+[language.auto-pairs]
+'(' = ')'
+'{' = '}'
+'[' = ']'
+'$' = '$'
+'"' = '"'
+
+[[grammar]]
+name = "typst"
+source = { git = "https://github.com/uben0/tree-sitter-typst", rev = "e35aa22395fdde82bbc4b5700c324ce346dfc9e5" }
+
+[language-server.typst-lsp]
+command = "typst-lsp"
+
+[[language]]
+name = "julia"
+auto-format = true
+scope = "source.julia"
+injection-regex = "julia"
+file-types = ["jl"]
+roots = ["Project.toml", "Manifest.toml", "JuliaProject.toml"]
+comment-token = "#"
+language-servers = ["julia"]
+indent = { tab-width = 4, unit = "    " }
+[language-server.julia]
+command = "julia"
+args = [
+  "--project=@helix-lsp",
+  "--startup-file=no",
+  "--history-file=no",
+  "--quiet",
+  "/Users/user/.local/bin/julia-lsp.jl",
+]
