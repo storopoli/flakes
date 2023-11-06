@@ -78,14 +78,7 @@ language-servers = ["texlab", "ltex-ls"]
 [language-server.texlab.config.texlab.build]
 onSave = true
 executable = "tectonic"
-args = [
-  "-X",
-  "compile",
-  "%f",
-  "--synctex",
-  "--keep-logs",
-  "--keep-intermediates",
-]
+args = ["-X", "build", "--keep-logs", "--keep-intermediates"]
 
 [[language]]
 name = "typst"
