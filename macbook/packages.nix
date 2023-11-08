@@ -20,6 +20,7 @@ in
       # Terminal
       tree
       fd
+      sd
       parallel
       curl
       rsync
