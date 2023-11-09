@@ -11,8 +11,8 @@ in
 
     variables = {
       # Environment Variables
-      EDITOR = "hx";
-      VISUAL = "hx";
+      EDITOR = "nvim";
+      VISUAL = "nvim";
     };
 
     # System-Wide Packages

@@ -61,20 +61,23 @@ Migrating to new hardware or rebuilding old hardware after a wipe is
   [`direnv`](https://direnv.net/),
   and [`devshell`](https://numtide.github.io/devshell/).
   You can put your soydev TypeScript/JavaScript/NodeJS stuff here.
-- Text editor with [Helix](https://helix-editor.com/) enabled with the following [LSP](https://langserver.org/)s:
+- Text editor with [Neovim](https://neovim.org) and
+  [Helix](https://helix-editor.com/) enabled with the following [LSP](https://langserver.org/)s:
 
   - [`nil`](https://github.com/oxalica/nil): Nix
   - [`bash-language-server`](https://github.com/bash-lsp/bash-language-server): Bash, Fish, Zsh, shell scripts, etc.
   - [`rust-analyzer`](https://rust-analyzer.github.io/): Rust
   - [`gopls`](https://pkg.go.dev/golang.org/x/tools/gopls): Go
   - [`julia`](https://github.com/julia-vscode/LanguageServer.jl): Julia
+  - [`lua-language-server`](https://github.com/luals/lua-language-server): Lua
+  - [`typescript-language-server`](https://github.com/typescript-language-server/typescript-language-server): JavaScript and TypeScript
   - [`taplo`](https://taplo.tamasfe.dev/): TOML
   - [`yaml-language-server`](https://github.com/redhat-developer/yaml-language-server): YAML
   - [`ruff-lsp`](https://github.com/astral-sh/ruff-lsp): Python
   - [`marksman`](https://github.com/artempyanykh/marksman): Markdown
   - [`vscode-langservers-extracted`](https://github.com/hrsh7th/vscode-langservers-extracted): HTML, CSS, and JSON
   - [`texlab`](https://github.com/latex-lsp/texlab): $\LaTeX$
-  - [`ltex-ls`](https://github.com/valentjn/ltex-ls): [LanguageTool](https://languagetool.org/) for Markdown, HTML, and $\LaTeX$.
+  - [`ltex-ls`](https://github.com/valentjn/ltex-ls): [LanguageTool](https://languagetool.org/) for Markdown, HTML, and $\LaTeX$
   - [`typst-lsp`](https://github.com/nvarner/typst-lsp): Typst
 
 - [Catppuccin](https://catppuccin.com) Mocha theme everywhere.

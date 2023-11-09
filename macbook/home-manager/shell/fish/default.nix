@@ -59,13 +59,13 @@
     '';
     shellAliases = {
       devshell = "nix flake new -t 'github:numtide/devshell' .";
-      e = "hx";
+      e = "nvim";
       g = "git";
       lg = "lazygit";
       testtor = "curl -x socks5h://localhost:9050 -s https://check.torproject.org/api/ip";
       top = "btm";
-      vi = "hx";
-      vim = "hx";
+      vi = "nvim";
+      vim = "nvim";
       yt = "yt-dlp --add-metadata -i --format mp4 --restrict-filenames --sponsorblock-remove all";
       yta = "yt -x -f bestaudio/best --format mp4 --audio-format opus --restrict-filenames --sponsorblock-remove all";
     };
