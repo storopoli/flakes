@@ -3,10 +3,11 @@
 {
   home.stateVersion = "23.11";
   imports = [
-    ./shell
-    ./cli
     ./alacritty.nix
+    ./cli
     ./helix
     # ./karabiner.nix
+    ./nvim
+    ./shell
   ];
 }

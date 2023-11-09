@@ -65,27 +65,30 @@
   home = {
     packages = with pkgs; [
       # LSPs
+      gopls
+      ltex-ls
+      marksman
       nil
       nodePackages_latest.bash-language-server
       nodePackages_latest.vscode-langservers-extracted
-      rust-analyzer
-      marksman
-      taplo
       ruff
       ruff-lsp
-      gopls
-      yaml-language-server
+      rust-analyzer
+      taplo
       texlab
-      ltex-ls
       typst-lsp
+      yaml-language-server
+
       # tree-sitter
       tree-sitter
+
       # debugger
       lldb # provides lldb-vscode
+
       # formatter
-      nixpkgs-fmt
       black
       dprint
+      nixpkgs-fmt
     ];
     file.".config/helix/languages.toml".source = ./languages.toml;
     file.".local/bin/julia-lsp.jl" = {
