@@ -54,8 +54,8 @@
     file.".config/nvim".source = pkgs.fetchFromGitHub {
       owner = "storopoli";
       repo = "nvim";
-      rev = "v1.4.1";
-      hash = "sha256-77/Agg0uTe+OVBLC2H0WdO9RfW4LomqbzVp8pNQVLdk=";
+      rev = "v1.5";
+      hash = "sha256-TIGGiUaF2jwUgLr28C5psm36NJScZcjAQB60iiVTvoY=";
     };
   };
 }

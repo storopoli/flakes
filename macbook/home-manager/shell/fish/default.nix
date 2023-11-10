@@ -14,6 +14,10 @@
       set -x SSH_AUTH_SOCK (gpgconf --list-dirs agent-ssh-socket)
       gpgconf --launch gpg-agent
 
+      # Editor
+      set -x EDITOR nvim
+      set -x VISUAL nvim
+
       # fish path stuff
       fish_add_path /run/current-system/sw/bin
       fish_add_path /Users/user/.nix-profile/bin
