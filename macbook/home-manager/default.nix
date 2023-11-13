@@ -7,6 +7,7 @@
     ./cli
     ./alacritty.nix
     ./helix
-    # ./karabiner.nix
+    ./karabiner
+    ./shell
   ];
 }

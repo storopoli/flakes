@@ -103,10 +103,13 @@ Migrating to new hardware or rebuilding old hardware after a wipe is
   - Bitcoin tools such as [Sparrow wallet](https://sparrowwallet.com/) and [Bisq](https://bisq.network/)
   - Encrypted backup tool with [Cryptomator](https://cryptomator.org/)
   - [Signal messenger](https://signal.org/)
-  - [Brave](https://brave.com/) with [Tor Browser](https://www.torproject.org/) also available
+  - [Brave](https://brave.com/) with [Tor Browser](https://www.torproject.org/)
+    also available
   - Torrenting with [Transmission](https://transmissionbt.com/)
   - Docker and Linux VMs with [UTM](https://mac.getutm.app/) and [OrbStack](https://orbstack.dev/)
   - Offline password manager with [KeePassXC](https://keepassxc.org/)
+  - Keyboard customization with [Karabiner-Elements](https://karabiner-elements.pqrs.org/):
+    Caps Lock as Escape (if tapped) and Control (if held).
   - Screen Recorder with [OBS Studio](https://obsproject.com/)
   - [Android file transfer](https://www.android.com/filetransfer/) support
   - [ProtonVPN](https://protonvpn.com/)
