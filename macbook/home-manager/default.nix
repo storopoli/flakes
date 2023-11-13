@@ -6,7 +6,7 @@
     ./alacritty.nix
     ./cli
     ./helix
-    # ./karabiner.nix
+    ./karabiner
     ./nvim
     ./shell
   ];

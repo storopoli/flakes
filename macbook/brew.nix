@@ -31,7 +31,7 @@
       "cryptomator"
       "iina"
       "fuse-t"
-      # "karabiner-elements"
+      "karabiner-elements"
       "keepassxc"
       "netnewswire"
       "notunes"
