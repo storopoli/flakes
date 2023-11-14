@@ -48,15 +48,38 @@
             A-x = "extend_to_line_bounds";
             A-j = [ "ensure_selections_forward" "extend_to_line_bounds" "extend_char_right" "extend_char_left" "delete_selection" "add_newline_below" "move_line_down" "replace_with_yanked" ];
             A-k = [ "ensure_selections_forward" "extend_to_line_bounds" "extend_char_right" "extend_char_left" "delete_selection" "move_line_up" "add_newline_above" "move_line_up" "replace_with_yanked" ];
+            C-n = [
+              "extend_line"
+              ":insert-output echo 'FILL_THIS'"
+              "extend_line_below"
+              ":pipe sgpt --code --no-cache 'Using this comment fill the line having the comment FILL_THIS.'"
+            ];
 
             space = {
               w = ":write";
               q = ":quit";
+              Q = ":quit-all!";
+              c = [ ":pipe sgpt --code --temperature 0.3 --no-cache 'Replace this code with a better version and complete it.'" ];
+              C = [
+                ":sh echo working..."
+                ":pipe-to cat > /tmp/helix-gpt"
+                ":append-output cat /tmp/helix-gpt | sgpt --code --temperature 0.3 --no-cache 'Finish this code. Start typing from where I left.'"
+                ":sh echo done!"
+              ];
             };
           };
           select = {
             X = [ "extend_line_up" "extend_to_line_bounds" ];
             A-x = "extend_to_line_bounds";
+          };
+          insert = {
+            C-n = [
+              "normal_mode"
+              "extend_line"
+              ":insert-output echo 'FILL_THIS'"
+              "extend_line_below"
+              ":pipe sgpt --code --no-cache 'Using this comment fill the line having the comment FILL_THIS.'"
+            ];
           };
         };
       };
@@ -89,6 +112,9 @@
       black
       dprint
       nixpkgs-fmt
+
+      # chatgpt
+      shell_gpt
     ];
     file.".config/helix/languages.toml".source = ./languages.toml;
     file.".local/bin/julia-lsp.jl" = {
