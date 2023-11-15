@@ -43,6 +43,7 @@
       # formatter
       black
       dprint
+      cbfmt
       isort
       nixpkgs-fmt
       prettierd
@@ -54,8 +55,8 @@
     file.".config/nvim".source = pkgs.fetchFromGitHub {
       owner = "storopoli";
       repo = "nvim";
-      rev = "v1.5.1";
-      hash = "sha256-RvFQCbHJFD2jOQhM5LIh+958aTfI8Tn7nlZec5FvrJA=";
+      rev = "v1.6";
+      hash = "sha256-WM8raJLd4A4g+48OhajYIKy6jIOou9kTX+Be6tE7FVI=";
     };
   };
 }
