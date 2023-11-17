@@ -68,7 +68,6 @@
       # LSPs
       gopls
       ltex-ls
-      lua-language-server
       marksman
       nil
       nodePackages_latest.bash-language-server
@@ -91,6 +90,8 @@
       # formatter
       black
       dprint
+      nixpkgs-fmt
+      typstfmt
     ];
     file.".config/helix/languages.toml".source = ./languages.toml;
     file.".local/bin/julia-lsp.jl" = {
