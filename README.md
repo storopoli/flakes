@@ -19,7 +19,7 @@ It is slow, non-reproducible, and a mess to maintain.
 Nix is superior in every way.
 It is fast as fuck,
 and it is 100% reproducible.
-Migrating to new hardware or rebuilding old hardware after a wipe is
+Migrating to new hardware or rebuilding old hardware after a wipe is a breeze.
 
 ## Features
 
