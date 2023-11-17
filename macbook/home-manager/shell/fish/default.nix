@@ -87,6 +87,7 @@
   };
 
   xdg.configFile = {
+    "fish/functions/codespell_ignore.fish".source = ./functions/codespell_ignore.fish;
     "fish/functions/flakify.fish".source = ./functions/flakify.fish;
     "fish/functions/find_rust.fish".source = ./functions/find_rust.fish;
     "fish/functions/man.fish".source = ./functions/man.fish;
