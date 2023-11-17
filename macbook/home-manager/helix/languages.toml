@@ -88,6 +88,8 @@ file-types = ["typst", "typ"]
 roots = []
 comment-token = "//"
 language-servers = ["typst-lsp", "ltex-ls"]
+formatter = { command = "typstfmt", args = ["--output", "-"] }
+auto-format = true
 indent = { tab-width = 2, unit = "  " }
 
 [language.auto-pairs]

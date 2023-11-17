@@ -115,6 +115,7 @@
       dprint
       nixpkgs-fmt
       stylua
+      typstfmt
 
       # chatgpt
       shell_gpt
