@@ -94,6 +94,7 @@
       nil
       nodePackages_latest.bash-language-server
       nodePackages_latest.vscode-langservers-extracted
+      nodePackages_latest.pyright
       ruff
       ruff-lsp
       rust-analyzer

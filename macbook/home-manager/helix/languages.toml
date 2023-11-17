@@ -10,7 +10,7 @@ features = "all"
 
 [[language]]
 name = "python"
-language-servers = ["ruff-lsp"]
+language-servers = ["pyright", "ruff-lsp"]
 formatter = { command = "black", args = ["--quiet", "-"] }
 auto-format = true
 [language-server.ruff-lsp]

@@ -19,6 +19,7 @@
       nodePackages_latest.bash-language-server
       nodePackages_latest.typescript-language-server
       nodePackages_latest.vscode-langservers-extracted
+      nodePackages_latest.pyright
       ruff-lsp
       rust-analyzer
       taplo
