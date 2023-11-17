@@ -52,6 +52,7 @@
             space = {
               w = ":write";
               q = ":quit";
+              Q = ":quit-all!";
             };
           };
           select = {
@@ -65,25 +66,29 @@
   home = {
     packages = with pkgs; [
       # LSPs
+      gopls
+      ltex-ls
+      lua-language-server
+      marksman
       nil
       nodePackages_latest.bash-language-server
       nodePackages_latest.vscode-langservers-extracted
-      rust-analyzer
-      marksman
-      taplo
+      nodePackages_latest.pyright
       ruff
       ruff-lsp
-      gopls
-      yaml-language-server
+      rust-analyzer
+      taplo
       texlab
-      ltex-ls
       typst-lsp
+      yaml-language-server
+
       # tree-sitter
       tree-sitter
+
       # debugger
       lldb # provides lldb-vscode
+
       # formatter
-      nixpkgs-fmt
       black
       dprint
     ];
