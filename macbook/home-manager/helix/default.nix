@@ -90,6 +90,7 @@
       # LSPs
       gopls
       ltex-ls
+      lua-language-server
       marksman
       nil
       nodePackages_latest.bash-language-server
@@ -113,6 +114,7 @@
       black
       dprint
       nixpkgs-fmt
+      stylua
 
       # chatgpt
       shell_gpt
