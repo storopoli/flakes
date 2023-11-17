@@ -99,7 +99,7 @@ Migrating to new hardware or rebuilding old hardware after a wipe is
   [`graphicsmagick`](http://www.graphicsmagick.org/),
   [`tectonic`](https://tectonic-typesetting.github.io/),
   and [`typst`](https://typst.app/).
-- OS-level adblocking with [`StevenBlack/hosts`](https://github.com/StevenBlack/hosts)
+- OS-level ad-blocking with [`StevenBlack/hosts`](https://github.com/StevenBlack/hosts)
   in the `/etc/hosts`.
 - Apps:
 

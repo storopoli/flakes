@@ -34,9 +34,7 @@
       lldb # provides lldb-vscode
 
       # linters
-      codespell
       luajitPackages.luacheck
-      markdownlint-cli2
       nodePackages_latest.eslint
       ruff
       shellcheck
@@ -44,7 +42,6 @@
       # formatter
       black
       dprint
-      cbfmt
       isort
       nixpkgs-fmt
       prettierd
@@ -56,8 +53,8 @@
     file.".config/nvim".source = pkgs.fetchFromGitHub {
       owner = "storopoli";
       repo = "nvim";
-      rev = "v1.8";
-      hash = "sha256-iJcLfz4o47GoIpCuU3NPfoyjS/S1cPdMXIhAIka6jRA=";
+      rev = "v1.9";
+      hash = "sha256-A1uQbyn4hWpePV/yuhV12K4+V8zrhWaifHFxrt+VSrY=";
     };
   };
 }
