@@ -2,12 +2,12 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-These are my MacOS Nix setup.
+These are my macOS Nix setup.
 
-The MacOS configs are minimalist in approach
+The macOS configs are minimalist in approach
 and geared towards enhancing security and privacy.
-It uses the best practices described in the [MacOS Hardening Guide](https://github.com/ataumo/macos_hardening)
-and the [MacOS Security and Privacy Guide](https://github.com/drduh/macOS-Security-and-Privacy-Guide).
+It uses the best practices described in the [macOS Hardening Guide](https://github.com/ataumo/macos_hardening)
+and the [macOS Security and Privacy Guide](https://github.com/drduh/macOS-Security-and-Privacy-Guide).
 
 ![screenshot](screenshot.png)
 
@@ -125,7 +125,7 @@ Migrating to new hardware or rebuilding old hardware after a wipe is
     thanks to [`cmus-control`](https://github.com/TheFox/cmus-control))
 
 - Common developer enhancements in Finder and Search
-- MacOS privacy and security enhancements
+- macOS privacy and security enhancements
 - Debloating of animations
 
 ## Prepare your system
