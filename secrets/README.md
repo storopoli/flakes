@@ -26,7 +26,7 @@ As the name suggest, DON'T COMMIT this file, and DELETE IT afterwards.
 To access secrets, run in the root directory of this flake:
 
 ```bash
-agenix -- -d secrets/password.age -i secrets/identities/age-yubikey-identity-*.txt
+agenix -d secrets/password.age -i secrets/identities/age-yubikey-identity-*.txt
 # or
 nix run github:ryantm/agenix -- -d secrets/password.age -i secrets/identities/age-yubikey-identity-*.txt
 ```
@@ -44,7 +44,7 @@ age-plugin-yubikey --identity
 To edit secrets, run in the root directory of this flake:
 
 ```bash
-agenix -- -e secrets/password.age -i secrets/identities/age-yubikey-identity-*.txt
+agenix -e secrets/password.age -i secrets/identities/age-yubikey-identity-*.txt
 # or
 nix run github:ryantm/agenix -- -e secrets/password.age -i secrets/identities/age-yubikey-identity-*.txt
 ```
