@@ -3,11 +3,12 @@
 {
   home.stateVersion = "23.11";
   imports = [
-    ./shell
-    ./cli
     ./alacritty.nix
+    ./cli
     ./helix
     ./karabiner
     ./shell
+    ./shell
+    ./yabai.nix
   ];
 }

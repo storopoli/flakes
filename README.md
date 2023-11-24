@@ -23,6 +23,9 @@ Migrating to new hardware or rebuilding old hardware after a wipe is a breeze.
 
 ## Features
 
+- Tiling window manager with
+  [yabai](https://github.com/koekeishiya/yabai) and
+  [skhd](https://github.com/koekeishiya/skhd).
 - [Alacritty](https://alacritty.org/) CLI-ready workflow with
   [`fish`](https://github.com/fish-shell/fish-shell),
   [`tmux`](https://github.com/tmux/tmux),

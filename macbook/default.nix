@@ -2,10 +2,10 @@
 
 {
   imports = [
-    ./fonts.nix
-    ./brew.nix
-    ./packages.nix
     ./agenix.nix
+    ./brew.nix
+    ./fonts.nix
+    ./packages.nix
   ];
 
   users.users.user = {

@@ -31,7 +31,6 @@ in
       du-dust
       ncdu
       ueberzugpp
-      pinentry_mac
 
       # git
       gh

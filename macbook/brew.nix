@@ -5,16 +5,21 @@
     # Homebrew Package Manager
     enable = true;
     onActivation = {
-      autoUpdate = false;
-      upgrade = false;
+      # "zap" removes manually installed brews and casks
       cleanup = "zap";
+      autoUpdate = true;
+      upgrade = true;
     };
     taps = [
       "homebrew/services"
+      "koekeishiya/formulae"
       "macos-fuse-t/homebrew-cask"
       "thefox/brewery"
     ];
     brews = [
+      "yabai"
+      "skhd"
+      "pinentry-mac"
       {
         name = "tor";
         restart_service = true;
@@ -39,7 +44,6 @@
       "keycastr"
       "orbstack"
       "protonvpn"
-      "rectangle"
       "signal"
       "sparrow"
       "tor-browser"
