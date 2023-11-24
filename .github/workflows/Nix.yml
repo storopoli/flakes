@@ -1,28 +1,48 @@
-name: Nix Darwin
-#concurrency:
+name: Nix Flake
 on:
   push:
     branches: [main]
   pull_request:
     branches: [main]
 jobs:
-  flake-test:
+  self-care:
+    name: Flake self-check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check Nix flake inputs
+        uses: DeterminateSystems/flake-checker-action@v5
+        with:
+          fail-mode: true
+
+  nixos-test:
+    name: "NixOS Nix Test"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: "Install Nix ❄️"
+        uses: DeterminateSystems/nix-installer-action@v8
+
+      - name: "Nix Cache"
+        uses: DeterminateSystems/magic-nix-cache-action@v2
+
+      - name: "Build NixOS config ❄️"
+        run: nix build --dry-run -L '.#nixosConfigurations.framework.config.system.build.toplevel' --show-trace
+
+  # FIXME: waiting for github to release Apple Silicon CI runners
+  macos-test:
+    name: "macOS Nix Test"
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v4
 
       - name: "Install Nix ❄️"
-        uses: cachix/install-nix-action@v23
-        with:
-          github_access_token: ${{ secrets.TOKEN }}
-          nix_path: nixpkgs=channel:nixos-unstable
+        uses: DeterminateSystems/nix-installer-action@v8
 
       - name: "Nix Cache"
-        uses: DeterminateSystems/magic-nix-cache-action@main
-
-      - name: "Nix Flake Check"
-        run: nix flake check
+        uses: DeterminateSystems/magic-nix-cache-action@v2
 
       - name: "Build NixOS config ❄️"
-        run: |
-          nix --experimental-features 'nix-command flakes' build -L  '.#darwinConfigurations.macbook_x86.system'
+        run: nix run nix-darwin -- check --flake .#macbook_x86
+

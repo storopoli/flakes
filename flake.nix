@@ -106,6 +106,24 @@
                 }
               ];
             };
+            macbook_x86 = self.nixos-flake.lib.mkMacosSystem {
+              nixpkgs.hostPlatform = "x86_64-darwin";
+              imports = [
+                self.nixosModules.common
+                self.nixosModules.darwin
+                # Your home-manager configuration
+                self.darwinModules_.home-manager
+                {
+                  home-manager.users.${user} = {
+                    imports = [
+                      self.homeModules.common
+                      self.homeModules.darwin
+                    ];
+                    home.stateVersion = homeStateVersion;
+                  };
+                }
+              ];
+            };
           };
 
           # All nixos/nix-darwin configurations are kept here.

@@ -354,7 +354,10 @@ Before installing anything you'll need to prepare your system:
 1. Install [`nix-darwin`](https://github.com/LnL7/nix-darwin):
 
    ```bash
-   nix run nix-darwin -- switch --flake .
+   # aarch64
+   nix run nix-darwin -- switch --flake .#macbook
+   # x86_64
+   nix run nix-darwin -- switch --flake .#macbook_x86
    ```
 
 1. Apply changes to your system:
