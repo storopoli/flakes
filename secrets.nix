@@ -6,4 +6,6 @@ in
 {
   "secrets/reserves1.age".publicKeys = keys;
   "secrets/reserves2.age".publicKeys = keys;
+  "secrets/luks.age".publicKeys = keys;
+  "secrets/password.age".publicKeys = keys;
 }
