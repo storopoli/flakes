@@ -5,6 +5,7 @@
     # linux home-manager configs
     ./gpg.nix
     ./hyprland
+    ./foot.nix
   ];
   home = {
     username = "user";
