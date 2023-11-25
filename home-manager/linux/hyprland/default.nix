@@ -5,6 +5,7 @@
     ./variables.nix
     ./wallpaper.nix
     ./scripts
+    ./waybar
   ];
   programs = {
     bash = {

@@ -13,6 +13,7 @@
     swww
     swaylock-effects
     pamixer
+    waybar
   ];
 
   security.pam.services.swaylock = { };
