@@ -141,6 +141,10 @@
                 }
                 (import ./common)
               ];
+              programs.fish.enable = true;
+              networking.hostName = "${hostname}";
+              users.users.${user}.shell = pkgs.fish;
+              nix.settings.trusted-users = [ "root" "${user}" ];
             };
             # NixOS specific configuration
             linux = { pkgs, ... }: {
@@ -155,36 +159,22 @@
                 # TODO: fix password with agenix
                 initialHashedPassword =
                   "$6$MaOkIaWVTcGTX0Ec$5trnAnfzqMYsoggvBbjBcP.SPxx/B1fqsQxLfKU26QMerrG0QmRnaofCT3/K0LBk9aLeiPDjledO7Sdh9yv161";
-                shell = pkgs.fish;
                 isNormalUser = true;
                 extraGroups =
                   [ "wheel" "docker" "libvirtd" "video" "audio" "networkmanager" ];
               };
-              programs.fish.enable = true;
-              networking.hostName = "${hostname}";
               system.stateVersion = "${stateVersion}";
-              nix = {
-                settings = { trusted-users = [ "root" "${user}" ]; };
-              };
             };
             # nix-darwin specific configuration
             darwin = { pkgs, ... }: {
               imports = [
                 (import ./darwin)
               ];
-              users.users.${user} = {
-                # MacOS User
-                home = "/Users/${user}";
-                shell = pkgs.fish; # Default Shell
-              };
-              programs.fish.enable = true;
-              networking.hostName = "${hostname}";
+              # MacOS User
+              users.users.${user}.home = "/Users/${user}";
               networking.computerName = "${hostname}";
               networking.localHostName = "${hostname}";
               system.stateVersion = darwinStateVersion;
-              nix = {
-                settings = { trusted-users = [ "root" "${user}" ]; };
-              };
             };
           };
 
