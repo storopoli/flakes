@@ -11,6 +11,7 @@
     # ./intel.nix
     ./fonts.nix
     ./wayland.nix
+    ./hyprland.nix
     ./impermanence.nix
   ];
   users = {
