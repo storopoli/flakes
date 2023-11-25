@@ -7,6 +7,7 @@
     ./hyprland
     ./foot.nix
     ./firefox.nix
+    ./zathura.nix
   ];
   home = {
     username = "user";
