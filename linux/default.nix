@@ -10,5 +10,6 @@
     ./amd.nix
     # ./intel.nix
     ./fonts.nix
+    ./wayland.nix
   ];
 }

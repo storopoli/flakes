@@ -129,7 +129,8 @@
           # All nixos/nix-darwin configurations are kept here.
           nixosModules = {
             # Common nixos/nix-darwin configuration shared between Linux and macOS.
-            common = { pkgs, ... }: {
+            common = { pkgs, user, hostname, ... }: {
+              specialArgs = { inherit user hostname; };
               imports = [
                 # Custom inputs
                 inputs.agenix.nixosModules.default
@@ -147,7 +148,8 @@
               nix.settings.trusted-users = [ "root" "${user}" ];
             };
             # NixOS specific configuration
-            linux = { pkgs, ... }: {
+            linux = { pkgs, user, hostname, ... }: {
+              specialArgs = { inherit user hostname; };
               imports = [
                 # Custom inputs
                 inputs.nur.nixosModules.nur
@@ -166,7 +168,8 @@
               system.stateVersion = "${stateVersion}";
             };
             # nix-darwin specific configuration
-            darwin = { pkgs, ... }: {
+            darwin = { pkgs, user, hostname, ... }: {
+              specialArgs = { inherit user hostname; };
               imports = [
                 (import ./darwin)
               ];
@@ -181,11 +184,11 @@
           # All home-manager configurations are kept here.
           homeModules = {
             # Common home-manager configuration shared between Linux and macOS.
-            common = import ./home-manager { inherit user; };
+            common = import ./home-manager;
             # home-manager config specific to NixOS
-            linux = import ./home-manager/linux { inherit user; };
+            linux = import ./home-manager/linux;
             # home-manager config specifi to Darwin
-            darwin = import ./home-manager/darwin { inherit user; };
+            darwin = import ./home-manager/darwin;
           };
         };
     };
