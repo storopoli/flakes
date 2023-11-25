@@ -3,5 +3,6 @@
 {
   imports = [
     ./wallpaper.nix
+    ./scripts
   ];
 }
