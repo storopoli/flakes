@@ -14,6 +14,7 @@
     swaylock-effects
     pamixer
     waybar
+    imv
   ];
 
   security.pam.services.swaylock = { };

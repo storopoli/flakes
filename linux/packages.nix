@@ -26,14 +26,26 @@
 
   # linux specific user packager
   users.users.user.packages = (with pkgs; [
+    # opsec
     keepassxc
     tor-browser-bundle-bin
     signal-desktop
+
+    # bitcoin
     sparrow
     bisq-desktop
+
+    # office
     libreoffice-fresh
+
+    # media
+    mediainfo
+    exiftool
     qpwgraph
     playerctl
+    mat2
+    transmission_4
+    obs-studio
   ]) ++ (with config.nur.repos;
     [
       # nur packages
