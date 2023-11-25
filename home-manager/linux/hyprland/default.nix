@@ -7,6 +7,7 @@
     ./scripts
     ./waybar
     ./gtk.nix
+    ./rofi
   ];
   programs = {
     bash = {
