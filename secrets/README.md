@@ -126,6 +126,17 @@ secret already in your other configuration.
 So `config.age.secrets.secret1.path` will contain the path
 `/run/agenix/secret1` by default.
 
+Also, you can use a whole file as a secret.
+For example with a wireguard VPN config:
+
+```nix
+environment.etc = {
+  # wireguard config used with `wg-quick up wg-example`
+  "wireguard/wg-example.conf" = {
+    source = config.age.secrets."wg-example.conf".path;
+};
+```
+
 ## Security
 
 [`age` specs](https://github.com/C2SP/C2SP/blob/main/age.md) encripts files using
@@ -142,3 +153,6 @@ these YubiKey identities are "key grips",
 encoding a serial number of the YubiKey and some other identifiers,
 but no secret bits.
 It's fine to display them publicly.
+
+```
+```
