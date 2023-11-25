@@ -1,4 +1,4 @@
-{ ... }:
+{ config, ... }:
 
 {
   imports = [
@@ -18,12 +18,9 @@
     mutableUsers = false;
     users = {
       # TODO: fix password with agenix
-      root.initialHashedPassword =
-        "$6$MaOkIaWVTcGTX0Ec$5trnAnfzqMYsoggvBbjBcP.SPxx/B1fqsQxLfKU26QMerrG0QmRnaofCT3/K0LBk9aLeiPDjledO7Sdh9yv161";
+      root.passwordFile = config.age.secrets.root.path;
       user = {
-        # TODO: fix password with agenix
-        initialHashedPassword =
-          "$6$MaOkIaWVTcGTX0Ec$5trnAnfzqMYsoggvBbjBcP.SPxx/B1fqsQxLfKU26QMerrG0QmRnaofCT3/K0LBk9aLeiPDjledO7Sdh9yv161";
+        passwordFile = config.age.secrets.password.path;
         isNormalUser = true;
         extraGroups =
           [ "wheel" "docker" "libvirtd" "video" "audio" "networkmanager" ];
