@@ -8,6 +8,7 @@
     ./waybar
     ./gtk.nix
     ./rofi
+    ./mako.nix
   ];
   programs = {
     bash = {
