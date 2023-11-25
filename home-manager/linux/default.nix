@@ -7,6 +7,7 @@
     ./hyprland
     ./foot.nix
     ./firefox.nix
+    ./mpv
     ./zathura.nix
   ];
   home = {
