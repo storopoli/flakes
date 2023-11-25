@@ -2,5 +2,6 @@
 
 {
   imports = [
+    ./wallpaper.nix
   ];
 }
