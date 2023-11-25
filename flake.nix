@@ -78,7 +78,7 @@
                         self.homeModules.linux
                         inputs.arkenfox.hmModules.default
                       ];
-                      home.stateVersion = homeStateVersion;
+                      home.stateVersion = "${stateVersion}";
                     };
                   };
                 }
