@@ -1,4 +1,4 @@
-{ pkgs, user, ... }:
+{ pkgs, ... }:
 
 {
   environment.systemPackages = with pkgs; [
@@ -44,7 +44,7 @@
 
   services = {
     dbus.packages = [ pkgs.gcr ];
-    getty.autologinUser = "${user}";
+    getty.autologinUser = "user";
     gvfs.enable = true;
     pipewire = {
       enable = true;
@@ -91,7 +91,7 @@
   security.sudo = {
     enable = false;
     extraConfig = ''
-      ${user} ALL=(ALL) NOPASSWD:ALL
+      user ALL=(ALL) NOPASSWD:ALL
     '';
   };
   security.doas = {

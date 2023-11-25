@@ -1,4 +1,4 @@
-{ user, ... }:
+{ ... }:
 
 {
   imports = [
@@ -7,8 +7,8 @@
     ./hyprland
   ];
   home = {
-    username = "${user}";
-    homeDirectory = "/home/${user}";
+    username = "user";
+    homeDirectory = "/home/user";
   };
   programs.home-manager.enable = true;
 }

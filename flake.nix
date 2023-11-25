@@ -52,8 +52,6 @@
 
       flake =
         let
-          user = "user";
-          hostname = "laptop";
           stateVersion = "23.11";
           darwinStateVersion = 4;
           homeStateVersion = "23.11";
@@ -72,7 +70,7 @@
                   home-manager = {
                     useGlobalPkgs = true;
                     useUserPackages = true;
-                    users.${user} = {
+                    users.user = {
                       imports = [
                         self.homeModules.common
                         self.homeModules.linux
@@ -96,7 +94,7 @@
                 # Your home-manager configuration
                 self.darwinModules_.home-manager
                 {
-                  home-manager.users.${user} = {
+                  home-manager.users.user = {
                     imports = [
                       self.homeModules.common
                       self.homeModules.darwin
@@ -114,7 +112,7 @@
                 # Your home-manager configuration
                 self.darwinModules_.home-manager
                 {
-                  home-manager.users.${user} = {
+                  home-manager.users.user = {
                     imports = [
                       self.homeModules.common
                       self.homeModules.darwin
@@ -129,8 +127,7 @@
           # All nixos/nix-darwin configurations are kept here.
           nixosModules = {
             # Common nixos/nix-darwin configuration shared between Linux and macOS.
-            common = { pkgs, user, hostname, ... }: {
-              specialArgs = { inherit user hostname; };
+            common = {
               imports = [
                 # Custom inputs
                 inputs.agenix.nixosModules.default
@@ -142,14 +139,9 @@
                 }
                 (import ./common)
               ];
-              programs.fish.enable = true;
-              networking.hostName = "${hostname}";
-              users.users.${user}.shell = pkgs.fish;
-              nix.settings.trusted-users = [ "root" "${user}" ];
             };
             # NixOS specific configuration
-            linux = { pkgs, user, hostname, ... }: {
-              specialArgs = { inherit user hostname; };
+            linux = { pkgs, ... }: {
               imports = [
                 # Custom inputs
                 inputs.nur.nixosModules.nur
@@ -157,26 +149,13 @@
                 inputs.disko.nixosModules.disko
                 (import ./linux)
               ];
-              users.users.${user} = {
-                # TODO: fix password with agenix
-                initialHashedPassword =
-                  "$6$MaOkIaWVTcGTX0Ec$5trnAnfzqMYsoggvBbjBcP.SPxx/B1fqsQxLfKU26QMerrG0QmRnaofCT3/K0LBk9aLeiPDjledO7Sdh9yv161";
-                isNormalUser = true;
-                extraGroups =
-                  [ "wheel" "docker" "libvirtd" "video" "audio" "networkmanager" ];
-              };
               system.stateVersion = "${stateVersion}";
             };
             # nix-darwin specific configuration
-            darwin = { pkgs, user, hostname, ... }: {
-              specialArgs = { inherit user hostname; };
+            darwin = {
               imports = [
                 (import ./darwin)
               ];
-              # MacOS User
-              users.users.${user}.home = "/Users/${user}";
-              networking.computerName = "${hostname}";
-              networking.localHostName = "${hostname}";
               system.stateVersion = darwinStateVersion;
             };
           };
