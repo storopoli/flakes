@@ -6,6 +6,7 @@
     ./gpg.nix
     ./hyprland
     ./foot.nix
+    ./firefox.nix
   ];
   home = {
     username = "user";

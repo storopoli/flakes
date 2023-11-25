@@ -74,6 +74,7 @@
                       imports = [
                         self.homeModules.common
                         self.homeModules.linux
+                        inputs.nur.hmModules.nur
                         inputs.arkenfox.hmModules.default
                       ];
                       home.stateVersion = "${stateVersion}";
@@ -147,6 +148,11 @@
                 inputs.nur.nixosModules.nur
                 inputs.impermanence.nixosModules.impermanence
                 inputs.disko.nixosModules.disko
+                {
+                  nixpkgs.overlays = [
+                    inputs.nur.overlay
+                  ];
+                }
                 (import ./linux)
               ];
               system.stateVersion = "${stateVersion}";
