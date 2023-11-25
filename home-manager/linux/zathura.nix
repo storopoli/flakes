@@ -23,7 +23,7 @@
 
       # zathurarc-dark
 
-      set font "DaddyTimeMono Nerd Font 15"
+      set font "Hack Nerd Font Propo 15"
       set default-fg 			"#96CDFB"
       set default-bg 			"#1A1823"
 

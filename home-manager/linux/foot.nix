@@ -5,7 +5,7 @@
     enable = true;
     settings = {
       main = {
-        font = "JetBrains Mono Nerd Font:size=12";
+        font = "Hack Nerd Font Propo:size=12";
         dpi-aware = "no";
         bold-text-in-bright = "yes";
         initial-window-mode = "maximized";
