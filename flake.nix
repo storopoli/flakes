@@ -142,7 +142,7 @@
               ];
             };
             # NixOS specific configuration
-            linux = { pkgs, ... }: {
+            linux = {
               imports = [
                 # Custom inputs
                 inputs.nur.nixosModules.nur

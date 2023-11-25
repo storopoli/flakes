@@ -1,20 +1,26 @@
 { ... }:
 
 {
+  imports = [
+    ./disko.nix
+  ];
+
   fileSystems."/" = {
     device = "none";
     fsType = "tmpfs";
-    options = [ "defaults" "size=24G" "mode=755" ];
+    options = [ "defaults" "size=16G" "mode=755" ];
   };
 
   fileSystems."/nix" = {
-    device = "/dev/disk/by-uuid/31454764-f5c6-45c7-9f79-036f83405591";
+    device = "/dev/mapper/crypted";
     fsType = "btrfs";
+    options = [ "defaults" "compress=zstd" "noatime" ];
   };
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/5835-50BF";
+    device = "/dev/disk/by-partlabel/disk-nvme0n1-ESP";
     fsType = "vfat";
+    options = [ "defaults" ];
   };
 
   fileSystems."/etc/nixos" = {

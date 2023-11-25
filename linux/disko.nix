@@ -1,14 +1,13 @@
-{ config, disks ? [ "/dev/nvme0n1" ], ... }: {
-  # TODO: add instructions to README with
-  # https://github.com/nix-community/disko/blob/master/docs/quickstart.md
+{ config, disks ? [ "/dev/nvme0n1" ], ... }:
+
+{
   disko.devices = {
     disk = {
       nvme0n1 = {
         device = builtins.elemAt disks 0;
         type = "disk";
         content = {
-          type = "table";
-          format = "gpt";
+          type = "gpt";
           partitions = {
             ESP = {
               size = "1GiB";
@@ -17,9 +16,7 @@
                 type = "filesystem";
                 format = "vfat";
                 mountpoint = "/boot";
-                mountOptions = [
-                  "defaults"
-                ];
+                mountOptions = [ "defaults" ];
               };
             };
             luks = {
@@ -30,7 +27,6 @@
                 settings = {
                   allowDiscards = true;
                 };
-                # TODO: luks age secrets
                 passwordFile = config.age.secrets.luks.path;
                 content = {
                   type = "btrfs";

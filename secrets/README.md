@@ -8,10 +8,45 @@ to generate [`age`](https://github.com/FiloSottile/age) secrets.
 
 Just run `age-plugin-yubikey` and follow the instructions.
 This will generate a public/private key pair in one of your
-[Personal Identity Verification (PIV)](https://www.yubico.com/authentication-standards/smart-card/) slots.
+[Personal Identity Verification (PIV)](https://www.yubico.com/authentication-standards/smart-card/)
+slots.
+
+## Adding Keys to NixOS
+
+Add public keys to your `secrets.nix` file:
+
+```nix
+let
+  user1 = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIL0idNvgGiucWgup/mP78zyC23uFjYq0evcWdjGQUaBH";
+  user2 = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILI6jSq53F/3hEmSs+oq9L4TwOo1PrDMAgcA1uo1CCV/";
+  users = [ user1 user2 ];
+
+  system1 = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPJDyIr/FSz1cJdcoW69R+NrWzwGK/+3gJpqD1t8L2zE";
+  system2 = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKzxQgondgEYcLpcPdJLrTdNgZ2gznOHCAxMdaceTUT1";
+  systems = [ system1 system2 ];
+in
+{
+  "secret1.age".publicKeys = [ user1 system1 ];
+  "secret2.age".publicKeys = users ++ systems;
+}
+```
+
+These are the users and systems that will be able to decrypt the `.age` files
+later with their corresponding private keys.
 
 ## Creating Secrets
 
+create a secret file:
+
+```bash
+agenix -e secret1.age -i secrets/identities/age-yubikey-identity-*.txt
+```
+
+It will open a temporary file in the app configured in your `$EDITOR` environment variable.
+When you save that file its content will be encrypted with
+all the public keys mentioned in the `secrets.nix` file.
+
+You can also generate secrets with `age` by listing all the recipients with `-r`.
 To generate secrets, run in the root directory of this flake:
 
 ```bash
@@ -40,7 +75,6 @@ age-plugin-yubikey --identity
 
 ## Editing Secrets
 
-
 To edit secrets, run in the root directory of this flake:
 
 ```bash
@@ -60,11 +94,43 @@ You can find this by plugging your YubiKey and running:
 age-plugin-yubikey --list-all
 ```
 
+## Using Secrets
+
+Add secret to a NixOS module config:
+
+```nix
+{
+  age.secrets.secret1.file = ../secrets/secret1.age;
+}
+```
+
+When the `age.secrets` attribute set contains a secret,
+the `agenix` NixOS module will later automatically decrypt
+and mount that secret under the default path `/run/agenix/secret1`.
+Here the `secret1.age` file becomes part of your NixOS deployment,
+i.e. moves into the Nix store.
+
+Reference the secrets' mount path in your config:
+
+```nix
+{
+  users.users.user1 = {
+    isNormalUser = true;
+    passwordFile = config.age.secrets.secret1.path;
+  };
+}
+```
+
+You can reference the mount path to the (later) unencrypted
+secret already in your other configuration.
+So `config.age.secrets.secret1.path` will contain the path
+`/run/agenix/secret1` by default.
+
 ## Security
 
 [`age` specs](https://github.com/C2SP/C2SP/blob/main/age.md) encripts files using
 a 128-bit symmetric file key with `ChaCha20-Poly1305`.
-It has tons of stars on GitHub and tons of people and organizations use it. 
+It has tons of stars on GitHub and tons of people and organizations use it.
 
 YubiKey's [Personal Identity Verification (PIV)](https://www.yubico.com/authentication-standards/smart-card/)
 uses an Elliptic Curve ECDSA P-256 key as defined in the
@@ -76,4 +142,3 @@ these YubiKey identities are "key grips",
 encoding a serial number of the YubiKey and some other identifiers,
 but no secret bits.
 It's fine to display them publicly.
-

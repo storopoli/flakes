@@ -128,8 +128,11 @@ Read more about this in the [NixOs Paranoid Guide](https://xeiaso.net/blog/paran
 - VPN support with [`wireguard`](https://www.wireguard.com/)
 - Keyboard customizations with [`keyd`](https://github.com/rvaiya/keyd):
   Caps Lock as Escape (if tapped) and Control (if held).
+- Easy and automated disk partitioning with [`disko`](https://github.com/nix-community/disko).
 
 ### How to Install
+
+As root:
 
 1. Prepare a
    [64-bit NixOS 23.11 minimal iso image](https://channels.nixos.org/nixos-23.11/latest-nixos-minimal-x86_64-linux.iso)
@@ -140,6 +143,16 @@ Read more about this in the [NixOs Paranoid Guide](https://xeiaso.net/blog/paran
    ```bash
    mkfs.fat -F 32 /dev/nvme0n1p1
    mkfs.ext4 /dev/nvme0n1p2 # or use LUKS with cryptsetup luksFormat /dev/nvme0n1p2 encryptedroot
+   ```
+
+   or use the [`disko` script for Btrfs with LUKS](linux/disko.nix)
+   (don't forget to clone the repo first):
+
+   ```bash
+   nix run github:nix-community/disko -- --mode disko linux/disko.nix
+   # verify the mount
+   mount | grep /mnt
+   # you may need to skip some commands in the next "mount" step
    ```
 
 1. Mount:
