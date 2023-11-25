@@ -11,6 +11,7 @@
     # ./intel.nix
     ./fonts.nix
     ./wayland.nix
+    ./impermanence.nix
   ];
   users.users.user = {
     # TODO: fix password with agenix
