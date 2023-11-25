@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ ... }:
 
 {
   imports = [
@@ -9,6 +9,7 @@
     ./gtk.nix
     ./rofi
     ./mako.nix
+    ./cava
   ];
   programs = {
     bash = {
