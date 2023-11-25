@@ -8,4 +8,5 @@ in
   "secrets/reserves2.age".publicKeys = keys;
   "secrets/luks.age".publicKeys = keys;
   "secrets/password.age".publicKeys = keys;
+  "secrets/root.age".publicKeys = keys;
 }
