@@ -17,10 +17,9 @@
   users = {
     mutableUsers = false;
     users = {
-      # TODO: fix password with agenix
-      root.passwordFile = config.age.secrets.root.path;
+      root.hashedPasswordFile = config.age.secrets.root.path;
       user = {
-        passwordFile = config.age.secrets.password.path;
+        hashedPasswordFile = config.age.secrets.password.path;
         isNormalUser = true;
         extraGroups =
           [ "wheel" "docker" "libvirtd" "video" "audio" "networkmanager" ];

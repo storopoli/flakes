@@ -30,7 +30,7 @@
     [ "xdg-desktop-autostart.target" ];
   wayland.windowManager.hyprland = {
     enable = true;
-    systemdIntegration = true;
+    systemd.enable = true;
     enableNvidiaPatches = false;
     extraConfig = (builtins.readFile ./hyprland.conf);
   };
