@@ -26,6 +26,7 @@
           mode = "0700";
         }
         ".mozilla"
+        ".sparrow"
         "git"
         "dev"
         "music"
