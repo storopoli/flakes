@@ -272,6 +272,110 @@ As root:
    doas nixos-rebuild boot --flake .#<hostname>
    ```
 
+### Wireguard VPN Configs
+
+> Sources: [manpage of `wg-quick`](https://manpages.debian.org/unstable/wireguard-tools/wg-quick.8.en.html),
+> [Mullvad WireGuard on Linux terminal](https://mullvad.net/en/help/easy-wireguard-mullvad-setup-linux/)
+> [IVPN Autostart WireGuard in systemd](https://www.ivpn.net/knowledgebase/linux/linux-autostart-wireguard-in-systemd/),
+> and [IVPN WireGuard Kill Switch](https://www.ivpn.net/knowledgebase/linux/linux-wireguard-kill-switch/)
+
+For the extra paranoid, you can use VPNs without installing their apps.
+You will need [WireGuard](https://www.wireguard.com/).
+
+1. Create your configuration in `/etc/wireguard/wg0.conf`.
+   You can also name `wg0.conf` whatever you want.
+   Any free-form string `[a-zA-Z0-9_=+.-]{1,15}` will work.
+   These configs are generally provided by your VPN provider.
+   They generally look something like this:
+
+   ```shell
+   [Interface]
+   PrivateKey = abcdefghijklmnopqrstuvwxyz0123456789=
+   Address = x.y.z.w/32
+   DNS = x.y.z.w
+   [Peer]
+   PublicKey = abcdefghijklmnopqrstuvwxyz0123456789=
+   Endpoint = sub.wg.domain.tld:9999
+   AllowedIPs = 0.0.0.0/0
+   ```
+
+1. Add "kill switch" configs.
+   Add the following two lines to the `[Interface]` section,
+   just before the `[Peer]` section:
+
+   ```shell
+   PostUp  = iptables -I OUTPUT ! -o %i -m mark ! --mark $(wg show %i fwmark) -m addrtype ! --dst-type LOCAL -j REJECT && ip6tables -I OUTPUT ! -o %i -m mark ! --mark $(wg show %i fwmark) -m addrtype ! --dst-type LOCAL -j REJECT
+   PreDown = iptables -D OUTPUT ! -o %i -m mark ! --mark $(wg show %i fwmark) -m addrtype ! --dst-type LOCAL -j REJECT && ip6tables -D OUTPUT ! -o %i -m mark ! --mark $(wg show %i fwmark) -m addrtype ! --dst-type LOCAL -j REJECT
+   ```
+
+   You may get a problem to connect to your local network.
+   You can modify the kill switch,
+   so it includes an exception for your local network,
+   for example `! -d 192.168.1.0/24`:
+
+   ```shell
+   PostUp  = iptables -I OUTPUT ! -o %i -m mark ! --mark $(wg show %i fwmark) -m addrtype ! --dst-type LOCAL ! -d 192.168.1.0/24 -j REJECT && ip6tables -I OUTPUT ! -o %i -m mark ! --mark $(wg show %i fwmark) -m addrtype ! --dst-type LOCAL -j REJECT
+   PreDown = iptables -D OUTPUT ! -o %i -m mark ! --mark $(wg show %i fwmark) -m addrtype ! --dst-type LOCAL ! -d 192.168.1.0/24 -j REJECT && ip6tables -D OUTPUT ! -o %i -m mark ! --mark $(wg show %i fwmark) -m addrtype ! --dst-type LOCAL -j REJECT
+   ```
+
+1. Make sure that you have the correct permissions, so only `root` can read them:
+
+   ```bash
+   sudo chown root:root -R /etc/wireguard && sudo chmod 600 -R /etc/wireguard
+   ```
+
+1. Start the WireGuard connection with:
+
+   ```bash
+   sudo wg-quick up wg0
+   # to disconnect
+   sudo wg-quick down wg0
+   ```
+
+#### Autostart WireGuard in `systemd`
+
+If you are using a Linux distribution that comes with `systemd`,
+you can autostart a WireGuard connection with:
+
+```bash
+sudo systemctl enable wg-quick@wg0.service
+sudo systemctl daemon-reload
+sudo systemctl start wg-quick@wg0
+```
+
+To check status: `sudo systemctl status wg-quick@wg0`
+
+To remove the service and clean up the system:
+
+```bash
+sudo systemctl stop wg-quick@wg0
+sudo systemctl disable wg-quick@wg0.service
+sudo rm -i /etc/systemd/system/wg-quick@wg0*
+sudo systemctl daemon-reload
+sudo systemctl reset-failed
+```
+
+#### Testing the Kill Switch
+
+One way to test a down tunnel is to delete the IP address from the WireGuard network interface,
+like this via the Terminal:
+
+```bash
+sudo ip a del [IP address] dev [interface]
+```
+
+In this example, it’s possible to remove `x.y.z.w` from the `wg0` interface:
+
+```bash
+sudo ip a del x.y.z.w/32 dev wg0
+```
+
+The `PostUP` iptables rule from above restricts all traffic to the tunnel,
+and all outgoing attempts to get traffic out fail.
+To gracefully recover from this,
+you will likely have to use the `wg-quick` command to take the connection down,
+then bring it back up.
+
 ## macOS
 
 The macOS configs are minimalist in approach
