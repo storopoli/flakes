@@ -16,6 +16,7 @@
         ".local"
         ".cargo"
         ".julia"
+        ".npm-global"
         {
           directory = ".gnupg";
           mode = "0700";
