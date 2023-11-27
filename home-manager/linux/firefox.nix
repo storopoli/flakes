@@ -5,7 +5,7 @@
     enable = true;
     arkenfox = {
       enable = true;
-      version = "118.0";
+      version = "119.0";
     };
     profiles.user = {
       bookmarks = [ ];

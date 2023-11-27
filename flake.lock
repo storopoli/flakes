@@ -30,11 +30,11 @@
         "pre-commit": "pre-commit"
       },
       "locked": {
-        "lastModified": 1698052066,
-        "narHash": "sha256-KnSOyt4Ro66kNf2UIVfIy5Qj5idR9+3QrxJmbo3kzrQ=",
+        "lastModified": 1701036929,
+        "narHash": "sha256-5TkAr5a3EoY9/oeO53SU+FRNfOUTpChj7mEW/Ax3T1w=",
         "owner": "dwarfmaster",
         "repo": "arkenfox-nixos",
-        "rev": "f787d60c3308f067d5f68abbe85083f8a169d72c",
+        "rev": "1c9d061a4ef7bf3ce8a5260eaee4acdb3ee097f9",
         "type": "github"
       },
       "original": {
@@ -441,11 +441,11 @@
         "nixpkgs-stable": "nixpkgs-stable"
       },
       "locked": {
-        "lastModified": 1697746376,
-        "narHash": "sha256-gu77VkgdfaHgNCVufeb6WP9oqFLjwK4jHcoPZmBVF3E=",
+        "lastModified": 1700922917,
+        "narHash": "sha256-ej2fch/T584b5K9sk1UhmZF7W6wEfDHuoUYpFN8dtvM=",
         "owner": "cachix",
         "repo": "pre-commit-hooks.nix",
-        "rev": "8cc349bfd082da8782b989cad2158c9ad5bd70fd",
+        "rev": "e5ee5c5f3844550c01d2131096c7271cec5e9b78",
         "type": "github"
       },
       "original": {
