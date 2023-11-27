@@ -11,8 +11,8 @@
   environment.etc."hosts" = {
     copy = true;
     text = builtins.readFile (builtins.fetchurl {
-      url = "https://github.com/StevenBlack/hosts/raw/3.14.29/alternates/fakenews/hosts";
-      sha256 = "1qn6smiw1jj5wxn53bksvnk5f8mzjc57x912zr00lwr2dksagvml";
+      url = "https://github.com/StevenBlack/hosts/raw/3.14.31/alternates/fakenews/hosts";
+      sha256 = "0047f4nwqhcajqs498rnhsvja1zxfqz24kg49bw31mgqchyjxh29";
     });
   };
 
