@@ -114,6 +114,7 @@
         options = {
           navigate = true;
           light = false;
+          syntax-theme = "catppuccin";
         };
       };
     };
