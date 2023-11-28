@@ -50,7 +50,6 @@
       "tor-browser"
       "transmission"
       "utm"
-      "visual-studio-code"
     ];
   };
 }
