@@ -8,7 +8,7 @@
       version = "119.0";
     };
     profiles.user = {
-      bookmarks = [ ];
+      isDefault = true;
       settings = {
         "dom.security.https_only_mode" = true;
         "browser.download.panel.shown" = true;
@@ -18,7 +18,9 @@
       extensions = with pkgs.nur.repos.rycee.firefox-addons; [
         ublock-origin
         vimium
+        user-agent-string-switcher
       ];
+      search.default = "DuckDuckGo";
       search.engines = {
         "Nix Packages" = {
           urls = [{
