@@ -12,13 +12,10 @@
     };
     taps = [
       "homebrew/services"
-      "koekeishiya/formulae"
       "macos-fuse-t/homebrew-cask"
       "thefox/brewery"
     ];
     brews = [
-      "yabai"
-      "skhd"
       "pinentry-mac"
       {
         name = "tor";
@@ -45,6 +42,7 @@
       "keycastr"
       "orbstack"
       "protonvpn"
+      "rectangle"
       "signal"
       "sparrow"
       "tor-browser"

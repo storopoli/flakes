@@ -6,6 +6,5 @@
     ./alacritty.nix
     ./gpg.nix
     ./karabiner
-    ./yabai.nix
   ];
 }

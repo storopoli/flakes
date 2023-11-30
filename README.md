@@ -404,8 +404,7 @@ Migrating to new hardware or rebuilding old hardware after a wipe is a breeze.
 ### Features
 
 - Tiling window manager with
-  [yabai](https://github.com/koekeishiya/yabai) and
-  [skhd](https://github.com/koekeishiya/skhd).
+  [Rectangle](https://github.com/rxhanson/Rectangle).
 
 - Apps:
   - [Alacritty](https://alacritty.org/)
