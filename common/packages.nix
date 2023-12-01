@@ -21,6 +21,7 @@ in
     broot
     du-dust
     ncdu
+    tre-command
     ueberzugpp
 
     # git

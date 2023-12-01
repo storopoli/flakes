@@ -32,6 +32,7 @@ These are my NixOS/macOS Nix setup.
   [`ripgrep`](https://github.com/BurntSushi/ripgrep),
   [`fd`](https://github.com/sharkdp/fd),
   [`sd`](https://github.com/chmln/sd),
+  [`tre`](https://github.com/dduan/tre),
   [`jq`](https://jqlang.github.io/jq/),
   [`just`](https://just.systems/),
   [`lazygit`](https://github.com/jesseduffield/lazygit),

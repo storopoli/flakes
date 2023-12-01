@@ -84,6 +84,7 @@ in
       lg = "lazygit";
       testtor = "curl -x socks5h://localhost:9050 -s https://check.torproject.org/api/ip";
       top = "btm";
+      tree = "tre";
       vi = "hx";
       vim = "hx";
       yt = "yt-dlp --add-metadata -i --format mp4 --restrict-filenames --sponsorblock-remove all";
@@ -107,6 +108,7 @@ in
     "fish/functions/man.fish".source = ./functions/man.fish;
     "fish/functions/nixify.fish".source = ./functions/nixify.fish;
     "fish/functions/storopoli.fish".source = ./functions/storopoli.fish;
+    "fish/functions/tre.fish".source = ./functions/tre.fish;
     "fish/functions/ytp.fish".source = ./functions/ytp.fish;
   };
 }
