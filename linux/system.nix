@@ -22,9 +22,6 @@
   # Fix WiFi speeds
   hardware.wirelessRegulatoryDatabase = true;
 
-  # Needed for desktop environments to detect/manage display brightness
-  hardware.sensor.iio.enable = lib.mkDefault true;
-
   boot = {
     supportedFilesystems = [ "ntfs" ];
     kernelPackages = pkgs.linuxPackages_xanmod_latest;
@@ -44,11 +41,6 @@
     # Fix WiFi speeds
     extraModprobeConfig = ''
       options cfg80211 ieee80211_regdom="US"
-      # Fix TRRS headphones missing a mic
-      # https://community.frame.work/t/headset-microphone-on-linux/12387/3
-      #
-      # This is temporary until a kernel patch is submitted
-      options snd-hda-intel model=dell-headset-multi
     '';
 
     blacklistedKernelModules = [
@@ -63,7 +55,7 @@
 
     initrd = {
       luks.devices."encryptedroot".device =
-        "/dev/disk/by-uuid/44795d11-d166-49d7-89e9-62a9945e05f3";
+        "/dev/mapper/crypted";
 
       availableKernelModules = [
         "xhci_pci"
@@ -89,8 +81,6 @@
       localuser = null;
     };
 
-    fstrim.enable = true;
-
     fwupd = {
       enable = true;
       extraRemotes = [ "lvfs-testing" ];
@@ -99,14 +89,6 @@
     auto-cpufreq.enable = true;
 
     thermald.enable = true;
-
-    fprintd.enable = lib.mkDefault true;
-
-    # Custom udev rules
-    udev.extraRules = ''
-      # Ethernet expansion card support
-      ACTION=="add", SUBSYSTEM=="usb", ATTR{idVendor}=="0bda", ATTR{idProduct}=="8156", ATTR{power/autosuspend}="20"
-    '';
   };
 
   zramSwap.enable = true;
