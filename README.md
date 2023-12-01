@@ -65,7 +65,7 @@ These are my NixOS/macOS Nix setup.
   - [`vscode-langservers-extracted`](https://github.com/hrsh7th/vscode-langservers-extracted): HTML, CSS, and JSON
   - [`texlab`](https://github.com/latex-lsp/texlab): $\LaTeX$
   - [`ltex-ls`](https://github.com/valentjn/ltex-ls): [LanguageTool](https://languagetool.org/) for Markdown, HTML, and $\LaTeX$.
-  - [`typst-lsp`](https://github.com/nvarner/typst-lsp): Typst
+  - [`typst-lsp`](https://github.com/nvarner/typst-lsp): [Typst](https://typst.app)
 
 - [Catppuccin](https://catppuccin.com) Mocha theme everywhere.
 - Archival tools:
