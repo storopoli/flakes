@@ -10,18 +10,12 @@ in
   environment.systemPackages = with pkgs; [
     # Terminal
     tree
-    fd
-    sd
     parallel
     curl
     rsync
     bc
     jq
     just
-    broot
-    du-dust
-    ncdu
-    tre-command
     ueberzugpp
 
     # git
@@ -49,7 +43,6 @@ in
     cargo-cache
     cargo-show-asm
     julia-bin
-    go
     python3
     llvm
 
@@ -60,7 +53,6 @@ in
     graphicsmagick
     aria2
     pandoc
-    glow
     tectonic
     typst
   ];

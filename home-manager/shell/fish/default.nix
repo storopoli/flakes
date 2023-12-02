@@ -81,6 +81,8 @@ in
       devshell = "nix flake new -t 'github:numtide/devshell' .";
       e = "hx";
       g = "git";
+      l = "ls -l";
+      ll = "ls -la";
       lg = "lazygit";
       testtor = "curl -x socks5h://localhost:9050 -s https://check.torproject.org/api/ip";
       top = "btm";
@@ -108,7 +110,6 @@ in
     "fish/functions/man.fish".source = ./functions/man.fish;
     "fish/functions/nixify.fish".source = ./functions/nixify.fish;
     "fish/functions/storopoli.fish".source = ./functions/storopoli.fish;
-    "fish/functions/tre.fish".source = ./functions/tre.fish;
     "fish/functions/ytp.fish".source = ./functions/ytp.fish;
   };
 }
