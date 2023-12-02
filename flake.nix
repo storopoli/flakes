@@ -2,7 +2,6 @@
   description = "NixOS/MacOS Minimalist-Hardened-Privacy-oriented Configs";
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixpkgs-23.05-darwin";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     nix-darwin = {
       url = "github:lnl7/nix-darwin/master";
