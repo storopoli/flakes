@@ -24,15 +24,10 @@ These are my NixOS/macOS Nix setup.
   and power tools like
   [`bat`](https://github.com/sharkdp/bat),
   [`zoxide`](https://github.com/ajeetdsouza/zoxide),
-  [`eza`](https://eza.rocks/),
   [`bottom`](https://clementtsang.github.io/bottom),
-  [`broot`](https://dystroy.org/broot/),
   [`fzf`](https://github.com/junegunn/fzf),
   [`yazi`](https://yazi-rs.github.io/),
   [`ripgrep`](https://github.com/BurntSushi/ripgrep),
-  [`fd`](https://github.com/sharkdp/fd),
-  [`sd`](https://github.com/chmln/sd),
-  [`tre`](https://github.com/dduan/tre),
   [`jq`](https://jqlang.github.io/jq/),
   [`just`](https://just.systems/),
   [`lazygit`](https://github.com/jesseduffield/lazygit),
@@ -42,7 +37,6 @@ These are my NixOS/macOS Nix setup.
 - Developer-ready languages:
   [Nix](https://nixos.org/),
   [Rust](https://rust-lang.org/),
-  [Go](https://go.dev/),
   [Python](https://python.org/),
   [Julia](https://julialang.org)
   and [LLVM](https://llvm.org/).
@@ -52,20 +46,19 @@ These are my NixOS/macOS Nix setup.
   and [`devshell`](https://numtide.github.io/devshell/).
   You can put your [soydev](https://storopoli.io/2023-11-10-2023-11-13-soydev/)
   TypeScript/JavaScript/NodeJS stuff here.
-- Text editor with [Helix](https://helix-editor.com/) enabled with the following [LSP](https://langserver.org/)s:
+- Text editor with [Vim](https://www.vim.org/) enabled with the following
+  [LSP](https://langserver.org/)s:
 
-  - [`nil`](https://github.com/oxalica/nil): Nix
+  - [`rnix`](https://github.com/nix-community/rnix-lsp): Nix
   - [`bash-language-server`](https://github.com/bash-lsp/bash-language-server): Bash, Fish, Zsh, shell scripts, etc.
   - [`rust-analyzer`](https://rust-analyzer.github.io/): Rust
-  - [`gopls`](https://pkg.go.dev/golang.org/x/tools/gopls): Go
   - [`julia`](https://github.com/julia-vscode/LanguageServer.jl): Julia
   - [`taplo`](https://taplo.tamasfe.dev/): TOML
   - [`yaml-language-server`](https://github.com/redhat-developer/yaml-language-server): YAML
-  - [`ruff-lsp`](https://github.com/astral-sh/ruff-lsp): Python
+  - [`pyright`](https://github.com/microsoft/pyright): Python
   - [`marksman`](https://github.com/artempyanykh/marksman): Markdown
   - [`vscode-langservers-extracted`](https://github.com/hrsh7th/vscode-langservers-extracted): HTML, CSS, and JSON
   - [`texlab`](https://github.com/latex-lsp/texlab): $\LaTeX$
-  - [`ltex-ls`](https://github.com/valentjn/ltex-ls): [LanguageTool](https://languagetool.org/) for Markdown, HTML, and $\LaTeX$.
   - [`typst-lsp`](https://github.com/nvarner/typst-lsp): [Typst](https://typst.app)
 
 - [Catppuccin](https://catppuccin.com) Mocha theme everywhere.
@@ -83,7 +76,6 @@ These are my NixOS/macOS Nix setup.
 - Publishing and content CLI tools:
   [`qpdf`](https://github.com/qpdf/qpdf),
   [`pandoc`](https://pandoc.org/),
-  [`glow`](https://github.com/charmbracelet/glow),
   [`graphicsmagick`](http://www.graphicsmagick.org/),
   [`tectonic`](https://tectonic-typesetting.github.io/),
   and [`typst`](https://typst.app/).
@@ -199,7 +191,7 @@ As root:
 1. Modify the overwritten `hardware-configuration.nix`:
 
    ```bash
-   hx /mnt/etc/nixos/flakes/hosts/laptop/hardware-configuration.nix
+   vim /mnt/etc/nixos/flakes/hosts/laptop/hardware-configuration.nix
    ```
 
    ```nix

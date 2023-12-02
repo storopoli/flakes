@@ -6,8 +6,8 @@
 
     # Environment Variables
     variables = {
-      EDITOR = "hx";
-      VISUAL = "hx";
+      EDITOR = "vim";
+      VISUAL = "vim";
       LANG = "en_US.UTF-8";
     };
   };
