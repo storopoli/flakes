@@ -46,7 +46,8 @@ These are my NixOS/macOS Nix setup.
   and [`devshell`](https://numtide.github.io/devshell/).
   You can put your [soydev](https://storopoli.io/2023-11-10-2023-11-13-soydev/)
   TypeScript/JavaScript/NodeJS stuff here.
-- Text editor with [Helix](https://helix-editor.com/) enabled with the following [LSP](https://langserver.org/)s:
+- Text editor with [Vim](https://www.vim.org/) enabled with the following
+  [LSP](https://langserver.org/)s:
 
   - [`nil`](https://github.com/oxalica/nil): Nix
   - [`bash-language-server`](https://github.com/bash-lsp/bash-language-server): Bash, Fish, Zsh, shell scripts, etc.

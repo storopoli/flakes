@@ -1,0 +1,172 @@
+" vim:set ts=2 sts=2 sw=2 expandtab:
+
+colorscheme catppuccin_mocha
+syntax on
+filetype plugin indent on
+set autoread
+
+set guioptions-=m  "remove menu bar
+set guioptions-=T  "remove toolbar
+set guioptions-=r  "remove right-hand scroll bar
+
+set cursorline
+set ruler
+set colorcolumn=80
+set incsearch
+set hlsearch
+
+set timeoutlen=300 "http://stackoverflow.com/questions/2158516/delay-before-o-opens-a-new-line
+set ttyfast
+
+set nowrap
+set scrolloff=8     "better Scrolling
+set sidescrolloff=8 "better Scrolling
+set splitright "vsplit put the new buffer on the right of the current buffer
+set splitbelow "split put the new buffer below the current buffer
+set encoding=utf-8
+
+" colors
+set termguicolors
+set t_Co=256
+set background=dark
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+
+"neovim guicursor
+"default : "n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20"
+"set guicursor=v-c-sm:block,n-i-ci-ve:ver25,r-cr-o:hor20
+set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
+  \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
+  \,sm:block-blinkwait175-blinkoff150-blinkon175
+" use a line cursor within insert mode and a block cursor everywhere else.
+"
+" reference chart of values:
+"   ps = 0  -> blinking block.
+"   ps = 1  -> blinking block (default).
+"   ps = 2  -> steady block.
+"   ps = 3  -> blinking underline.
+"   ps = 4  -> steady underline.
+"   ps = 5  -> blinking bar (xterm).
+"   ps = 6  -> steady bar (xterm).
+let &t_SI = "\e[5 q"
+let &t_EI = "\e[1 q"
+let &t_SR = "\e[3 q"
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+let &t_Cs = "\e[4:3m"
+let &t_Ce = "\e[4:0m"
+
+" undo
+set undofile
+set undodir=~/.vim/.undo/
+set backupdir=~/.vim/.backup/
+set directory=~/.vim/.swp/
+
+" mappings
+let mapleader = " " "map leader to space
+
+" disable highlights
+map <silent> <leader><cr> :noh<cr>
+
+" close buffers
+map <leader>bd :Bclose<cr>
+map <leader>bD :ba :1,1000 bd!<cr>
+
+" toggle spell checking
+map <leader>s :setlocal spell!<cr> 
+
+" easy write/quit
+nmap <leader>w :w<cr>
+nmap <leader>q :q<cr>
+
+"global yank/paste
+vnoremap <silent> <leader>y "*y :let @+=@*<cr>
+vnoremap <silent> <leader>p "+p
+nmap <silent> <leader>p "+p
+
+" j/k will move virtual lines (lines that wrap)
+noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
+noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
+
+" netrw
+nnoremap <c-p> :Lexplore<cr>
+function! NetrwMapping()
+  nmap <buffer> H u "back in history
+  nmap <buffer> h -^ "up a directory
+  nmap <buffer> l <cr> "open a directory or a file
+  nmap <buffer> . gh "toggle the dotfiles
+  nmap <buffer> P <C-w>z "close the preview window
+  nmap <buffer> L <cr>:Lexplore<cr> "open a file and close netrw
+  nmap <buffer> <leader>q :Lexplore<cr> "close netrw
+endfunction
+
+augroup netrw_mapping
+  au!
+  au filetype netrw call NetrwMapping()
+augroup END
+
+" fzf
+nnoremap <leader>f :GFiles<cr>
+nnoremap <leader>F :Files<cr>
+nnoremap <leader>b :Buffers<cr>
+nnoremap <leader>g :Rg<cr>
+nnoremap <leader>t :Tags<cr>
+
+" jump to last edit position on opening file
+augroup RestoreCursor
+  au!
+  au BufReadPost *
+    \ let line = line("'\"")
+    \ | if line >= 1 && line <= line("$") && &filetype !~# 'commit'
+    \      && index(['xxd', 'gitrebase'], &filetype) == -1
+    \ |   execute "normal! g`\""
+    \ | endif
+augroup END
+
+" LSP
+au BufRead,BufNewFile *.nix setf nix
+au BufRead,BufNewFile *.typ,*.typst setf typst
+
+augroup lsp_register_server
+  au FileType typst call lsp#register_server({
+    \ 'name': 'typst-lsp',
+    \ 'cmd': {server_info->['typst-lsp']},
+    \ 'allowlist': ['typst'],
+    \ })
+  au FileType python let g:lsp_settings_filetype_python = 'pyright-langserver'
+  au FileType toml let g:lsp_settings = {'taplo-lsp': {'cmd': ['taplo', 'lsp', 'stdio']}}
+augroup END
+
+function! s:on_lsp_buffer_enabled() abort
+  setlocal omnifunc=lsp#complete
+  setlocal signcolumn=yes
+
+  if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
+
+  nmap <buffer> gd <plug>(lsp-definition)
+  nmap <buffer> gs <plug>(lsp-document-symbol-search)
+  nmap <buffer> gS <plug>(lsp-workspace-symbol-search)
+  nmap <buffer> gr <plug>(lsp-references)
+  nmap <buffer> gi <plug>(lsp-implementation)
+  nmap <buffer> gt <plug>(lsp-type-definition)
+  nmap <buffer> <leader>a <plug>(lsp-code-action-float)
+  nmap <buffer> <leader>r <plug>(lsp-rename)
+  nmap <buffer> <leader>d <plug>(lsp-document-diagnostics)
+  nmap <buffer> [g <plug>(lsp-previous-diagnostic)
+  nmap <buffer> ]g <plug>(lsp-next-diagnostic)
+  nmap <buffer> K <plug>(lsp-hover)
+  nnoremap <buffer> <expr><c-f> lsp#scroll(+4)
+  nnoremap <buffer> <expr><c-d> lsp#scroll(-4)
+
+  " autoformat on save
+  let g:lsp_format_sync_timeout = 500
+  autocmd! BufWritePre *.rs,*.py,*.nix,*.jl,*.yml,*.yaml,*.toml,*.html,*.css,*.sh call execute('LspDocumentFormatSync')
+endfunction
+
+augroup lsp_install
+  au!
+  " call s:on_lsp_buffer_enabled only for languages that has the server registered.
+  autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+augroup END
+
+packadd! matchit
