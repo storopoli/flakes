@@ -191,7 +191,7 @@ As root:
 1. Modify the overwritten `hardware-configuration.nix`:
 
    ```bash
-   hx /mnt/etc/nixos/flakes/hosts/laptop/hardware-configuration.nix
+   vim /mnt/etc/nixos/flakes/hosts/laptop/hardware-configuration.nix
    ```
 
    ```nix
