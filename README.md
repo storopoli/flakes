@@ -49,13 +49,13 @@ These are my NixOS/macOS Nix setup.
 - Text editor with [Vim](https://www.vim.org/) enabled with the following
   [LSP](https://langserver.org/)s:
 
-  - [`nil`](https://github.com/oxalica/nil): Nix
+  - [`rnix`](https://github.com/nix-community/rnix-lsp): Nix
   - [`bash-language-server`](https://github.com/bash-lsp/bash-language-server): Bash, Fish, Zsh, shell scripts, etc.
   - [`rust-analyzer`](https://rust-analyzer.github.io/): Rust
   - [`julia`](https://github.com/julia-vscode/LanguageServer.jl): Julia
   - [`taplo`](https://taplo.tamasfe.dev/): TOML
   - [`yaml-language-server`](https://github.com/redhat-developer/yaml-language-server): YAML
-  - [`ruff-lsp`](https://github.com/astral-sh/ruff-lsp): Python
+  - [`pyright`](https://github.com/microsoft/pyright): Python
   - [`marksman`](https://github.com/artempyanykh/marksman): Markdown
   - [`vscode-langservers-extracted`](https://github.com/hrsh7th/vscode-langservers-extracted): HTML, CSS, and JSON
   - [`texlab`](https://github.com/latex-lsp/texlab): $\LaTeX$
