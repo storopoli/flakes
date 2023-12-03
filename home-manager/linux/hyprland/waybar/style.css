@@ -91,10 +91,6 @@ tooltip label {
 #network,
 #battery,
 #custom-powermenu,
-#custom-cava-internal {
-  padding-left: 10px;
-  padding-right: 10px;
-}
 
 /* #mode { */
 /* 	margin-left: 10px; */
@@ -190,6 +186,3 @@ tooltip label {
   color: #c0caf5;
 }
 
-#custom-cava-internal {
-  font-family: "Hack Nerd Font Propo";
-}

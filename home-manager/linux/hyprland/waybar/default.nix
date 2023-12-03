@@ -20,7 +20,6 @@
         "custom/wall"
         # "mpd"
         "mpris"
-        "custom/cava-internal"
       ];
       modules-center = [ "clock" ];
       modules-right = [
@@ -44,10 +43,6 @@
         "on-click-middle" = "default_wall";
         "on-click-right" = "killall dynamic_wallpaper || dynamic_wallpaper &";
         "format" = " 󰠖 ";
-        "tooltip" = false;
-      };
-      "custom/cava-internal" = {
-        "exec" = "sleep 1s && cava-internal";
         "tooltip" = false;
       };
       "hyprland/workspaces" = {
