@@ -2,7 +2,6 @@
 
 let
   keybind = pkgs.writeShellScriptBin "keybind" (builtins.readFile ./keybind.sh);
-  cava-internal = pkgs.writeShellScriptBin "cava-internal" (builtins.readFile ./cava-internal.sh);
   wallpaper_random = pkgs.writeShellScriptBin "wallpaper_random" (builtins.readFile ./wallpaper_random.sh);
   myswaylock = pkgs.writeShellScriptBin "myswaylock" (builtins.readFile ./myswaylock.sh);
   dynamic_wallpaper = pkgs.writeShellScriptBin "dynamic_wallpaper" (builtins.readFile ./dynamic_wallpaper.sh);
@@ -12,7 +11,6 @@ in
 {
   home.packages = [
     keybind
-    cava-internal
     wallpaper_random
     myswaylock
     dynamic_wallpaper
