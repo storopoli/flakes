@@ -71,7 +71,7 @@ These are my NixOS/macOS Nix setup.
   and [`zstd`](https://facebook.github.io/zstd/).
 - CLI entertainment tools:
   [`yt-dlp`](https://github.com/yt-dlp/yt-dlp),
-  [`cmus`](https://cmus.github.io/),
+  [`termusic`](https://github.com/tramhao/termusic),
   and [`ffmpeg`](https://ffmpeg.org/).
 - Publishing and content CLI tools:
   [`qpdf`](https://github.com/qpdf/qpdf),
@@ -411,10 +411,8 @@ Migrating to new hardware or rebuilding old hardware after a wipe is a breeze.
   - [NetNewsWire](https://netnewswire.com/) for RSS feeds
   - [IINA](https://iina.io/) as the default video player
   - iTunes media keys disabled with [`NoTunes`](https://github.com/tombonez/noTunes)
-    and [`cmus`](https://cmus.github.io/)
-    as the default music player
-    (with the caveat that the media keys works,
-    thanks to [`cmus-control`](https://github.com/TheFox/cmus-control))
+    and [`termusic`](https://github.com/tramhao/termusic)
+    as the default music player.
 
 - Common developer enhancements in Finder and Search
 - MacOS privacy and security enhancements

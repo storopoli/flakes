@@ -4,11 +4,11 @@
   imports = [
     ./bat.nix
     ./bottom.nix
-    ./cmus.nix
     ./direnv.nix
     ./fzf.nix
     ./lazygit.nix
     ./ripgrep.nix
+    ./termusic.nix
     ./yazi.nix
     ./yt-dlp.nix
     ./zoxide.nix
