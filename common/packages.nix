@@ -47,7 +47,7 @@ in
     llvm
 
     # media
-    cmus
+    termusic
     ffmpeg
     qpdf
     graphicsmagick
