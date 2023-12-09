@@ -35,9 +35,6 @@
     sparrow
     bisq-desktop
 
-    # office
-    libreoffice-fresh
-
     # media
     mediainfo
     exiftool
