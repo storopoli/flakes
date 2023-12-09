@@ -86,7 +86,8 @@ These are my NixOS/macOS Nix setup.
   Check the [`secrets/README.md`](secrets/README.md) for details.
 - Apps:
 
-  - Bitcoin tools such as [Sparrow wallet](https://sparrowwallet.com/) and [Bisq](https://bisq.network/)
+  - Bitcoin tools such as [Sparrow wallet](https://sparrowwallet.com/)
+    and [Bisq](https://bisq.network/)
   - Encrypted backup tool with [Cryptomator](https://cryptomator.org/)
   - [Signal messenger](https://signal.org/)
   - Torrenting with [Transmission](https://transmissionbt.com/)
@@ -403,16 +404,10 @@ Migrating to new hardware or rebuilding old hardware after a wipe is a breeze.
   - [Alacritty](https://alacritty.org/)
   - [Brave](https://brave.com/) with [Tor Browser](https://www.torproject.org/)
     also available
-  - Docker and Linux VMs with [UTM](https://mac.getutm.app/) and [OrbStack](https://orbstack.dev/)
   - Keyboard customization with [Karabiner-Elements](https://karabiner-elements.pqrs.org/):
     Caps Lock as Escape (if tapped) and Control (if held).
   - [Android file transfer](https://www.android.com/filetransfer/) support
-  - [ProtonVPN](https://protonvpn.com/)
-  - [NetNewsWire](https://netnewswire.com/) for RSS feeds
   - [IINA](https://iina.io/) as the default video player
-  - iTunes media keys disabled with [`NoTunes`](https://github.com/tombonez/noTunes)
-    and [`termusic`](https://github.com/tramhao/termusic)
-    as the default music player.
 
 - Common developer enhancements in Finder and Search
 - MacOS privacy and security enhancements
