@@ -136,6 +136,7 @@ As root:
 
 1. Prepare a
    [64-bit NixOS 23.11 minimal iso image](https://channels.nixos.org/nixos-23.11/latest-nixos-minimal-x86_64-linux.iso)
+   or [64-bit NixOS unstable minimal iso image](https://channels.nixos.org/nixos-unstable/latest-nixos-minimal-x86_64-linux.iso)
    and burn it, then enter the live system.
    Suppose I have divided two partitions: `/dev/nvme0n1p1` and `/dev/nvme0n1p2`
 1. Format the partitions:
