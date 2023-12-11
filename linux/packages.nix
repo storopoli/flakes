@@ -19,6 +19,7 @@
       gnumake
       exfat
       detox
+      auto-cpufreq
     ];
   };
 

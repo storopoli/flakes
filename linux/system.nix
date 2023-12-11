@@ -14,8 +14,6 @@
     };
   };
 
-  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
-
   # Enable AMD/Intel microcode
   hardware.enableRedistributableFirmware = true;
 
@@ -44,7 +42,7 @@
     '';
 
     blacklistedKernelModules = [
-      # Bluetooth
+      # Bluetooth disable
       # "btusb"
       # "bnep"
       # "bluetooth"
