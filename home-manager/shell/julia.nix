@@ -2,10 +2,17 @@
 
 {
   home.file.".julia/config/startup.jl".text = ''
-    try
+    if isinteractive()
+      try
         using Revise
-    catch e
+      catch e
         @warn "Error initializing Revise"
+      end
+      try
+        @eval using VimBindings
+      catch e
+        @warn "Error initializing VimBindings"
+      end
     end
   '';
 }
