@@ -21,7 +21,7 @@
   hardware.wirelessRegulatoryDatabase = true;
 
   boot = {
-    supportedFilesystems = [ "ntfs" ];
+    supportedFilesystems = [ "ntfs" "bcachefs" ];
     kernelPackages = pkgs.linuxPackages_latest;
     loader = {
       systemd-boot = {

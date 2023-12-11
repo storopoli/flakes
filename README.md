@@ -116,6 +116,7 @@ Read more about this in the [NixOs Paranoid Guide](https://xeiaso.net/blog/paran
 
 ### Features
 
+- [bcachefs filesystem](https://bcachefs.org)
 - [`Hyprland`](https://github.com/hyprwm/Hyprland) Wayland window manager:
 
   - [`Waybar`](https://github.com/Alexays/Waybar) status bar.
