@@ -46,7 +46,7 @@ These are my NixOS/macOS Nix setup.
   and [`devshell`](https://numtide.github.io/devshell/).
   You can put your [soydev](https://storopoli.io/2023-11-10-2023-11-13-soydev/)
   TypeScript/JavaScript/NodeJS stuff here.
-- Text editor with [Vim](https://www.vim.org/) enabled with the following
+- Text editor with [Vim](https://www.vim.org/)/[Neovim](https://neovim.io) enabled with the following
   [LSP](https://langserver.org/)s:
 
   - [`rnix`](https://github.com/nix-community/rnix-lsp): Nix
@@ -55,7 +55,8 @@ These are my NixOS/macOS Nix setup.
   - [`julia`](https://github.com/julia-vscode/LanguageServer.jl): Julia
   - [`taplo`](https://taplo.tamasfe.dev/): TOML
   - [`yaml-language-server`](https://github.com/redhat-developer/yaml-language-server): YAML
-  - [`pyright`](https://github.com/microsoft/pyright): Python
+  - [`pyright`](https://github.com/microsoft/pyright)
+    and [`ruff-lsp`](https://github.com/astral-sh/ruff-lsp): Python
   - [`marksman`](https://github.com/artempyanykh/marksman): Markdown
   - [`vscode-langservers-extracted`](https://github.com/hrsh7th/vscode-langservers-extracted): HTML, CSS, and JSON
   - [`texlab`](https://github.com/latex-lsp/texlab): $\LaTeX$
