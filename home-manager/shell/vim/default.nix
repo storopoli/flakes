@@ -26,7 +26,6 @@ in
       fzf-vim
       catppuccin-vim
       julia-vim
-      typst-vim
     ];
     settings = {
       number = true;
@@ -55,7 +54,6 @@ in
     rust-analyzer
     taplo
     texlab
-    typst-lsp
     yaml-language-server
   ];
 

@@ -6,6 +6,6 @@
     ./alacritty.nix
     ./gpg.nix
     ./karabiner
-    ./vim.nix
+    #./vim.nix
   ];
 }
