@@ -46,6 +46,7 @@ These are my NixOS/macOS Nix setup.
   and [`devshell`](https://numtide.github.io/devshell/).
   You can put your [soydev](https://storopoli.io/2023-11-10-2023-11-13-soydev/)
   TypeScript/JavaScript/NodeJS stuff here.
+  Check the [recipes for several Nix shells](https://gist.github.com/storopoli/97e6f0b2e177722fcb3b7fbe5275fbe5).
 - Text editor with [Vim](https://www.vim.org/)/[Neovim](https://neovim.io) enabled with the following
   [LSP](https://langserver.org/)s:
 
