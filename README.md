@@ -37,9 +37,9 @@ These are my NixOS/macOS Nix setup.
 - Developer-ready languages:
   [Nix](https://nixos.org/),
   [Rust](https://rust-lang.org/),
+  [Lua](https://lua.org),
   [Python](https://python.org/),
-  [Julia](https://julialang.org)
-  and [LLVM](https://llvm.org/).
+  and [Julia](https://julialang.org).
 - Easy to develop environments with
   [`nix-shell`](https://nixos.org/manual/nix/stable/command-ref/nix-shell.html)
   [`direnv`](https://direnv.net/),

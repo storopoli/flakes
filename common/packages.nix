@@ -20,7 +20,6 @@ in
 
     # git
     gh
-    git-absorb
 
     # ssh
     openssh
@@ -39,12 +38,10 @@ in
 
     # programming
     rust
-    cargo-nextest
-    cargo-cache
-    cargo-show-asm
     julia-bin
     python3
     llvm
+    luajit
 
     # media
     termusic
