@@ -1,7 +1,9 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
   programs.mpv.enable = true;
+
+  home.packages = with pkgs; [ mpvScripts.mpris ];
 
   home.file = {
     ".config/mpv/mpv.conf".source = ./mpv.conf;
