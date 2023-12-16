@@ -2,6 +2,14 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+> "A man and his tools make a man and his trade"
+>
+> -Vita Sackville-West
+
+> "We shape our tools and then the tools shape us"
+>
+> -Winston Churchill
+
 These are my NixOS/macOS Nix setup.
 
 | NixOS                                                     | macOS                                                   |
