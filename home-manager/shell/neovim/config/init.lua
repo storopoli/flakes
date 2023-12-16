@@ -27,16 +27,16 @@ vim.o.splitbelow = true -- split put the new buffer below the current buffer
 -- neovim specific
 vim.wo.signcolumn = "yes"
 -- set command line height to zero lines
-vim.opt.cmdheight = 0
+vim.o.cmdheight = 0
 
 -- statusbar
-vim.opt.laststatus = 3
+vim.o.laststatus = 3
 
 -- winbar on top of the windows
-vim.opt.winbar = "%=%m %f"
+vim.o.winbar = "%=%m %f"
 
 -- Better undo history
-vim.opt.swapfile = false
-vim.opt.backup = false
-vim.opt.undodir = vim.fn.stdpath("data") .. "undo"
-vim.opt.undofile = true
+vim.o.swapfile = false
+vim.o.backup = false
+vim.o.undodir = vim.fn.stdpath("data") .. "undo"
+vim.o.undofile = true

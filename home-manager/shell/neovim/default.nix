@@ -90,6 +90,7 @@ in
           "lualine"
           "comment"
           "gitsigns"
+          "typst"
         ]);
       in
       ''
