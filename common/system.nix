@@ -11,6 +11,8 @@
       auto-optimise-store = true; # Optimise syslinks
     };
 
+    package = pkgs.nixUnstable;
+
     gc = {
       automatic = true;
       options = "--delete-older-than 7d";

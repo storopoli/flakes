@@ -23,8 +23,6 @@
     ];
   };
 
-  nix.package = pkgs.nixVersions.unstable;
-
   # linux specific user packager
   users.users.user.packages = (with pkgs; [
     # opsec
