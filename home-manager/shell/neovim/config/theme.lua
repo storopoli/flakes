@@ -2,6 +2,7 @@
 vim.o.termguicolors = true
 require("catppuccin").setup({
     flavour = "mocha",
+    transparent_background = true,
     integrations = {
         cmp = true,
         treesitter = true,

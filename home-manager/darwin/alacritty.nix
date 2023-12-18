@@ -20,7 +20,7 @@
         window_decorations_theme = "dark";
         columns = 0;
         lines = 0;
-        opacity = 1.0;
+        opacity = 0.98;
         option_as_alt = "Both";
         padding = {
           x = 10;

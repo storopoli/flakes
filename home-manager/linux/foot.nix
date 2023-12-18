@@ -15,7 +15,7 @@
         show-urls-launch = "Control+Shift+u";
       };
       colors = {
-        alpha = 0.95;
+        alpha = 0.98;
         foreground = "cdd6f4";
         background = "1e1e2e";
         regular0 = "45475a";

@@ -35,6 +35,9 @@ vim.o.laststatus = 3
 -- winbar on top of the windows
 vim.o.winbar = "%=%m %f"
 
+-- transparency
+vim.o.winblend = 5
+
 -- Better undo history
 vim.o.swapfile = false
 vim.o.backup = false

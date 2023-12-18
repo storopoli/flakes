@@ -33,6 +33,9 @@ set t_Co=256
 set background=dark
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+" transparent stuff
+hi! Normal ctermbg=none ctermfg=none guifg=none guibg=none
+hi! LineNr ctermbg=none ctermfg=none guifg=none guibg=none
 
 "neovim guicursor
 "default : "n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20"
