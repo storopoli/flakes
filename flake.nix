@@ -13,6 +13,8 @@
     };
 
     flake-parts.url = "github:hercules-ci/flake-parts";
+    flake-root.url = "github:srid/flake-root";
+    treefmt-nix.url = "github:numtide/treefmt-nix";
     nixos-flake.url = "github:srid/nixos-flake";
     rust-overlay.url = "github:oxalica/rust-overlay";
     agenix.url = "github:ryantm/agenix";
@@ -28,26 +30,48 @@
     };
   };
 
-  outputs = inputs@{ self, ... }:
+  outputs = inputs @ { self, ... }:
     inputs.flake-parts.lib.mkFlake { inherit inputs; } {
       systems = [ "x86_64-linux" "aarch64-darwin" "x86_64-darwin" ];
       imports = [
         inputs.nixos-flake.flakeModule
+        inputs.flake-root.flakeModule
+        inputs.treefmt-nix.flakeModule
       ];
 
-      perSystem = { config, inputs', pkgs, system, ... }:
+      perSystem =
+        { config
+        , inputs'
+        , pkgs
+        , system
+        , ...
+        }:
         let
-          pkgs = import inputs.nixpkgs {
-            inherit system;
-          };
+          pkgs = import inputs.nixpkgs { inherit system; };
         in
         {
           devShells = {
             # run by `nix develop` or `nix-shell`(legacy)
             default = import ./shell.nix { inherit pkgs; };
+            tools = _:
+              {
+                treefmt = config.treefmt.build.wrapper;
+              }
+              // config.treefmt.build.programs;
           };
 
-          formatter = pkgs.nixpkgs-fmt;
+          # treefmt config
+          treefmt.config = {
+            inherit (config.flake-root) projectRootFile;
+            package = pkgs.treefmt;
+
+            # Enable the formatters
+            programs.beautysh.enable = true;
+            programs.nixpkgs-fmt.enable = true;
+            programs.prettier.enable = true;
+            programs.stylua.enable = true;
+            programs.taplo.enable = true;
+          };
         };
 
       flake =
@@ -98,10 +122,7 @@
                 self.darwinModules_.home-manager
                 {
                   home-manager.users.user = {
-                    imports = [
-                      self.homeModules.common
-                      self.homeModules.darwin
-                    ];
+                    imports = [ self.homeModules.common self.homeModules.darwin ];
                     home.stateVersion = homeStateVersion;
                   };
                 }
@@ -116,10 +137,7 @@
                 self.darwinModules_.home-manager
                 {
                   home-manager.users.user = {
-                    imports = [
-                      self.homeModules.common
-                      self.homeModules.darwin
-                    ];
+                    imports = [ self.homeModules.common self.homeModules.darwin ];
                     home.stateVersion = homeStateVersion;
                   };
                 }
@@ -150,20 +168,14 @@
                 inputs.nur.nixosModules.nur
                 inputs.impermanence.nixosModules.impermanence
                 inputs.disko.nixosModules.disko
-                {
-                  nixpkgs.overlays = [
-                    inputs.nur.overlay
-                  ];
-                }
+                { nixpkgs.overlays = [ inputs.nur.overlay ]; }
                 (import ./linux)
               ];
               system.stateVersion = "${stateVersion}";
             };
             # nix-darwin specific configuration
             darwin = {
-              imports = [
-                (import ./darwin)
-              ];
+              imports = [ (import ./darwin) ];
               system.stateVersion = darwinStateVersion;
             };
           };

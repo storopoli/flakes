@@ -19,7 +19,7 @@ vim.o.updatetime = 50
 vim.o.completeopt = "menuone,noselect"
 
 vim.o.wrap = false
-vim.o.scrolloff = 8     -- better scrolling
+vim.o.scrolloff = 8 -- better scrolling
 vim.o.sidescrolloff = 8 -- better scrolling
 vim.o.splitright = true -- vsplit put the new buffer on the right of the current buffer
 vim.o.splitbelow = true -- split put the new buffer below the current buffer
