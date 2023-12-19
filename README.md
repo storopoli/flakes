@@ -96,6 +96,8 @@ These are my NixOS/macOS Nix setup.
   Check the [`secrets/README.md`](secrets/README.md) for details.
 - Apps:
 
+  - [`firefox`](https://www.mozilla.org/firefox)
+    with [Tor Browser](https://www.torproject.org/) also available
   - Bitcoin tools such as [Sparrow wallet](https://sparrowwallet.com/)
     and [Bisq](https://bisq.network/)
   - Encrypted backup tool with [Cryptomator](https://cryptomator.org/)
@@ -414,8 +416,6 @@ Migrating to new hardware or rebuilding old hardware after a wipe is a breeze.
 - Apps:
 
   - [Alacritty](https://alacritty.org/)
-  - [Brave](https://brave.com/) with [Tor Browser](https://www.torproject.org/)
-    also available
   - Keyboard customization with [Karabiner-Elements](https://karabiner-elements.pqrs.org/):
     Caps Lock as Escape (if tapped) and Control (if held).
   - [Android file transfer](https://www.android.com/filetransfer/) support
