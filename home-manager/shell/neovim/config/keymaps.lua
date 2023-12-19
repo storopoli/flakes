@@ -40,11 +40,11 @@ vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = tr
 vim.keymap.set({ "n", "v" }, "<leader>s", "<CMD>setlocal spell!<CR>")
 
 -- easy save
-vim.keymap.set("n", "<leader>w", "<CMD>w<CR>", { silent = true, })
+vim.keymap.set("n", "<leader>w", "<CMD>w<CR>", { silent = true })
 
 -- easy quit
-vim.keymap.set("n", "<leader>q", "<CMD>q<CR>", { silent = true, })
-vim.keymap.set("n", "<leader>Q", "<CMD>qa!<CR>", { silent = true, })
+vim.keymap.set("n", "<leader>q", "<CMD>q<CR>", { silent = true })
+vim.keymap.set("n", "<leader>Q", "<CMD>qa!<CR>", { silent = true })
 
 -- split window
 vim.keymap.set("n", "<leader>-", "<C-W>s", { remap = true })

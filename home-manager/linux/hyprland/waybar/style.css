@@ -28,7 +28,7 @@ window#waybar {
   background-color: transparent;
 }
 
-window>box {
+window > box {
   margin-left: 5px;
   margin-right: 5px;
   margin-top: 5px;
@@ -134,7 +134,7 @@ tooltip label {
 }
 
 #network {
-  color: #ABE9B3;
+  color: #abe9b3;
 }
 
 #network.disconnected {
@@ -185,4 +185,3 @@ tooltip label {
 #mpd {
   color: #c0caf5;
 }
-

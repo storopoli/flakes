@@ -126,6 +126,7 @@ Read more about this in the [NixOs Paranoid Guide](https://xeiaso.net/blog/paran
   - [`Nerdfonts`](https://github.com/ryanoasis/nerd-fonts).
 
 - Apps:
+
   - [`foot`](https://codeberg.org/dnkl/foot)
   - [`firefox`](https://www.mozilla.org/firefox) with the following add-ons:
 
@@ -286,8 +287,7 @@ As root:
 ### Wireguard VPN Configs
 
 > Sources: [manpage of `wg-quick`](https://manpages.debian.org/unstable/wireguard-tools/wg-quick.8.en.html),
-> [Mullvad WireGuard on Linux terminal](https://mullvad.net/en/help/easy-wireguard-mullvad-setup-linux/)
-> [IVPN Autostart WireGuard in systemd](https://www.ivpn.net/knowledgebase/linux/linux-autostart-wireguard-in-systemd/),
+> [Mullvad WireGuard on Linux terminal](https://mullvad.net/en/help/easy-wireguard-mullvad-setup-linux/) > [IVPN Autostart WireGuard in systemd](https://www.ivpn.net/knowledgebase/linux/linux-autostart-wireguard-in-systemd/),
 > and [IVPN WireGuard Kill Switch](https://www.ivpn.net/knowledgebase/linux/linux-wireguard-kill-switch/)
 
 For the extra paranoid, you can use VPNs without installing their apps.
@@ -412,6 +412,7 @@ Migrating to new hardware or rebuilding old hardware after a wipe is a breeze.
   [Rectangle](https://github.com/rxhanson/Rectangle).
 
 - Apps:
+
   - [Alacritty](https://alacritty.org/)
   - [Brave](https://brave.com/) with [Tor Browser](https://www.torproject.org/)
     also available
