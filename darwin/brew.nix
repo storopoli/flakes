@@ -30,9 +30,9 @@
     casks = [
       "android-file-transfer"
       "bisq"
-      "brave-browser"
       "cryptomator"
       "iina"
+      "firefox"
       "fuse-t"
       "karabiner-elements"
       "keepassxc"
