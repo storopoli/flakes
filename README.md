@@ -97,7 +97,9 @@ These are my NixOS/macOS Nix setup.
 - Apps:
 
   - [`firefox`](https://www.mozilla.org/firefox)
-    with [Tor Browser](https://www.torproject.org/) also available
+    with [Tor Browser](https://www.torproject.org/)
+    and [Ungoogled Chromium](https://github.com/ungoogled-software/ungoogled-chromium)
+    also available
   - Bitcoin tools such as [Sparrow wallet](https://sparrowwallet.com/)
     and [Bisq](https://bisq.network/)
   - Encrypted backup tool with [Cryptomator](https://cryptomator.org/)

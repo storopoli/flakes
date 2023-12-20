@@ -31,6 +31,7 @@
       "android-file-transfer"
       "bisq"
       "cryptomator"
+      "eloston-chromium"
       "iina"
       "firefox"
       "fuse-t"

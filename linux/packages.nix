@@ -27,6 +27,7 @@
   users.users.user.packages = (with pkgs; [
     # opsec
     keepassxc
+    ungoogled-chromium
     tor-browser-bundle-bin
     signal-desktop
 
