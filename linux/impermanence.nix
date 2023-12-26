@@ -6,9 +6,19 @@
       "/etc/nixos" # bind mounted from /nix/persist/etc/nixos to /etc/nixos
       "/etc/NetworkManager/system-connections"
       "/etc/wireguard"
-      "/var/log"
-      "/var/lib"
+      "/var/lib/bluetooth"
+      "/var/lib/docker"
+      "/var/lib/power-profiles-daemon"
+      "/var/lib/systemd/coredump"
+      "/var/lib/upower"
     ];
+
+    files = [
+      "/var/lib/NetworkManager/secret_key"
+      "/var/lib/NetworkManager/seen-bssids"
+      "/var/lib/NetworkManager/timestamps"
+    ];
+
     users.user = {
       directories = [
         ".cache"
@@ -32,6 +42,7 @@
         "music"
         "videos"
       ];
+
       files = [
         # put files here
       ];
