@@ -1,9 +1,12 @@
 name: Nix Flake
+
 on:
   push:
     branches: [main]
   pull_request:
     branches: [main]
+  workflow_dispatch:
+
 jobs:
   self-care:
     name: Flake self-check
