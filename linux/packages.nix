@@ -25,9 +25,9 @@
 
   # linux specific user packager
   users.users.user.packages = (with pkgs; [
+    vscodium
     # opsec
     keepassxc
-    ungoogled-chromium
     tor-browser-bundle-bin
     signal-desktop
 
