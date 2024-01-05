@@ -18,6 +18,7 @@
     ];
 
     brews = [
+      "aichat"
       "pinentry-mac"
       {
         name = "tor";
