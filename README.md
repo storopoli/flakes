@@ -89,8 +89,6 @@ These are my NixOS/macOS Nix setup.
   [`graphicsmagick`](http://www.graphicsmagick.org/),
   [`tectonic`](https://tectonic-typesetting.github.io/),
   and [`typst`](https://typst.app/).
-- OS-level adblocking with [`StevenBlack/hosts`](https://github.com/StevenBlack/hosts)
-  in the `/etc/hosts`.
 - `age`-encrypted secrets with [`ryantm/agenix`](https://github.com/ryantm/agenix)
   with YubiKey support.
   Check the [`secrets/README.md`](secrets/README.md) for details.
@@ -118,7 +116,6 @@ Read more about this in the [NixOs Paranoid Guide](https://xeiaso.net/blog/paran
 
 ### Features
 
-- [XanMod Kernel](https://xanmod.org/)
 - [`Hyprland`](https://github.com/hyprwm/Hyprland) Wayland window manager:
 
   - [`Waybar`](https://github.com/Alexays/Waybar) status bar.

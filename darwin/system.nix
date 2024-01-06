@@ -7,15 +7,6 @@
 
   nix.gc.interval.Day = 7;
 
-  # OS-level ad-blocking
-  environment.etc."hosts" = {
-    copy = true;
-    text = builtins.readFile (builtins.fetchurl {
-      url = "https://github.com/StevenBlack/hosts/raw/3.14.41/alternates/fakenews/hosts";
-      sha256 = "06qrxbcc76nmkknw3nma1qpql10zgyb8lwbmalz6hi0npxhxpng5";
-    });
-  };
-
   system = {
     # Global macOS System Settings
     defaults = {
