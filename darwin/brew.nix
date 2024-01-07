@@ -18,7 +18,7 @@
     ];
 
     brews = [
-      "aichat"
+      "aichat" # TODO: move to nixpkgs
       "pinentry-mac"
       {
         name = "tor";
@@ -45,7 +45,6 @@
       "sparrow"
       "tor-browser"
       "transmission"
-      "vscodium"
     ];
   };
 }
