@@ -6,6 +6,8 @@
       "/etc/nixos" # bind mounted from /nix/persist/etc/nixos to /etc/nixos
       "/etc/NetworkManager/system-connections"
       "/etc/wireguard"
+      "/etc/mullvad-vpn"
+      "/var/cache/mullvad-vpn"
       "/var/lib/bluetooth"
       "/var/lib/docker"
       "/var/lib/power-profiles-daemon"

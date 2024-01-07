@@ -41,10 +41,6 @@
   networking = {
     networkmanager.enable = true;
     wireguard.enable = true;
-    stevenblack = {
-      enable = true;
-      block = [ "fakenews" ];
-    };
     firewall = {
       enable = true;
       allowedTCPPorts = [
@@ -57,10 +53,16 @@
   };
 
   services = {
+    mullvad-vpn = {
+      enable = true;
+      package = pkgs.mullvad-vpn;
+    };
+
+    resolved.enable = true;
+
     openssh.enable = false;
 
     tor.enable = true;
   };
 
-  # TODO: wireguard configs with agenix
 }
