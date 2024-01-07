@@ -25,7 +25,6 @@
 
   # linux specific user packager
   users.users.user.packages = (with pkgs; [
-    vscodium
     # opsec
     keepassxc
     tor-browser-bundle-bin
