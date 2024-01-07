@@ -29,14 +29,11 @@
                 };
                 passwordFile = config.age.secrets.luks.path;
                 content = {
-                  type = "btrfs";
-                  extraArgs = [ "-f" ];
-                  subvolumes = {
-                    "/nix" = {
-                      mountpoint = "/nix";
-                      mountOptions = [ "compress=zstd" "noatime" ];
-                    };
-                  };
+                  type = "filesystem";
+                  format = "bcachefs";
+                  extraArgs = [ "-f" ]; # Override existing partition
+                  mountpoint = "/nix";
+                  mountOptions = [ "compression=zstd" "noatime" ];
                 };
               };
             };

@@ -13,8 +13,8 @@
 
   fileSystems."/nix" = {
     device = "/dev/mapper/crypted";
-    fsType = "btrfs";
-    options = [ "defaults" "compress=zstd" "noatime" ];
+    fsType = "bcachefs";
+    options = [ "defaults" "compression=zstd" "noatime" ];
   };
 
   fileSystems."/boot" = {
