@@ -18,7 +18,7 @@
     ];
 
     brews = [
-      "wireguard-tools"
+      "aichat"
       "pinentry-mac"
       {
         name = "tor";
@@ -30,20 +30,22 @@
     casks = [
       "android-file-transfer"
       "bisq"
+      "chromium"
       "cryptomator"
-      "eloston-chromium"
       "iina"
-      "firefox"
       "fuse-t"
       "karabiner-elements"
       "keepassxc"
-      "obs"
       "keycastr"
+      "mullvadvpn"
+      "microsoft-teams"
+      "obs"
       "rectangle"
       "signal"
       "sparrow"
       "tor-browser"
       "transmission"
+      "vscodium"
     ];
   };
 }

@@ -3,6 +3,7 @@
 {
   imports = [
     # linux home-manager configs
+    ./chromium.nix
     ./gpg.nix
     ./hyprland
     ./foot.nix
