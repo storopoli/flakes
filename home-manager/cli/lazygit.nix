@@ -17,6 +17,7 @@
         defaultFgColor = [ "#cdd6f4" ];
         searchingActiveBorderColor = [ "#f9e2af" ];
       };
+      git.autoFetch = false;
     };
   };
 }
