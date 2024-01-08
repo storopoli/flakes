@@ -8,19 +8,6 @@
   home.file = {
     ".config/mpv/mpv.conf".source = ./mpv.conf;
 
-    ".config/mpv/scripts/file_browser.lua".source = builtins.fetchurl {
-      url =
-        "https://github.com/CogentRedTester/mpv-file-browser/raw/3fedbd506dd9ca62c121105ad4d48acdf34bcd53/file-browser.lua";
-      sha256 = "0hqlfcdmmsbry41axhyvjjfd4rcavw75f9awirv2ijh8ivvzh5gj";
-    };
-    ".config/mpv/scripts-opts/file_browser.conf".source =
-      builtins.fetchurl {
-        url =
-          "https://github.com/CogentRedTester/mpv-file-browser/raw/3fedbd506dd9ca62c121105ad4d48acdf34bcd53/file_browser.conf";
-        sha256 =
-          "1f82zlar3lbwxpjwygml96py91mdyckagc267cpm97nz2a5hrqgl";
-      };
-
     ".config/mpv/scripts-opts/mpv_thumbnail_script.conf".source =
       ./script-opts/mpv_thumbnail_script.conf;
     ".config/mpv/scripts/mpv_thumbnail_script_client_osc.lua".source =
