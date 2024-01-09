@@ -13,8 +13,8 @@
         {
           name = "language-julia";
           publisher = "julialang";
-          version = "1.65.2";
-          sha256 = "1zh6km33g5a9n6h63wnmr4j78hgiajbbbc9wcfs0xkh9ivs2s409";
+          version = "1.66.1";
+          sha256 = "1rk56i1yv8jwhr3ckphpxxkhw6s46xfxfqd2mwai7i2jq59zsla2";
         }
       ];
 
