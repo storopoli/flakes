@@ -205,7 +205,7 @@ As root:
 1. Modify the overwritten `hardware-configuration.nix`:
 
    ```bash
-   vim /mnt/etc/nixos/flakes/hosts/laptop/hardware-configuration.nix
+   nvim /mnt/etc/nixos/flakes/hosts/laptop/hardware-configuration.nix
    ```
 
    ```nix
