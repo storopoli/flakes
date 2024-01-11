@@ -28,6 +28,13 @@
       url = "github:dwarfmaster/arkenfox-nixos";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    neovix = {
+      url = "github:storopoli/neovix";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-parts.follows = "flake-parts";
+      };
+    };
   };
 
   outputs = inputs @ { self, ... }:
@@ -156,6 +163,7 @@
                   nixpkgs.overlays = [
                     inputs.rust-overlay.overlays.default
                     inputs.agenix.overlays.default
+                    inputs.neovix.overlays.default
                   ];
                 }
                 (import ./common)

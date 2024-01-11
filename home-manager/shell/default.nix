@@ -4,7 +4,7 @@
   imports = [
     ./fish
     #./vim
-    ./neovim
+    ./neovim.nix
     ./git.nix
     ./gpg.nix
     ./ssh.nix
