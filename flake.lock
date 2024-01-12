@@ -395,11 +395,11 @@
         "nixvim": "nixvim"
       },
       "locked": {
-        "lastModified": 1704973942,
-        "narHash": "sha256-GB4ydSlabdxQ2B7mT6xeZAAqhkWPyd1sYyd68RDZzgo=",
+        "lastModified": 1705133638,
+        "narHash": "sha256-mhHNgs2woLh6zsgkwrQ0ofop2fGruWC3u0LxZZ973+M=",
         "owner": "storopoli",
         "repo": "neovix",
-        "rev": "4013f5a1b71ff6bb7c3b698fad95cdfa9e690e73",
+        "rev": "c398532c8d044d69ee9b3ce974b6d7a4fd1d8747",
         "type": "github"
       },
       "original": {
@@ -621,11 +621,11 @@
         "pre-commit-hooks": "pre-commit-hooks"
       },
       "locked": {
-        "lastModified": 1704755095,
-        "narHash": "sha256-PVpo40uyt37G6xk+2SJqihxMtr8V5KdZ6h37uWBSZRg=",
+        "lastModified": 1705099172,
+        "narHash": "sha256-1ZwpL1E53AJscPHbY6Vu34OJlJYey0NliJlC/d/bbso=",
         "owner": "nix-community",
         "repo": "nixvim",
-        "rev": "6645fea915ecf17cf465d544fd42f0f549c00c14",
+        "rev": "749a8a38c4745ba2540c70f0b15f1c4af10da180",
         "type": "github"
       },
       "original": {
