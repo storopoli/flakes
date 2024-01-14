@@ -28,6 +28,7 @@
     ];
 
     casks = [
+      "alacritty"
       "android-file-transfer"
       "bisq"
       "chromium"
@@ -45,6 +46,7 @@
       "sparrow"
       "tor-browser"
       "transmission"
+      "vscodium"
     ];
   };
 }
