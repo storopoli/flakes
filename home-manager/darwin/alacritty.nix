@@ -16,10 +16,12 @@
       };
       window = {
         startup_mode = "Windowed";
-        decorations = "buttonless";
-        window_decorations_theme = "dark";
-        columns = 0;
-        lines = 0;
+        decorations = "Buttonless";
+        decorations_theme_variant = "Dark";
+        dimensions = {
+          columns = 0;
+          lines = 0;
+        };
         opacity = 0.98;
         option_as_alt = "Both";
         padding = {
@@ -79,10 +81,11 @@
             foreground = "#1E1E2E"; # base
             background = "#A6E3A1"; # green
           };
-          footer_bar = {
-            foreground = "#1E1E2E"; # base
-            background = "#A6ADC8"; # subtext0
-          };
+        };
+
+        footer_bar = {
+          foreground = "#1E1E2E"; # base
+          background = "#A6ADC8"; # subtext0
         };
 
         hints = {
