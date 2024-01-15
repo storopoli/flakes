@@ -12,6 +12,9 @@ in
     tree
     parallel
     curl
+    ripgrep
+    fd
+    sd
     rsync
     bc
     jq

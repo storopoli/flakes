@@ -74,7 +74,7 @@ let mapleader = " " "map leader to space
 map <silent> <leader><cr> :noh<cr>
 
 " toggle spell checking
-map <leader>s :setlocal spell!<cr> 
+map <leader>s :setlocal spell!<cr>
 
 " easy write/quit
 nmap <leader>w :w<cr>
