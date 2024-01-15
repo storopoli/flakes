@@ -79,7 +79,7 @@ in
     '' + fish_path;
     shellAliases = {
       devshell = "nix flake new -t 'github:numtide/devshell' .";
-      e = "nvim";
+      e = "hx";
       g = "git";
       l = "ls -l";
       ll = "ls -la";
