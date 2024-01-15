@@ -12,6 +12,9 @@ in
     tree
     parallel
     curl
+    ripgrep
+    fd
+    sd
     rsync
     bc
     jq
@@ -39,7 +42,9 @@ in
     # programming
     rust
     julia-bin
+    go
     python3
+    typescript
     llvm
     luajit
 

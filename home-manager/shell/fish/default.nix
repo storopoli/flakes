@@ -79,14 +79,13 @@ in
     '' + fish_path;
     shellAliases = {
       devshell = "nix flake new -t 'github:numtide/devshell' .";
-      e = "nvim";
+      e = "hx";
       g = "git";
       l = "ls -l";
       ll = "ls -la";
       lg = "lazygit";
       testtor = "curl -x socks5h://localhost:9050 -s https://check.torproject.org/api/ip";
       top = "btm";
-      vi = "nvim";
       yt = "yt-dlp --add-metadata -i --format mp4 --restrict-filenames --sponsorblock-remove all";
       yta = "yt -x -f bestaudio/best --format mp4 --audio-format opus --restrict-filenames --sponsorblock-remove all";
     };

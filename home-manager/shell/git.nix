@@ -22,6 +22,9 @@
         ".TemporaryItems"
         ".Trashes"
 
+        # Helix
+        ".helix/"
+
         # VSCode Workspace Folder
         ".vscode/"
 

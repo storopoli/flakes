@@ -7,7 +7,7 @@
       historyLimit = 100000;
       mouse = true;
       keyMode = "vi";
-      escapeTime = 5; # VimBindings.jl need this to >0
+      escapeTime = 5;
       baseIndex = 1;
       shortcut = "a";
       terminal = "xterm-256color";
