@@ -5,19 +5,15 @@
     helix = {
       enable = true;
 
-      defaultEditor = true;
+      defaultEditor = false;
 
       extraPackages = with pkgs; [
         # LSPs
-        gopls
-        ltex-ls
         marksman
         nil
         nodePackages_latest.bash-language-server
         nodePackages_latest.vscode-langservers-extracted
         nodePackages_latest.pyright
-        ruff
-        ruff-lsp
         rust-analyzer
         taplo
         texlab
@@ -92,14 +88,6 @@
 
       languages = {
         language-server = {
-          "rust-analyzer".config = {
-            check = {
-              command = "clippy";
-            };
-            cargo = {
-              features = "all";
-            };
-          };
 
           "yaml-language-server".config = {
             yaml = {
@@ -112,23 +100,6 @@
                 "https=//json.schemastore.org/github-action.json" = ".github/actions/*/action.yaml";
               };
             };
-          };
-
-          "ruff-lsp" = {
-            command = "ruff-lsp";
-          };
-
-          "ltex-ls".config.ltex = {
-            enabled = [ "bibtex" "gitcommit" "context" "context.tex" "html" "latex" "markdown" "pandoc" "typst" "org" "restructuredtext" "rsweave" ];
-            language = "en-US";
-            disabledRules = { "en-US" = [ "PROFANITY" ]; };
-            dictionary = { "en-US" = [ "builtin" ]; };
-          };
-
-          "texlab".config.texlab.build = {
-            onSave = true;
-            executable = "tectonic";
-            args = [ "-X" "build" "--keep-logs" "--keep-intermediates" ];
           };
 
           "typst-lsp" = {
@@ -147,7 +118,7 @@
           }
           {
             name = "python";
-            language-servers = [ "pyright" "ruff-lsp" ];
+            language-servers = [ "pyright" ];
             formatter = {
               command = "black";
               args = [ "--quiet" "-" ];
@@ -184,7 +155,7 @@
           }
           {
             name = "markdown";
-            language-servers = [ "marksman" "ltex-ls" ];
+            language-servers = [ "marksman" ];
             formatter = {
               command = "dprint";
               args = [ "fmt" "--stdin" "md" ];
@@ -197,15 +168,10 @@
             auto-format = true;
           }
           {
-            name = "latex";
-            auto-format = false;
-            language-servers = [ "texlab" "ltex-ls" ];
-          }
-          {
             # FIXME: in the next helix release typst will be included
             name = "typst";
             scope = "source.typst";
-            language-servers = [ "typst-lsp" "ltex-ls" ];
+            language-servers = [ "typst-lsp" ];
             injection-regex = "typst";
             file-types = [ "typ" "typst" ];
             comment-token = "//";
