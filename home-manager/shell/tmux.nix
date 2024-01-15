@@ -7,7 +7,7 @@
       historyLimit = 100000;
       mouse = true;
       keyMode = "vi";
-      escapeTime = 5; # VimBindings.jl need this to >0
+      escapeTime = 5;
       baseIndex = 1;
       shortcut = "a";
       terminal = "xterm-256color";
@@ -28,7 +28,7 @@
             set -g @catppuccin_window_current_fill "number"
             set -g @catppuccin_window_current_text "#W"
 
-            set -g @catppuccin_status_modules "directory user date_time battery"
+            set -g @catppuccin_status_modules "directory date_time battery"
             set -g @catppuccin_status_left_separator  " "
             set -g @catppuccin_status_right_separator ""
             set -g @catppuccin_status_right_separator_inverse "no"
