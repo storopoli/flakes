@@ -55,20 +55,20 @@ These are my NixOS/macOS Nix setup.
   You can put your [soydev](https://storopoli.io/2023-11-10-2023-11-13-soydev/)
   TypeScript/JavaScript/NodeJS stuff here.
   Check the [recipes for several Nix shells](https://gist.github.com/storopoli/97e6f0b2e177722fcb3b7fbe5275fbe5).
-- Text editor with [Vim](https://www.vim.org/)/[Neovim](https://neovim.io) enabled with the following
+- Text editor with [Vim](https://www.vim.org/)/[NeoVim](https://neovim.io)
+  and [Helix](https://helix-editor.com) enabled with the following
   [LSP](https://langserver.org/)s:
 
-  - [`rnix`](https://github.com/nix-community/rnix-lsp): Nix
+  - [`nil`](https://github.com/oxalica/nil): Nix
   - [`bash-language-server`](https://github.com/bash-lsp/bash-language-server): Bash, Fish, Zsh, shell scripts, etc.
   - [`rust-analyzer`](https://rust-analyzer.github.io/): Rust
-  - [`julia`](https://github.com/julia-vscode/LanguageServer.jl): Julia
   - [`taplo`](https://taplo.tamasfe.dev/): TOML
   - [`yaml-language-server`](https://github.com/redhat-developer/yaml-language-server): YAML
   - [`pyright`](https://github.com/microsoft/pyright)
     and [`ruff-lsp`](https://github.com/astral-sh/ruff-lsp): Python
   - [`marksman`](https://github.com/artempyanykh/marksman): Markdown
   - [`vscode-langservers-extracted`](https://github.com/hrsh7th/vscode-langservers-extracted): HTML, CSS, and JSON
-  - [`texlab`](https://github.com/latex-lsp/texlab): $\LaTeX$
+  - [`texlab`](https://github.com/latex-lsp/texlab): LaTeX
   - [`typst-lsp`](https://github.com/nvarner/typst-lsp): [Typst](https://typst.app)
 
 - [Catppuccin](https://catppuccin.com) Mocha theme everywhere.
@@ -206,7 +206,7 @@ As root:
 1. Modify the overwritten `hardware-configuration.nix`:
 
    ```bash
-   nvim /mnt/etc/nixos/flakes/hosts/laptop/hardware-configuration.nix
+   vi /mnt/etc/nixos/flakes/hosts/laptop/hardware-configuration.nix
    ```
 
    ```nix
