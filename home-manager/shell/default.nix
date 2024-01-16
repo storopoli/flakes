@@ -8,6 +8,6 @@
     ./git.nix
     ./gpg.nix
     ./ssh.nix
-    ./tmux.nix
+    ./zellij
   ];
 }
