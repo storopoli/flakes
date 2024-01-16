@@ -11,7 +11,7 @@
         program = "${pkgs.fish}/bin/fish";
         args = [
           "-c"
-          "tmux attach -t base || tmux new -s base"
+          "zellij a -c main options --default-shell fish"
         ];
       };
       window = {
