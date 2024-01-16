@@ -118,5 +118,7 @@
         };
       };
     };
+
+    gh-dash.enable = true;
   };
 }
