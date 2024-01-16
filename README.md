@@ -22,7 +22,7 @@ These are my NixOS/macOS Nix setup.
   [`home-manager`](https://github.com/nix-community/home-manager).
 - CLI-ready workflow with
   [`fish`](https://github.com/fish-shell/fish-shell),
-  [`tmux`](https://github.com/tmux/tmux),
+  [`zellij`](https://zellij.dev),
   [`git`](https://git-scm.com/),
   [`fish`](https://fishshell.com/),
   [`gpg`](https://gnupg.org/),
