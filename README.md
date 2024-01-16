@@ -41,6 +41,7 @@ These are my NixOS/macOS Nix setup.
   [`lazygit`](https://github.com/jesseduffield/lazygit),
   [`lazydocker`](https://github.com/jesseduffield/lazydocker),
   [`gh`](https://cli.github.com/),
+  [`gh-dash`](https://github.com/dlvhdr/gh-dash),
   and more...
 - Developer-ready languages:
   [Nix](https://nixos.org/),
