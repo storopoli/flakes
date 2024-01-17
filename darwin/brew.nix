@@ -39,7 +39,6 @@
       "keepassxc"
       "keycastr"
       "mullvadvpn"
-      "microsoft-teams"
       "obs"
       "rectangle"
       "signal"
