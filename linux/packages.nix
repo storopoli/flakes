@@ -20,6 +20,9 @@
       exfat
       detox
       auto-cpufreq
+
+      # Secure Boot
+      sbctl
     ];
   };
 

@@ -15,7 +15,10 @@ pkgs.mkShell {
   nativeBuildInputs = with pkgs; [
     bashInteractive
     git
+    sbctl
+    vim
     neovim
+    helix
     age
     age-plugin-yubikey
   ];
