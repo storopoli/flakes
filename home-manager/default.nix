@@ -6,6 +6,5 @@
     ./cli
     ./shell
     ./helix.nix
-    ./vscodium.nix
   ];
 }

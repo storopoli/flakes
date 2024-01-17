@@ -47,7 +47,6 @@
       "stats"
       "tor-browser"
       "transmission"
-      "vscodium"
     ];
   };
 }
