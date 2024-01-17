@@ -30,8 +30,8 @@
     casks = [
       "alacritty"
       "android-file-transfer"
+      "brave-browser"
       "bisq"
-      "chromium"
       "cryptomator"
       "iina"
       "fuse-t"
