@@ -116,6 +116,7 @@ Read more about this in the [NixOs Paranoid Guide](https://xeiaso.net/blog/paran
 ### Features
 
 - [bcachefs filesystem](https://bcachefs.org)
+- [Secure Boot](https://en.wikipedia.org/wiki/UEFI#Secure_Boot)
 - [`Hyprland`](https://github.com/hyprwm/Hyprland) Wayland window manager:
 
   - [`Waybar`](https://github.com/Alexays/Waybar) status bar.
@@ -144,6 +145,9 @@ Read more about this in the [NixOs Paranoid Guide](https://xeiaso.net/blog/paran
 
 ### How to Install
 
+> Before starting, remember to enable a BIOS password.
+> And disable Secure Boot.
+
 As root:
 
 1. Prepare a
@@ -151,6 +155,7 @@ As root:
    or [64-bit NixOS unstable minimal iso image](https://channels.nixos.org/nixos-unstable/latest-nixos-minimal-x86_64-linux.iso)
    and burn it, then enter the live system.
    Suppose I have divided two partitions: `/dev/nvme0n1p1` and `/dev/nvme0n1p2`
+
 1. Format the partitions:
 
    ```bash
@@ -158,7 +163,7 @@ As root:
    mkfs.ext4 /dev/nvme0n1p2 # or use LUKS with cryptsetup luksFormat /dev/nvme0n1p2 encryptedroot
    ```
 
-   or use the [`disko` script for Btrfs with LUKS](linux/disko.nix)
+   or use the [`disko` script for bcachefs with LUKS](linux/disko.nix)
    (don't forget to clone the repo first):
 
    ```bash
@@ -194,6 +199,9 @@ As root:
    cd /mnt/etc/nixos/flakes/
    nix develop --extra-experimental-features "nix-command flakes" --extra-experimental-features flakes
    ```
+
+1. If you want Secure Boot, now is the time that you
+   [should create your keys](#step-1-create-your-keys).
 
 1. Copy `hardware-configuration.nix` from `/mnt/etc/nixos`
    to `/mnt/etc/nixos/flakes/hosts/laptop/hardware-configuration.nix`:
@@ -264,7 +272,80 @@ As root:
    reboot
    ```
 
+1. If you want Secure Boot, now is the time that you
+   [should continue the setup](#step-2-enabling-secure-boot).
+
 1. Enjoy it!
+
+#### OPTIONAL: Secure Boot
+
+> Based on the
+> [Quickstart Guide from `lanzaboote`](https://github.com/nix-community/lanzaboote/blob/master/docs/QUICK_START.md)
+
+##### Step 1: Create your Keys
+
+1. Verify if the ESP is mounted at `/boot`: `bootctl status`
+
+1. Create your keys with `sbctl`
+   (available in the Flake shell, i.e. `nix develop .`)
+
+   ```bash
+   $ sudo sbctl create-keys
+   [sudo] password for user:
+   Created Owner UUID 8ec4b2c3-dc7f-4362-b9a3-0cc17e5a34cd
+   Creating secure boot keys...✓
+   Secure boot keys created!
+   ```
+
+   When it is done, your Secure Boot keys are located in `/etc/secureboot`.
+   `sbctl` sets the permissions of the secret key so that only root can read it.
+
+##### Step 2: Enabling Secure Boot
+
+1. Rebuild your system and check the `sbctl verify` output:
+
+   ```bash
+   $ sudo sbctl verify
+   Verifying file database and EFI images in /boot...
+   ✓ /boot/EFI/BOOT/BOOTX64.EFI is signed
+   ✓ /boot/EFI/Linux/nixos-generation-355.efi is signed
+   ✓ /boot/EFI/Linux/nixos-generation-356.efi is signed
+   ✗ /boot/EFI/nixos/0n01vj3mq06pc31i2yhxndvhv4kwl2vp-linux-6.1.3-bzImage.efi is not signed
+   ✓ /boot/EFI/systemd/systemd-bootx64.efi is signed
+   ```
+
+   It is expected that the files ending with `bzImage.efi` are not signed.
+
+1. Enable Secure Boot.
+   On Framework Laptops:
+
+   1. Select "Administer Secure Boot"
+   1. Select "Erease all Secure Boot Settings"
+   1. When you are done, press `F10` to save and exit.
+
+##### Step 3: Enrolling Keys
+
+Once you've booted your system into NixOS again,
+you have to enroll your keys to activate Secure Boot.
+
+```bash
+$ sudo sbctl enroll-keys --microsoft
+Enrolling keys to EFI variables...
+With vendor keys from microsoft...✓
+Enrolled keys to the EFI variables!
+```
+
+Finally, reboot and check if Secure Boot is activated and in user mode:
+
+```bash
+$ bootctl status
+System:
+      Firmware: UEFI 2.70 (Framework 3.03)
+ Firmware Arch: x64
+   Secure Boot: enabled (user)
+  TPM2 Support: yes
+  Boot into FW: supported
+```
 
 ### How to Update
 

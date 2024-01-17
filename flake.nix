@@ -23,6 +23,10 @@
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote/v0.3.0";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nur.url = "github:nix-community/NUR";
     arkenfox = {
       url = "github:dwarfmaster/arkenfox-nixos";
@@ -95,7 +99,9 @@
               imports = [
                 self.nixosModules.common
                 self.nixosModules.linux
-                # Framework nixos-hadware
+                # Secure Boot
+                inputs.lanzaboote.nixosModules.lanzaboote
+                # Framework nixos-hardware
                 inputs.nixos-hardware.nixosModules.framework-13-7040-amd
                 # Your home-manager configuration
                 self.nixosModules.home-manager
