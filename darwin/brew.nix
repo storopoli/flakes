@@ -44,6 +44,7 @@
       "rectangle"
       "signal"
       "sparrow"
+      "stats"
       "tor-browser"
       "transmission"
       "vscodium"
