@@ -22,17 +22,24 @@
 
   boot = {
     supportedFilesystems = [ "ntfs" "bcachefs" ];
+
     kernelPackages = pkgs.linuxPackages_latest;
+
+    # Secure Boot
+    lanzaboote = {
+      enable = true;
+      pkiBundle = "/etc/secureboot";
+    };
+
     loader = {
-      systemd-boot = {
-        enable = true;
-        consoleMode = "auto";
-        configurationLimit = 20;
-      };
+      # Secure Boot
+      systemd-boot.enable = lib.mkForce false;
+
       efi = {
         canTouchEfiVariables = true;
         efiSysMountPoint = "/boot";
       };
+
       timeout = 3;
     };
 

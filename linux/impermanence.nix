@@ -4,6 +4,7 @@
   environment.persistence."/nix/persist" = {
     directories = [
       "/etc/nixos" # bind mounted from /nix/persist/etc/nixos to /etc/nixos
+      "/etc/secureboot"
       "/etc/NetworkManager/system-connections"
       "/etc/wireguard"
       "/etc/mullvad-vpn"
