@@ -39,6 +39,13 @@
         flake-parts.follows = "flake-parts";
       };
     };
+    nix-on-droid = {
+      url = "github:nix-community/nix-on-droid/release-23.05";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        home-manager.follows = "home-manager";
+      };
+    };
   };
 
   outputs = inputs @ { self, ... }:
@@ -90,6 +97,7 @@
           stateVersion = "23.11";
           darwinStateVersion = 4;
           homeStateVersion = "23.11";
+          androidStateVersion = "23.05";
         in
         {
           # Configurations for Linux (NixOS) machines
@@ -152,6 +160,31 @@
                   home-manager.users.user = {
                     imports = [ self.homeModules.common self.homeModules.darwin ];
                     home.stateVersion = homeStateVersion;
+                  };
+                }
+              ];
+            };
+          };
+
+          # Configuration for Android
+          nixOnDroidConfigurations = {
+            pixel = inputs.nix-on-droid.lib.nixOnDroidConfiguration {
+              modules = [
+                {
+                  system.stateVersion = androidStateVersion;
+                }
+                ./android
+                {
+                  home-manager = {
+                    useGlobalPackages = true;
+                    useUserPackages = true;
+                    backupFileExtension = "hm-bak";
+                    config = {
+                      imports = [
+                        ./home-manager/android
+                      ];
+                      home.stateVersion = androidStateVersion;
+                    };
                   };
                 }
               ];
