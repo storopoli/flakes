@@ -492,6 +492,7 @@ Migrating to new hardware or rebuilding old hardware after a wipe is a breeze.
 
 - Tiling window manager with
   [Rectangle](https://github.com/rxhanson/Rectangle).
+- Status Bar with [stats](https://github.com/exelban/stats)
 
 - Apps:
 
