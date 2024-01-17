@@ -7,8 +7,6 @@
       "/etc/secureboot"
       "/etc/NetworkManager/system-connections"
       "/etc/wireguard"
-      "/etc/mullvad-vpn"
-      "/var/cache/mullvad-vpn"
       "/var/lib/bluetooth"
       "/var/lib/docker"
       "/var/lib/power-profiles-daemon"
@@ -18,6 +16,7 @@
 
     files = [
       "/etc/machine-id"
+      "/var/lib/NetworkManager/NetworkManager.state"
       "/var/lib/NetworkManager/secret_key"
       "/var/lib/NetworkManager/seen-bssids"
       "/var/lib/NetworkManager/timestamps"
@@ -25,10 +24,12 @@
 
     users.user = {
       directories = [
-        ".cache"
-        ".config"
-        ".local"
-        ".cargo"
+        ".cache" # TODO: specify specific dirs
+        ".config" # TODO: specify specific dirs
+        ".local" # TODO: specify specific dirs
+        ".cargo/registry"
+        ".cargo/bin"
+        ".cargo/git"
         ".julia"
         ".npm-global"
         {
