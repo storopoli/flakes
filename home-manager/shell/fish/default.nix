@@ -108,6 +108,7 @@ in
     "fish/functions/flakify.fish".source = ./functions/flakify.fish;
     "fish/functions/man.fish".source = ./functions/man.fish;
     "fish/functions/nixify.fish".source = ./functions/nixify.fish;
+    "fish/functions/rustify.fish".source = ./functions/rustify.fish;
     "fish/functions/storopoli.fish".source = ./functions/storopoli.fish;
     "fish/functions/ytp.fish".source = ./functions/ytp.fish;
   };
