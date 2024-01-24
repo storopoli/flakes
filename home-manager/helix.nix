@@ -19,9 +19,6 @@
         typst-lsp
         yaml-language-server
 
-        # tree-sitter
-        tree-sitter
-
         # debugger
         lldb # provides lldb-vscode
 
@@ -39,9 +36,12 @@
           line-number = "relative";
           mouse = true;
           scrolloff = 8;
+          cursorline = true;
           rulers = [ 80 ];
           true-color = true;
           color-modes = true;
+          completion-trigger-len = 1;
+          idle-timeout = 50;
           bufferline = "multiple";
           cursor-shape = {
             insert = "bar";
@@ -54,14 +54,20 @@
           statusline = {
             left = [ "mode" "spinner" "version-control" ];
             center = [ "file-name" ];
-            right = [ "diagnostics" "selections" "position-percentage" "position" "file-encoding" "file-line-ending" "file-type" ];
-            separator = "│";
-            mode.normal = "NORMAL";
-            mode.insert = "INSERT";
-            mode.select = "SELECT";
+            right = [ "workspace-diagnostics" "selections" "position-percentage" "position" "file-encoding" "file-type" ];
           };
           indent-guides = {
             render = true;
+            character = "╎";
+          };
+          whitespace = {
+            render = {
+              tab = "all";
+            };
+            character = {
+              tab = "→";
+              tabpad = "·";
+            };
           };
           lsp = {
             display-messages = true;
@@ -74,12 +80,18 @@
             esc = [ "collapse_selection" "keep_primary_selection" ];
             A-j = [ "ensure_selections_forward" "extend_to_line_bounds" "extend_char_right" "extend_char_left" "delete_selection" "add_newline_below" "move_line_down" "replace_with_yanked" ];
             A-k = [ "ensure_selections_forward" "extend_to_line_bounds" "extend_char_right" "extend_char_left" "delete_selection" "move_line_up" "add_newline_above" "move_line_up" "replace_with_yanked" ];
+            A-x = "extend_to_line_bounds";
+            X = [ "extend_line_up" "extend_to_line_bounds" ];
 
             space = {
               w = ":write";
               q = ":quit";
               Q = ":quit-all!";
             };
+          };
+          select = {
+            A-x = "extend_to_line_bounds";
+            X = [ "extend_line_up" "extend_to_line_bounds" ];
           };
         };
       };
