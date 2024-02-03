@@ -34,8 +34,8 @@ jobs:
         run: nix build --dry-run -L '.#nixosConfigurations.framework.config.system.build.toplevel' --show-trace
 
   # FIXME: waiting for github to release Apple Silicon CI runners
-  macos-test:
-    name: "macOS Nix Test"
+  macos-x86-test:
+    name: "macOS Intel Nix Test"
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v4
@@ -49,3 +49,17 @@ jobs:
       - name: "Build NixOS config ❄️"
         run: nix run nix-darwin -- check --flake .#macbook_x86
 
+  macos-arm-test:
+    name: "macOS Apple Silicon Nix Test"
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: "Install Nix ❄️"
+        uses: DeterminateSystems/nix-installer-action@v9
+
+      - name: "Nix Cache"
+        uses: DeterminateSystems/magic-nix-cache-action@v2
+
+      - name: "Build NixOS config ❄️"
+        run: nix run nix-darwin -- check --flake .#macbook
