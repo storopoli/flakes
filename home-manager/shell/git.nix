@@ -107,7 +107,12 @@
           colorMoved = "default";
         };
         commit = { gpgsign = true; };
+        branch.sort = "-committerdate";
         merge.conflictstyle = "diff3";
+        rerere = {
+          enabled = true;
+          autoupdate = true;
+        };
       };
       delta = {
         enable = true;
