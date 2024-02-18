@@ -93,26 +93,46 @@
         core = {
           autocrlf = "input";
           safecrlf = true;
+          # pager = "delta"; # delta integration already set below
         };
         pull.ff = "only";
         push = {
-          default = "simple";
+          default = "current";
           autoSetupRemote = true;
           useForceIfIncludes = true;
+          followtags = true;
         };
         help.autocorrect = "1";
         diff = {
-          algorithm = "patience";
+          algorithm = "histogram";
           compactionHeuristic = true;
           colorMoved = "default";
         };
-        commit = { gpgsign = true; };
+        commit = {
+          verbose = true;
+          gpgsign = true;
+        };
         branch.sort = "-committerdate";
-        merge.conflictstyle = "diff3";
+        merge.conflictstyle = "zdiff3";
+        log.date = "iso";
+        rebase = {
+          autosquash = true;
+          autostash = true;
+          updateRefs = true;
+        };
         rerere = {
           enabled = true;
           autoupdate = true;
         };
+        # submodules stuff
+        status.submoduleSummary = true;
+        diff.submodule = "log";
+        submodule.recurse = true;
+        # avoids corruption
+        transfer.fsckobjects = true;
+        fetch.fsckobjects = true;
+        receive.fsckObjects = true;
+
       };
       delta = {
         enable = true;
