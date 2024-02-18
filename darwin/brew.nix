@@ -18,7 +18,6 @@
     ];
 
     brews = [
-      "aichat" # TODO: move to nixpkgs
       "pinentry-mac"
       {
         name = "tor";
