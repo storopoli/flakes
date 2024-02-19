@@ -1,11 +1,20 @@
 { config, pkgs, lib, ... }:
 
+let
+  helix-gpt-wrapper = pkgs.writeScriptBin "helix-gpt" ''
+    #!/usr/bin/env bash
+    set -e
+
+    ${pkgs.helix-gpt}/bin/helix-gpt $@
+  '';
+in
+
 {
   programs = {
     helix = {
       enable = true;
 
-      defaultEditor = false;
+      defaultEditor = true;
 
       extraPackages = with pkgs; [
         # LSPs
@@ -14,10 +23,13 @@
         nodePackages_latest.bash-language-server
         nodePackages_latest.vscode-langservers-extracted
         nodePackages_latest.pyright
+        ruff-lsp
         rust-analyzer
         taplo
         typst-lsp
         yaml-language-server
+        helix-gpt
+        helix-gpt-wrapper
 
         # debugger
         lldb # provides lldb-vscode
@@ -99,6 +111,14 @@
       languages = {
         language-server = {
 
+          "rust-analyzer".config = {
+            check.command = "clippy";
+            cargo.features = "all";
+            inlayHints.discriminantHints.enable = "always";
+          };
+
+          "ruff-lsp".command = "ruff-lsp";
+
           "yaml-language-server".config = {
             yaml = {
               format = { enable = true; };
@@ -112,8 +132,14 @@
             };
           };
 
-          "typst-lsp" = {
-            command = "typst-lsp";
+          "typst-lsp".command = "typst-lsp";
+
+          "gpt" = {
+            command = "helix-gpt";
+            args = [
+              "--handler"
+              "copilot"
+            ];
           };
 
         };
@@ -121,11 +147,11 @@
         language = [
           {
             name = "rust";
-            language-servers = [ "rust-analyzer" ];
+            language-servers = [ "rust-analyzer" "gpt" ];
           }
           {
             name = "python";
-            language-servers = [ "pyright" ];
+            language-servers = [ "pyright" "ruff-lsp" "gpt" ];
             formatter = {
               command = "black";
               args = [ "--quiet" "-" ];
@@ -134,7 +160,7 @@
           }
           {
             name = "toml";
-            language-servers = [ "taplo" ];
+            language-servers = [ "taplo" "gpt" ];
             formatter = {
               command = "taplo";
               args = [ "fmt" "-" ];
@@ -143,11 +169,11 @@
           }
           {
             name = "yaml";
-            language-servers = [ "yaml-language-server" ];
+            language-servers = [ "yaml-language-server" "gpt" ];
           }
           {
             name = "nix";
-            language-servers = [ "nil" ];
+            language-servers = [ "nil" "gpt" ];
             formatter = {
               command = "nixpkgs-fmt";
             };
@@ -162,7 +188,7 @@
           }
           {
             name = "markdown";
-            language-servers = [ "marksman" ];
+            language-servers = [ "marksman" "gpt" ];
             formatter = {
               command = "dprint";
               args = [ "fmt" "--stdin" "md" ];
@@ -173,7 +199,7 @@
             # FIXME: in the next helix release typst will be included
             name = "typst";
             scope = "source.typst";
-            language-servers = [ "typst-lsp" ];
+            language-servers = [ "typst-lsp" "gpt" ];
             injection-regex = "typst";
             file-types = [ "typ" "typst" ];
             comment-token = "//";
@@ -210,5 +236,10 @@
 
       };
     };
+  };
+  home.sessionVariables = {
+    COPILOT_API_KEY = ''
+      $(${pkgs.coreutils}/bin/cat ${config.age.secrets.copilot.path})
+    '';
   };
 }

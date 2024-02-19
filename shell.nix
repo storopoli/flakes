@@ -16,8 +16,6 @@ pkgs.mkShell {
     bashInteractive
     git
     sbctl
-    vim
-    neovim
     helix
     age
     age-plugin-yubikey
