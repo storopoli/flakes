@@ -23,6 +23,7 @@ in
         nodePackages_latest.bash-language-server
         nodePackages_latest.vscode-langservers-extracted
         nodePackages_latest.pyright
+        ruff-lsp
         rust-analyzer
         taplo
         typst-lsp
@@ -110,6 +111,13 @@ in
       languages = {
         language-server = {
 
+          "rust-analyzer".config = {
+            check.command = "clippy";
+            cargo.features = "all";
+          };
+
+          "ruff-lsp".command = "ruff-lsp";
+
           "yaml-language-server".config = {
             yaml = {
               format = { enable = true; };
@@ -123,8 +131,7 @@ in
             };
           };
 
-          "typst-lsp" = {
-            command = "typst-lsp";
+          "typst-lsp".command = "typst-lsp";
 
           "gpt" = {
             command = "helix-gpt";
@@ -143,7 +150,7 @@ in
           }
           {
             name = "python";
-            language-servers = [ "pyright" ];
+            language-servers = [ "pyright" "ruff-lsp" "gpt" ];
             formatter = {
               command = "black";
               args = [ "--quiet" "-" ];
