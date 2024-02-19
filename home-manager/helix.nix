@@ -238,8 +238,9 @@ in
     };
   };
   home.sessionVariables = {
-    COPILOT_API_KEY = ''
-      $(${pkgs.coreutils}/bin/cat ${config.age.secrets.copilot.path})
-    '';
+    # FIXME: This is broken on MacOS
+    # COPILOT_API_KEY = ''
+    #   $(${pkgs.coreutils}/bin/cat ${config.age.secrets.copilot.path})
+    # '';
   };
 }
