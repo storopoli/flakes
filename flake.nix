@@ -164,7 +164,11 @@
                 self.darwinModules_.home-manager
                 {
                   home-manager.users.user = {
-                    imports = [ self.homeModules.common self.homeModules.darwin ];
+                    imports = [
+                      self.homeModules.common
+                      self.homeModules.darwin
+                      inputs.agenix.homeManagerModules.age
+                    ];
                     home.stateVersion = homeStateVersion;
                   };
                 }
