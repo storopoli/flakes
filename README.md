@@ -587,3 +587,30 @@ Before installing anything you'll need to prepare your system:
    # or if nix-command and flakes are enabled:
    nix run nix-darwin -- switch --flake .
    ```
+
+## Flakes Creed
+
+> This is my computer. There are many like it, but this one is mine.
+> My computer is my best friend. It is my life. I must master it as
+> I must master my life.
+> Without me, my computer is useless. Without my computer, I am useless.
+> I must configure my computer true. I must code more efficiently than my enemy,
+> who is trying to outperform me.
+> I must debug him before he debugs me. I will...
+>
+> My computer and I know that what counts in war is not the lines we code,
+> the noise of our fans, nor the smoke we make.
+> We know that it is the runs that count. We will run...
+>
+> My computer is human, even as I, because it is my life.
+> Thus, I will learn it as a brother.
+> I will learn its weaknesses, its strength, its parts, its accessories,
+> its dotfiles, and its configs.
+> I will keep my computer clean and ready, even as I am clean and ready.
+> We will become part of each other. We will...
+>
+> Before the Internet, I swear this creed.
+> My computer and I are the defenders of my work.
+> We are the masters of our enemy. We are the saviors of my projects.
+>
+> So be it, until victory is mine and there is no enemy, but peace!
