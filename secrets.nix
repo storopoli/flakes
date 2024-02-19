@@ -9,4 +9,5 @@ in
   "secrets/luks.age".publicKeys = keys;
   "secrets/password.age".publicKeys = keys;
   "secrets/root.age".publicKeys = keys;
+  "secrets/copilot.age".publicKeys = keys;
 }

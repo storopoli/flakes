@@ -8,6 +8,7 @@
       luks.file = ../secrets/luks.age;
       password.file = ../secrets/password.age;
       root.file = ../secrets/root.age;
+      copilot.file = ../secrets/copilot.age;
     };
     identityPaths = [
       ../secrets/identities/age-yubikey-identity-95a7c5c3-usb_c.txt

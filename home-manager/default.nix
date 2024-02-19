@@ -6,5 +6,6 @@
     ./cli
     ./shell
     ./helix.nix
+    ./age.nix
   ];
 }
