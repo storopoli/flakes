@@ -87,7 +87,7 @@ in
       testtor = "curl -x socks5h://localhost:9050 -s https://check.torproject.org/api/ip";
       testmullvad = "curl -Ls am.i.mullvad.net/json | jq";
       top = "btm";
-      vi = "nvim";
+      vi = "vim";
       yt = "yt-dlp --add-metadata -i --format mp4 --restrict-filenames";
       yta = "yt -x -f bestaudio/best --format mp4 --audio-format opus --restrict-filenames";
     };

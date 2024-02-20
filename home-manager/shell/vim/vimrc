@@ -14,6 +14,8 @@ set ruler
 set colorcolumn=80
 set incsearch
 set hlsearch
+set number
+set relativenumber
 
 set timeoutlen=500 "http://stackoverflow.com/questions/2158516/delay-before-o-opens-a-new-line
 set updatetime=50
@@ -33,9 +35,6 @@ set t_Co=256
 set background=dark
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-" transparent stuff
-hi! Normal ctermbg=none ctermfg=none guifg=none guibg=none
-hi! LineNr ctermbg=none ctermfg=none guifg=none guibg=none
 
 "neovim guicursor
 "default : "n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20"
@@ -79,6 +78,7 @@ map <leader>s :setlocal spell!<cr>
 " easy write/quit
 nmap <leader>w :w<cr>
 nmap <leader>q :q<cr>
+nmap <leader>Q :qa!<cr>
 
 "global yank
 vnoremap <silent> <leader>y "+y :let @+=@*<cr>
@@ -129,7 +129,7 @@ augroup END
 nnoremap <leader>f :GFiles<cr>
 nnoremap <leader>F :Files<cr>
 nnoremap <leader>b :Buffers<cr>
-nnoremap <leader>g :Rg<cr>
+nnoremap <leader>/ :Rg<cr>
 
 " jump to last edit position on opening file
 augroup RestoreCursor
@@ -143,21 +143,84 @@ augroup RestoreCursor
 augroup END
 
 " LSP
-au BufRead,BufNewFile *.nix setf nix
+" asyncomplete
 inoremap <expr> <cr> pumvisible() ? asyncomplete#close_popup() : "\<cr>"
+"snippets
+imap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
+smap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
+imap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
+smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
+
+" nix
+au BufRead,BufNewFile *.nix setf nix
+
+" inlay hints
+let g:lsp_inlay_hints_enabled = 1
+let g:lsp_inlay_hints_mode = {
+  \ 'normal': ['always']
+\}
 
 augroup lsp_register_server
-  au FileType python let g:lsp_settings_filetype_python = 'pyright-langserver'
+  " Configure the pyright and ruff-lsp servers
+  au FileType python let g:lsp_settings_filetype_python = ['ruff-lsp', 'pyright-langserver']
+  au FileType python let g:lsp_settings = {
+    \  'ruff-lsp': { 
+    \    'disabled': v:false,
+    \    'initialization_options': {
+    \      "globalSettings": {
+    \        'python': {
+    \          'format': {
+    \            'args': ['--unsafe-fixes']
+    \          }
+    \        }
+    \      }
+    \    }
+    \  },
+    \  'pyright-langserver': {
+    \    'disabled': v:false,
+    \    'workspace_config': {
+    \      'python': {
+    \        'analysis': {
+    \          'useLibraryCodeForTypes': v:true,
+    \        }
+    \      }
+    \    }
+    \  }}
+  au FileType nix let g:lsp_settings_filetype_nix = 'nil'
+  au FileType rust let g:lsp_settings = {'rust-analyzer': {
+    \ 'workspace_config': { 'rust-analyzer': {
+    \   'check': {'command': 'clippy'},
+    \   'cargo': {'features': 'all'},
+    \  }}}}
   au FileType toml let g:lsp_settings = {'taplo-lsp': {'cmd': ['taplo', 'lsp', 'stdio']}}
   au FileType yaml let g:lsp_settings = {'yaml-language-server': {
-    \ 'workspace_config': {'yaml':{'schemas':{
-    \   'kubernetes':'*.yaml',
-    \   'https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json': 'docker-compose.yaml',
-    \   'https://json.schemastore.org/github-workflow.json': '.github/workflows/*.yaml',
-    \   'https://json.schemastore.org/github-action.json': '.github/actions/*/action.yaml',
+    \ 'workspace_config': {'yaml': {
+    \   'validate': v:true,
+    \   'hover': v:true,
+    \   'completion': v:true,
+    \   'format': {'enable': v:true},
+    \   'schemas':{
+    \     'kubernetes':'*.yaml',
+    \     'https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json': 'docker-compose.yaml',
+    \     'https://json.schemastore.org/github-workflow.json': '.github/workflows/*.yaml',
+    \     'https://json.schemastore.org/github-action.json': '.github/actions/*/action.yaml',
     \   }}},
     \ }}
 augroup END
+
+if executable('nil')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'nil',
+        \ 'cmd': {server_info->['nil']},
+        \ 'allowlist': ['nix'],
+        \ 'languageId': {server_info->'nix'},
+        \ 'root_uri': {server_info->lsp#utils#path_to_uri(
+		    \       lsp#utils#find_nearest_parent_file_directory(
+	    	\       lsp#utils#get_buffer_path(),
+	    	\       ['flake.nix', '.git/'],
+	    	\       ))}
+        \ })
+endif
 
 function! LspToggle()
   let l:buf = bufnr('%')
@@ -175,18 +238,19 @@ function! s:on_lsp_buffer_enabled() abort
   if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
 
   nmap <buffer> gd <plug>(lsp-definition)
-  nmap <buffer> gs <plug>(lsp-document-symbol-search)
-  nmap <buffer> gS <plug>(lsp-workspace-symbol-search)
+  nmap <buffer> gD <plug>(lsp-declaration)
+  nmap <buffer> <leader>s <plug>(lsp-document-symbol-search)
+  nmap <buffer> <leader>S <plug>(lsp-workspace-symbol-search)
   nmap <buffer> gr <plug>(lsp-references)
   nmap <buffer> gi <plug>(lsp-implementation)
-  nmap <buffer> gt <plug>(lsp-type-definition)
+  nmap <buffer> gy <plug>(lsp-type-definition)
   nmap <buffer> <leader>a <plug>(lsp-code-action-float)
   nmap <buffer> <leader>r <plug>(lsp-rename)
   nmap <buffer> <leader>d <plug>(lsp-document-diagnostics)
   nmap <buffer> <expr> <leader>D LspToggle()
   nmap <buffer> [g <plug>(lsp-previous-diagnostic)
   nmap <buffer> ]g <plug>(lsp-next-diagnostic)
-  nmap <buffer> K <plug>(lsp-hover)
+  nmap <buffer> <leader>k <plug>(lsp-hover)
   nnoremap <buffer> <expr><c-f> lsp#scroll(+4)
   nnoremap <buffer> <expr><c-b> lsp#scroll(-4)
   inoremap <buffer> <expr><c-f> lsp#scroll(+4)
@@ -194,7 +258,7 @@ function! s:on_lsp_buffer_enabled() abort
 
   " autoformat on save
   let g:lsp_format_sync_timeout = 500
-  autocmd! BufWritePre *.rs,*.py,*.nix,*.jl,*.yml,*.yaml,*.toml,*.html,*.css,*.sh call execute('LspDocumentFormatSync')
+  autocmd! BufWritePre *.rs,*.py,*.nix,*.yml,*.yaml,*.toml,*.html,*.css,*.json,*.sh call execute('LspDocumentFormatSync')
 endfunction
 
 augroup lsp_install
@@ -202,5 +266,10 @@ augroup lsp_install
   " call s:on_lsp_buffer_enabled only for languages that has the server registered.
   autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 augroup END
+
+" Copilot
+let g:copilot_filetypes = {
+  \ 'markdown': v:true,
+  \ }
 
 packadd! matchit
