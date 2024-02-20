@@ -2,7 +2,7 @@
 
 {
   environment = {
-    shells = with pkgs; [ fish helix ]; # Default Shell
+    shells = with pkgs; [ fish ]; # Default Shell
 
     # Environment Variables
     variables = {
