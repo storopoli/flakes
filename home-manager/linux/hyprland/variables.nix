@@ -4,8 +4,8 @@
   home = {
     sessionVariables = {
       SHELL = "fish";
-      EDITOR = "hx";
-      VISUAL = "hx";
+      EDITOR = "nvim";
+      VISUAL = "nvim";
       BROWSER = "firefox";
       TERMINAL = "foot";
       QT_QPA_PLATFORMTHEME = "gtk3";

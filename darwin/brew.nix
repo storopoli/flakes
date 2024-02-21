@@ -36,7 +36,6 @@
       "fuse-t"
       "karabiner-elements"
       "keepassxc"
-      "keycastr"
       "mullvadvpn"
       "obs"
       "rectangle"

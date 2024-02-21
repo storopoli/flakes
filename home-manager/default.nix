@@ -5,7 +5,7 @@
     # common home-manager configs
     ./cli
     ./shell
-    ./helix.nix
+    #./helix.nix
     ./age.nix
   ];
 }

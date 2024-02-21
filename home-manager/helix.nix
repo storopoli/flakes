@@ -1,14 +1,5 @@
 { config, pkgs, lib, ... }:
 
-let
-  helix-gpt-wrapper = pkgs.writeScriptBin "helix-gpt" ''
-    #!/usr/bin/env bash
-    set -e
-
-    ${pkgs.helix-gpt}/bin/helix-gpt $@
-  '';
-in
-
 {
   programs = {
     helix = {
@@ -28,8 +19,6 @@ in
         taplo
         typst-lsp
         yaml-language-server
-        helix-gpt
-        helix-gpt-wrapper
 
         # debugger
         lldb # provides lldb-vscode
@@ -195,52 +184,8 @@ in
             };
             auto-format = true;
           }
-          {
-            # FIXME: in the next helix release typst will be included
-            name = "typst";
-            scope = "source.typst";
-            language-servers = [ "typst-lsp" "gpt" ];
-            injection-regex = "typst";
-            file-types = [ "typ" "typst" ];
-            comment-token = "//";
-            indent = {
-              tab-width = 2;
-              unit = "  ";
-            };
-            auto-pairs = {
-              "(" = ")";
-              "{" = "}";
-              "[" = "]";
-              "\"" = "\"";
-              "`" = "`";
-              "$" = "$";
-            };
-            roots = [ "typst.toml" ];
-            auto-format = true;
-            formatter = {
-              command = "typst-fmt";
-              args = [ "/dev/stdin" "-o" "/dev/stdout" ];
-            };
-          }
         ];
-
-        grammar = [
-          {
-            name = "typst";
-            source = {
-              git = "https://github.com/uben0/tree-sitter-typst";
-              rev = "e35aa22395fdde82bbc4b5700c324ce346dfc9e5";
-            };
-          }
-        ];
-
       };
     };
-  };
-  home.sessionVariables = {
-    # FIXME: This is broken on MacOS
-    # COPILOT_API_KEY = ''
-    #   $(${pkgs.coreutils}/bin/cat ${config.age.secrets.copilot.path})
-    # '';
   };
 }

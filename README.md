@@ -71,9 +71,6 @@ These are my NixOS/macOS Nix setup.
   - [`marksman`](https://github.com/artempyanykh/marksman): Markdown
   - [`vscode-langservers-extracted`](https://github.com/hrsh7th/vscode-langservers-extracted): HTML, CSS, and JSON
   - [`typst-lsp`](https://github.com/nvarner/typst-lsp): [Typst](https://typst.app)
-  - [`helix-gpt`](https://github.com/leona/helix-gpt): ChatGPT/Copilot/LLM support
-    (don't forget to check how to setup your environment variables,
-    I am using [`ryantm/agenix`](https://github.com/ryantm/agenix))
 
 - [Catppuccin](https://catppuccin.com) Mocha theme everywhere.
 - Archival tools:

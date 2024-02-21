@@ -79,7 +79,7 @@ in
     '' + fish_path;
     shellAliases = {
       devshell = "nix flake new -t 'github:numtide/devshell' .";
-      e = "hx";
+      e = "nvim";
       g = "git";
       l = "ls -l";
       ll = "ls -la";
@@ -87,7 +87,7 @@ in
       testtor = "curl -x socks5h://localhost:9050 -s https://check.torproject.org/api/ip";
       testmullvad = "curl -Ls am.i.mullvad.net/json | jq";
       top = "btm";
-      vi = "vim";
+      vi = "nvim";
       yt = "yt-dlp --add-metadata -i --format mp4 --restrict-filenames";
       yta = "yt -x -f bestaudio/best --format mp4 --audio-format opus --restrict-filenames";
     };
