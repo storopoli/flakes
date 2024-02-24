@@ -27,10 +27,6 @@
       url = "github:nix-community/lanzaboote/v0.3.0";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    arkenfox = {
-      url = "github:dwarfmaster/arkenfox-nixos";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     neovix = {
       url = "github:storopoli/neovix";
       inputs = {
@@ -113,7 +109,6 @@
                         self.homeModules.common
                         self.homeModules.linux
                         inputs.agenix.homeManagerModules.age
-                        inputs.arkenfox.hmModules.default
                       ];
                       home.stateVersion = "${stateVersion}";
                       systemd.user.startServices = "sd-switch";

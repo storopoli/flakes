@@ -95,7 +95,7 @@ These are my NixOS/macOS Nix setup.
   Check the [`secrets/README.md`](secrets/README.md) for details.
 - Apps:
 
-  - [`firefox`](https://www.mozilla.org/firefox)
+  - Hardened browser
     with [Tor Browser](https://www.torproject.org/)
     also available
   - Bitcoin tools such as [Sparrow wallet](https://sparrowwallet.com/)
@@ -131,12 +131,6 @@ Read more about this in the [NixOs Paranoid Guide](https://xeiaso.net/blog/paran
 - Apps:
 
   - [`foot`](https://codeberg.org/dnkl/foot)
-  - [`firefox`](https://www.mozilla.org/firefox) with the following add-ons:
-
-    - [uBlock Origin](https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/)
-    - [Vimium](https://addons.mozilla.org/en-US/firefox/addon/vimium-ff/)
-    - [User-Agent Switcher and Manager](https://addons.mozilla.org/en-US/firefox/addon/user-agent-string-switcher/)
-
   - Docker and Linux VMs with [Podman](https://podman.io/) and [QEMU](https://www.qemu.org/)
 
 - VPN support with [`wireguard`](https://www.wireguard.com/)
