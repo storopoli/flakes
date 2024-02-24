@@ -31,7 +31,7 @@ jobs:
         uses: DeterminateSystems/magic-nix-cache-action@v3
 
       - name: "Build NixOS config ❄️"
-        run: nix build --dry-run -L '.#nixosConfigurations.framework.config.system.build.toplevel' --show-trace
+        run: nix build --dry-run --impure -L '.#nixosConfigurations.framework.config.system.build.toplevel' --show-trace
 
   macos-x86-test:
     name: "macOS Intel Nix Test"
