@@ -25,7 +25,7 @@
   boot = {
     supportedFilesystems = [ "ntfs" "bcachefs" ];
 
-    kernelPackages = pkgs.linuxPackages_latest_hardened;
+    kernelPackages = pkgs.linuxPackages_latest; # NOTE: maybe overwritten by hardening.nix
 
     # Secure Boot
     lanzaboote = {
