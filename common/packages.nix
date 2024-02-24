@@ -40,6 +40,7 @@ in
     p7zip
 
     # programming
+    mold
     rust
     julia-bin
     python3

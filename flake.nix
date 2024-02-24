@@ -27,23 +27,11 @@
       url = "github:nix-community/lanzaboote/v0.3.0";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nur.url = "github:nix-community/NUR";
-    arkenfox = {
-      url = "github:dwarfmaster/arkenfox-nixos";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     neovix = {
       url = "github:storopoli/neovix";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         flake-parts.follows = "flake-parts";
-      };
-    };
-    nix-on-droid = {
-      url = "github:nix-community/nix-on-droid/release-23.05";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        home-manager.follows = "home-manager";
       };
     };
   };
@@ -97,7 +85,6 @@
           stateVersion = "23.11";
           darwinStateVersion = 4;
           homeStateVersion = "23.11";
-          androidStateVersion = "23.05";
         in
         {
           # Configurations for Linux (NixOS) machines
@@ -122,8 +109,6 @@
                         self.homeModules.common
                         self.homeModules.linux
                         inputs.agenix.homeManagerModules.age
-                        inputs.nur.hmModules.nur
-                        inputs.arkenfox.hmModules.default
                       ];
                       home.stateVersion = "${stateVersion}";
                       systemd.user.startServices = "sd-switch";
@@ -176,31 +161,6 @@
             };
           };
 
-          # Configuration for Android
-          nixOnDroidConfigurations = {
-            pixel = inputs.nix-on-droid.lib.nixOnDroidConfiguration {
-              modules = [
-                {
-                  system.stateVersion = androidStateVersion;
-                }
-                ./android
-                {
-                  home-manager = {
-                    useGlobalPackages = true;
-                    useUserPackages = true;
-                    backupFileExtension = "hm-bak";
-                    config = {
-                      imports = [
-                        ./home-manager/android
-                      ];
-                      home.stateVersion = androidStateVersion;
-                    };
-                  };
-                }
-              ];
-            };
-          };
-
           # All nixos/nix-darwin configurations are kept here.
           nixosModules = {
             # Common nixos/nix-darwin configuration shared between Linux and macOS.
@@ -222,10 +182,8 @@
             linux = {
               imports = [
                 # Custom inputs
-                inputs.nur.nixosModules.nur
                 inputs.impermanence.nixosModules.impermanence
                 inputs.disko.nixosModules.disko
-                { nixpkgs.overlays = [ inputs.nur.overlay ]; }
                 (import ./linux)
               ];
               system.stateVersion = "${stateVersion}";

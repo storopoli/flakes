@@ -1,7 +1,9 @@
 { lib, pkgs, modulesPath, ... }:
 
 {
-  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
+  imports = [
+    (modulesPath + "/installer/scan/not-detected.nix")
+  ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 
@@ -47,14 +49,6 @@
     extraModprobeConfig = ''
       options cfg80211 ieee80211_regdom="US"
     '';
-
-    blacklistedKernelModules = [
-      # Bluetooth disable
-      # "btusb"
-      # "bnep"
-      # "bluetooth"
-      "hid_sensor_hub" # give me back by brightness keys
-    ];
 
     consoleLogLevel = 0;
 

@@ -6,7 +6,7 @@
       SHELL = "fish";
       EDITOR = "nvim";
       VISUAL = "nvim";
-      BROWSER = "firefox";
+      BROWSER = "chromium";
       TERMINAL = "foot";
       QT_QPA_PLATFORMTHEME = "gtk3";
       QT_SCALE_FACTOR = "1";

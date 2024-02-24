@@ -6,7 +6,6 @@
     ./gpg.nix
     ./hyprland
     ./foot.nix
-    ./firefox.nix
     ./mpv
     ./rnnoise.nix
     ./zathura.nix

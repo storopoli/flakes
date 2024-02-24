@@ -95,7 +95,7 @@ These are my NixOS/macOS Nix setup.
   Check the [`secrets/README.md`](secrets/README.md) for details.
 - Apps:
 
-  - [`firefox`](https://www.mozilla.org/firefox)
+  - Hardened browser
     with [Tor Browser](https://www.torproject.org/)
     also available
   - Bitcoin tools such as [Sparrow wallet](https://sparrowwallet.com/)
@@ -116,6 +116,31 @@ Read more about this in the [NixOs Paranoid Guide](https://xeiaso.net/blog/paran
 
 ### Features
 
+- Hardened Kernel Boot Parameters:
+  Based on this [guide](https://dataswamp.org/~solene/2022-01-13-nixos-hardened.html),
+  and also on [`secureblue`](https://github.com/secureblue/secureblue):
+
+  - Use the memory allocator `scudo`, protecting against some buffer overflow exploits
+  - Prevent kernel modules to be loaded after boot
+  - Protect against rewriting kernel image
+  - Increase containers/virtualization protection at a performance cost (L1 flush or page table isolation)
+  - Apparmor is enabled by default
+  - Many filesystem modules are forbidden because old/rare/not audited enough
+  - Firewall: block any incoming traffic
+  - `clamav` antivirus
+  - `firejail`: run programs to restrict its permissions and rights.
+    This is rather important to run web browsers with it because it will prevent them any
+    access to the filesystem except `~/Downloads` and a few required directories
+    (local profile, `/etc/resolv.conf`, font cache etc...).
+    The following packages/binaries are hardened with `firejail`:
+
+    - `chromium`
+    - `tor-browser`
+    - `signal-desktop`
+    - `keepassxc`
+    - `mpv`
+    - `transmission-gtk`
+
 - [bcachefs filesystem](https://bcachefs.org)
 - [Secure Boot](https://en.wikipedia.org/wiki/UEFI#Secure_Boot)
 - [`Hyprland`](https://github.com/hyprwm/Hyprland) Wayland window manager:
@@ -131,12 +156,7 @@ Read more about this in the [NixOs Paranoid Guide](https://xeiaso.net/blog/paran
 - Apps:
 
   - [`foot`](https://codeberg.org/dnkl/foot)
-  - [`firefox`](https://www.mozilla.org/firefox) with the following add-ons:
-
-    - [uBlock Origin](https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/)
-    - [Vimium](https://addons.mozilla.org/en-US/firefox/addon/vimium-ff/)
-    - [User-Agent Switcher and Manager](https://addons.mozilla.org/en-US/firefox/addon/user-agent-string-switcher/)
-
+  - hardened [`chromium`](https://www.chromium.org/) with `firejail`
   - Docker and Linux VMs with [Podman](https://podman.io/) and [QEMU](https://www.qemu.org/)
 
 - VPN support with [`wireguard`](https://www.wireguard.com/)
