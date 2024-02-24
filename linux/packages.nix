@@ -45,10 +45,6 @@
     mat2
     transmission_4
     obs-studio
-  ]) ++ (with config.nur.repos;
-    [
-      # nur packages
-      # https://nur.nix-community.org/
-    ]);
+  ]);
 
 }

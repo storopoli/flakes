@@ -27,7 +27,6 @@
       url = "github:nix-community/lanzaboote/v0.3.0";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nur.url = "github:nix-community/NUR";
     arkenfox = {
       url = "github:dwarfmaster/arkenfox-nixos";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -114,7 +113,6 @@
                         self.homeModules.common
                         self.homeModules.linux
                         inputs.agenix.homeManagerModules.age
-                        inputs.nur.hmModules.nur
                         inputs.arkenfox.hmModules.default
                       ];
                       home.stateVersion = "${stateVersion}";
@@ -189,10 +187,8 @@
             linux = {
               imports = [
                 # Custom inputs
-                inputs.nur.nixosModules.nur
                 inputs.impermanence.nixosModules.impermanence
                 inputs.disko.nixosModules.disko
-                { nixpkgs.overlays = [ inputs.nur.overlay ]; }
                 (import ./linux)
               ];
               system.stateVersion = "${stateVersion}";
