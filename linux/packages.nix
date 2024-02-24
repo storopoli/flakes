@@ -29,9 +29,9 @@
   # linux specific user packager
   users.users.user.packages = (with pkgs; [
     # opsec
-    keepassxc
-    tor-browser-bundle-bin
-    signal-desktop
+    #keepassxc # firejailed in hardening.nix
+    #tor-browser-bundle-bin # firejailed in hardening.nix
+    #signal-desktop # firejailed in hardening.nix
 
     # bitcoin
     sparrow
@@ -43,7 +43,7 @@
     qpwgraph
     playerctl
     mat2
-    transmission_4
+    #transmission_4 # firejailed in hardening.nix
     obs-studio
   ]);
 

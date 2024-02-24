@@ -120,18 +120,26 @@ Read more about this in the [NixOs Paranoid Guide](https://xeiaso.net/blog/paran
   Based on this [guide](https://dataswamp.org/~solene/2022-01-13-nixos-hardened.html),
   sets the kernel to `linuxPackages_latest_hardened` and adds the following:
 
-  - use the memory allocator `scudo`, protecting against some buffer overflow exploits
-  - prevent kernel modules to be loaded after boot
-  - protect against rewriting kernel image
-  - increase containers/virtualization protection at a performance cost (L1 flush or page table isolation)
-  - apparmor is enabled by default
-  - many filesystem modules are forbidden because old/rare/not audited enough
-  - firewall: block any incoming traffic
-  - clamav antivirus
-  - firejail: run programs to restrict its permissions and rights.
+  - Use the memory allocator `scudo`, protecting against some buffer overflow exploits
+  - Prevent kernel modules to be loaded after boot
+  - Protect against rewriting kernel image
+  - Increase containers/virtualization protection at a performance cost (L1 flush or page table isolation)
+  - Apparmor is enabled by default
+  - Many filesystem modules are forbidden because old/rare/not audited enough
+  - Firewall: block any incoming traffic
+  - `clamav` antivirus
+  - `firejail`: run programs to restrict its permissions and rights.
     This is rather important to run web browsers with it because it will prevent them any
     access to the filesystem except `~/Downloads` and a few required directories
     (local profile, `/etc/resolv.conf`, font cache etc...).
+    The following packages/binaries are hardened with `firejail`:
+
+    - `chromium`
+    - `tor-browser`
+    - `signal-desktop`
+    - `keepassxc`
+    - `mpv`
+    - `transmission-gtk`
 
 - [bcachefs filesystem](https://bcachefs.org)
 - [Secure Boot](https://en.wikipedia.org/wiki/UEFI#Secure_Boot)

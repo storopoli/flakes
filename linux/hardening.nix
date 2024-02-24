@@ -28,9 +28,36 @@
     #    executable = "${pkgs.lib.getBin pkgs.firefox}/bin/firefox";
     #    profile = "${pkgs.firejail}/etc/firejail/firefox.profile";
     #};
+
     chromium = {
       executable = "${pkgs.lib.getBin pkgs.chromium}/bin/chromium";
       profile = "${pkgs.firejail}/etc/firejail/chromium.profile";
+    };
+
+    tor-browser = {
+      executable = "${pkgs.tor-browser-bundle-bin}/bin/tor-browser";
+      profile = "${pkgs.firejail}/etc/firejail/tor-browser.profile";
+    };
+
+    signal-desktop = {
+      executable = "${pkgs.lib.getBin pkgs.signal-desktop}/bin/signal-desktop --enable-features=UseOzonePlatform --ozone-platform=wayland";
+      profile = "${pkgs.firejail}/etc/firejail/signal-desktop.profile";
+      extraArgs = [ "--env=GTK_THEME=Adwaita:dark" ];
+    };
+
+    keepassxc = {
+      executable = "${pkgs.lib.getBin pkgs.keepassxc}/bin/keepassxc";
+      profile = "${pkgs.firejail}/etc/firejail/keepassxc.profile";
+    };
+
+    mpv = {
+      executable = "${pkgs.lib.getBin pkgs.mpv}/bin/mpv";
+      profile = "${pkgs.firejail}/etc/firejail/mpv.profile";
+    };
+
+    transmission-gtk = {
+      executable = "${pkgs.lib.getBin pkgs.transmission_4-gtk}/transmission-gtk";
+      profile = "${pkgs.firejail}/transmission-gtk.profile";
     };
   };
 
