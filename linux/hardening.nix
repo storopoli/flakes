@@ -1,9 +1,99 @@
 { config, lib, pkgs, ... }:
 {
-  imports =
-    [
-      <nixpkgs/nixos/modules/profiles/hardened.nix>
-    ];
+
+  # scudo memory allocato
+  environment.memoryAllocator.provider = "scudo";
+  environment.variables.SCUDO_OPTIONS = "ZeroContents=1";
+
+  # kernel hardening
+  security.lockKernelModules = true;
+  security.protectKernelImage = true;
+  security.forcePageTableIsolation = true;
+
+  # This is required by podman to run containers in rootless mode.
+  security.unprivilegedUsernsClone = config.virtualisation.containers.enable;
+  security.virtualisation.flushL1DataCache = "always";
+
+  # app armor
+  security.apparmor.enable = true;
+  security.apparmor.killUnconfinedConfinables = true;
+
+  # boot kernel parameters
+  boot.kernelParams = [
+    # Don't merge slabs
+    "slab_nomerge"
+
+    # Overwrite free'd pages
+    "page_poison=1"
+
+    # Enable page allocator randomization
+    "page_alloc.shuffle=1"
+
+    # Disable debugfs
+    "debugfs=off"
+
+    # Enable mitigations
+    "mitigations=auto,nosmt"
+
+    # Better entropy, may lead to longer boot time
+    "random.trust_cpu=off"
+    "random.trust_bootloader=off"
+  ];
+
+  boot.blacklistedKernelModules = [
+    # Obscure network protocols
+    "ax25"
+    "netrom"
+    "rose"
+
+    # Old or rare or insufficiently audited filesystems
+    "adfs"
+    "affs"
+    "bfs"
+    "befs"
+    "cramfs"
+    "efs"
+    "erofs"
+    "exofs"
+    "freevxfs"
+    "f2fs"
+    "hfs"
+    "hpfs"
+    "jfs"
+    "minix"
+    "nilfs2"
+    "ntfs"
+    "omfs"
+    "qnx4"
+    "qnx6"
+    "sysv"
+    "ufs"
+  ];
+
+  # Networking stuff
+  # Enable strict reverse path filtering (that is, do not attempt to route
+  # packets that "obviously" do not belong to the iface's network; dropped
+  # packets are logged as martians).
+  boot.kernel.sysctl."net.ipv4.conf.all.log_martians" = true;
+  boot.kernel.sysctl."net.ipv4.conf.all.rp_filter" = "1";
+  boot.kernel.sysctl."net.ipv4.conf.default.log_martians" = true;
+  boot.kernel.sysctl."net.ipv4.conf.default.rp_filter" = "1";
+
+  # Ignore broadcast ICMP (mitigate SMURF)
+  boot.kernel.sysctl."net.ipv4.icmp_echo_ignore_broadcasts" = true;
+
+  # Ignore incoming ICMP redirects (note: default is needed to ensure that the
+  # setting is applied to interfaces added after the sysctls are set)
+  boot.kernel.sysctl."net.ipv4.conf.all.accept_redirects" = false;
+  boot.kernel.sysctl."net.ipv4.conf.all.secure_redirects" = false;
+  boot.kernel.sysctl."net.ipv4.conf.default.accept_redirects" = false;
+  boot.kernel.sysctl."net.ipv4.conf.default.secure_redirects" = false;
+  boot.kernel.sysctl."net.ipv6.conf.all.accept_redirects" = false;
+  boot.kernel.sysctl."net.ipv6.conf.default.accept_redirects" = false;
+
+  # Ignore outgoing ICMP redirects (this is ipv4 only)
+  boot.kernel.sysctl."net.ipv4.conf.all.send_redirects" = false;
+  boot.kernel.sysctl."net.ipv4.conf.default.send_redirects" = false;
 
   # enable firewall and block all ports
   #networking.firewall.enable = true; # already defined by networking.nix

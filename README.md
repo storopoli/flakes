@@ -116,9 +116,9 @@ Read more about this in the [NixOs Paranoid Guide](https://xeiaso.net/blog/paran
 
 ### Features
 
-- Hardened Kernel and Profile:
+- Hardened Kernel Boot Parameters:
   Based on this [guide](https://dataswamp.org/~solene/2022-01-13-nixos-hardened.html),
-  sets the kernel to `linuxPackages_latest_hardened` and adds the following:
+  and also on [`secureblue`](https://github.com/secureblue/secureblue):
 
   - Use the memory allocator `scudo`, protecting against some buffer overflow exploits
   - Prevent kernel modules to be loaded after boot

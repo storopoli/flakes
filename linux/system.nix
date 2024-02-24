@@ -25,7 +25,7 @@
   boot = {
     supportedFilesystems = [ "ntfs" "bcachefs" ];
 
-    kernelPackages = pkgs.linuxPackages_latest; # NOTE: maybe overwritten by hardening.nix
+    kernelPackages = pkgs.linuxPackages_latest;
 
     # Secure Boot
     lanzaboote = {
@@ -49,13 +49,6 @@
     extraModprobeConfig = ''
       options cfg80211 ieee80211_regdom="US"
     '';
-
-    blacklistedKernelModules = [
-      # Bluetooth disable
-      # "btusb"
-      # "bnep"
-      # "bluetooth"
-    ];
 
     consoleLogLevel = 0;
 
