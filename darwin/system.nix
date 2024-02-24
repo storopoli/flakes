@@ -163,9 +163,6 @@
         	    OpenWith -bool true \
         	    Privileges -bool true
 
-      # Reset Launchpad, but keep the desktop wallpaper intact
-      find ~/Library/Application\ Support/Dock -name "*.db" -maxdepth 1 -delete
-
       # Only use UTF-8 in Terminal.app
       defaults write com.apple.terminal StringEncodings -array 4
 
