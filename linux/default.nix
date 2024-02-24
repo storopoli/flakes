@@ -3,6 +3,7 @@
 {
   imports = [
     ./system.nix
+    ./hardening.nix
     ./filesystem.nix
     ./networking.nix
     ./packages.nix

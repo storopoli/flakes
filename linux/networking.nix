@@ -43,12 +43,6 @@
     wireguard.enable = true;
     firewall = {
       enable = true;
-      allowedTCPPorts = [
-        51413 # transmission
-      ];
-      allowedUDPPorts = [
-        51413 # transmission
-      ];
     };
   };
 

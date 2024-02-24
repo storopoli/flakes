@@ -1,7 +1,9 @@
 { lib, pkgs, modulesPath, ... }:
 
 {
-  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
+  imports = [
+    (modulesPath + "/installer/scan/not-detected.nix")
+  ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 
@@ -23,7 +25,7 @@
   boot = {
     supportedFilesystems = [ "ntfs" "bcachefs" ];
 
-    kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.linuxPackages_latest_hardened;
 
     # Secure Boot
     lanzaboote = {
@@ -53,7 +55,6 @@
       # "btusb"
       # "bnep"
       # "bluetooth"
-      "hid_sensor_hub" # give me back by brightness keys
     ];
 
     consoleLogLevel = 0;
