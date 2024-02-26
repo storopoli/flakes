@@ -28,6 +28,7 @@
         dprint
         nixpkgs-fmt
         typstfmt
+        shfmt
       ];
 
       settings = {
@@ -88,6 +89,7 @@
               w = ":write";
               q = ":quit";
               Q = ":quit-all!";
+              space = "buffer_picker";
             };
           };
           select = {
@@ -121,26 +123,23 @@
             };
           };
 
-          "typst-lsp".command = "typst-lsp";
-
-          "gpt" = {
-            command = "helix-gpt";
-            args = [
-              "--handler"
-              "copilot"
-            ];
+          "bash-language-server" = {
+            command = "bash-language-server";
+            args = [ "start" ];
           };
+
+          "typst-lsp".command = "typst-lsp";
 
         };
 
         language = [
           {
             name = "rust";
-            language-servers = [ "rust-analyzer" "gpt" ];
+            language-servers = [ "rust-analyzer" ];
           }
           {
             name = "python";
-            language-servers = [ "pyright" "ruff-lsp" "gpt" ];
+            language-servers = [ "pyright" "ruff-lsp" ];
             formatter = {
               command = "black";
               args = [ "--quiet" "-" ];
@@ -148,8 +147,16 @@
             auto-format = true;
           }
           {
+            name = "bash";
+            auto-format = true;
+            formatter = {
+              command = "shfmt";
+              args = [ "-i" "2" "-" ];
+            };
+          }
+          {
             name = "toml";
-            language-servers = [ "taplo" "gpt" ];
+            language-servers = [ "taplo" ];
             formatter = {
               command = "taplo";
               args = [ "fmt" "-" ];
@@ -158,11 +165,11 @@
           }
           {
             name = "yaml";
-            language-servers = [ "yaml-language-server" "gpt" ];
+            language-servers = [ "yaml-language-server" ];
           }
           {
             name = "nix";
-            language-servers = [ "nil" "gpt" ];
+            language-servers = [ "nil" ];
             formatter = {
               command = "nixpkgs-fmt";
             };
@@ -177,7 +184,7 @@
           }
           {
             name = "markdown";
-            language-servers = [ "marksman" "gpt" ];
+            language-servers = [ "marksman" ];
             formatter = {
               command = "dprint";
               args = [ "fmt" "--stdin" "md" ];
