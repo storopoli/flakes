@@ -78,12 +78,14 @@ in
       set fish_pager_color_description 6c7086
     '' + fish_path;
     shellAliases = {
+      cat = "bat --style=plain";
       devshell = "nix flake new -t 'github:numtide/devshell' .";
       e = "nvim";
       g = "git";
       l = "ls -l";
       ll = "ls -la";
       lg = "lazygit";
+      rebuild = "doas nixos-rebuild switch --flake .#";
       testtor = "curl -x socks5h://localhost:9050 -s https://check.torproject.org/api/ip";
       testmullvad = "curl -Ls am.i.mullvad.net/json | jq";
       top = "btm";
