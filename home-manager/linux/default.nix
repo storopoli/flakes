@@ -9,6 +9,7 @@
     ./mpv
     ./rnnoise.nix
     ./zathura.nix
+    ./mold.nix
   ];
   home = {
     username = "user";
