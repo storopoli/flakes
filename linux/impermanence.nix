@@ -49,7 +49,7 @@
       ];
 
       files = [
-        # put files here
+        ".config/ncspot/userstate.cbor"
       ];
     };
   };

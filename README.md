@@ -83,6 +83,7 @@ These are my NixOS/macOS Nix setup.
 - CLI entertainment tools:
   [`yt-dlp`](https://github.com/yt-dlp/yt-dlp),
   [`termusic`](https://github.com/tramhao/termusic),
+  [`ncspot`](https://github.com/hrkfdn/ncspot),
   and [`ffmpeg`](https://ffmpeg.org/).
 - Publishing and content CLI tools:
   [`qpdf`](https://github.com/qpdf/qpdf),
