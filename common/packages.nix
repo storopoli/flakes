@@ -41,7 +41,6 @@ in
 
     # programming
     rust
-    julia-bin
     python3
     llvm
     luajit

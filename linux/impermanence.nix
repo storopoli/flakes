@@ -30,7 +30,6 @@
         ".cargo/registry"
         ".cargo/bin"
         ".cargo/git"
-        ".julia"
         ".npm-global"
         {
           directory = ".gnupg";
