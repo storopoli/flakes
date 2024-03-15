@@ -48,8 +48,7 @@ These are my NixOS/macOS Nix setup.
   [Nix](https://nixos.org/),
   [Rust](https://rust-lang.org/),
   [Lua](https://lua.org),
-  [Python](https://python.org/),
-  and [Julia](https://julialang.org).
+  and [Python](https://python.org/).
 - Easy to develop environments with
   [`nix-shell`](https://nixos.org/manual/nix/stable/command-ref/nix-shell.html)
   [`direnv`](https://direnv.net/),
