@@ -6,6 +6,7 @@
   };
 
   nix.gc.interval.Day = 7;
+  nix.settings.extra-nix-path = "nixpkgs=flake:nixpkgs";
 
   system = {
     # Global macOS System Settings
