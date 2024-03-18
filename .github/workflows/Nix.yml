@@ -28,7 +28,7 @@ jobs:
         uses: DeterminateSystems/nix-installer-action@v10
 
       - name: "Nix Cache"
-        uses: DeterminateSystems/magic-nix-cache-action@v3
+        uses: DeterminateSystems/magic-nix-cache-action@v4
 
       - name: "Build NixOS config ❄️"
         run: nix build --dry-run -L '.#nixosConfigurations.framework.config.system.build.toplevel' --show-trace
@@ -43,7 +43,7 @@ jobs:
         uses: DeterminateSystems/nix-installer-action@v10
 
       - name: "Nix Cache"
-        uses: DeterminateSystems/magic-nix-cache-action@v3
+        uses: DeterminateSystems/magic-nix-cache-action@v4
 
       - name: "Build NixOS config ❄️"
         run: nix run nix-darwin -- check --flake .#macbook_x86
@@ -58,7 +58,7 @@ jobs:
         uses: DeterminateSystems/nix-installer-action@v10
 
       - name: "Nix Cache"
-        uses: DeterminateSystems/magic-nix-cache-action@v3
+        uses: DeterminateSystems/magic-nix-cache-action@v4
 
       - name: "Build NixOS config ❄️"
         run: nix run nix-darwin -- check --flake .#macbook
