@@ -1,10 +1,10 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
   services.gpg-agent = {
     enable = true;
     enableSshSupport = true;
-    pinentryFlavor = "gnome3";
+    pinentryPackage = pkgs.pinentry-gnome3;
     # set to 10 minutes for regular ttl, and 2 hours for max ttl
     defaultCacheTtl = 600;
     defaultCacheTtlSsh = 600;
