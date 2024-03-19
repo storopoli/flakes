@@ -2,7 +2,8 @@
 
 {
   home.packages = with pkgs; [
-    neovix
+    #neovix
+    lazynvim
   ];
 
 }
