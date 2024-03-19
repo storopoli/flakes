@@ -600,10 +600,9 @@ Before installing anything you'll need to prepare your system:
 1. Then, rebuild and switch to the system after rebuild:
 
    ```bash
-   nix --experimental-features 'nix-command flakes' build '.#darwinConfigurations.macbook.system'
    nix run --extra-experimental-features 'nix-command flakes' nix-darwin -- switch --flake .
    # or if nix-command and flakes are enabled:
-   nix run nix-darwin -- switch --flake .
+   darwin-rebuild switch --flake .
    ```
 
 ## Flakes Creed
