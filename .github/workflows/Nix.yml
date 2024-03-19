@@ -57,6 +57,7 @@ jobs:
         if: matrix.os == 'ubuntu-latest'
         run: |
           sudo mkdir /nix
+          sudo chown -R runner:runner /nix
 
       - name: "Maximize Disk Space"
         if: matrix.os == 'ubuntu-latest'
@@ -77,5 +78,5 @@ jobs:
         uses: DeterminateSystems/magic-nix-cache-action@v4
 
       - name: "Test Nix config"
-        run: nix build .#${{ matrix.flake-attr }}
+        run: nix build -L '.#${{ matrix.flake-attr }}'
 
