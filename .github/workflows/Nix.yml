@@ -18,47 +18,30 @@ jobs:
         with:
           fail-mode: true
 
-  nixos-test:
-    name: "NixOS Nix Test"
-    runs-on: ubuntu-latest
+  config-tests:
+    name: "${{ matrix.os-name }} Nix Test"
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        include:
+          - os: ubuntu-latest
+            os-name: "Linux x86"
+            flake-attr: nixosConfigurations.framework.config.system.build.toplevel
+          - os: macos-latest
+            os-name: "macOS x86"
+            flake-attr: darwinConfigurations.macbook_x86.config.system.build.toplevel
+          - os: macos-14
+            os-name: "macOS Apple Silicon"
+            flake-attr: darwinConfigurations.macbook.config.system.build.toplevel
     steps:
       - uses: actions/checkout@v4
 
-      - name: "Install Nix ❄️"
+      - name: "Install Nix"
         uses: DeterminateSystems/nix-installer-action@v10
 
       - name: "Nix Cache"
         uses: DeterminateSystems/magic-nix-cache-action@v4
 
-      - name: "Build NixOS config ❄️"
-        run: nix build --dry-run -L '.#nixosConfigurations.framework.config.system.build.toplevel' --show-trace
+      - name: "Test Nix config"
+        run: nix build .#${{ matrix.flake-attr }}
 
-  macos-x86-test:
-    name: "macOS Intel Nix Test"
-    runs-on: macos-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: "Install Nix ❄️"
-        uses: DeterminateSystems/nix-installer-action@v10
-
-      - name: "Nix Cache"
-        uses: DeterminateSystems/magic-nix-cache-action@v4
-
-      - name: "Build NixOS config ❄️"
-        run: nix run nix-darwin -- check --flake .#macbook_x86
-
-  macos-arm-test:
-    name: "macOS Apple Silicon Nix Test"
-    runs-on: macos-14
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: "Install Nix ❄️"
-        uses: DeterminateSystems/nix-installer-action@v10
-
-      - name: "Nix Cache"
-        uses: DeterminateSystems/magic-nix-cache-action@v4
-
-      - name: "Build NixOS config ❄️"
-        run: nix run nix-darwin -- check --flake .#macbook
