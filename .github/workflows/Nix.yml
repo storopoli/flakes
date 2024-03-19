@@ -53,11 +53,10 @@ jobs:
           large-packages: true
           swap-storage: true
 
-      - name: "Create Dir for Mounting moar Disk Space"
+      - name: "Create dir for mounting moar disk Space"
         if: matrix.os == 'ubuntu-latest'
         run: |
           sudo mkdir /nix
-          sudo chown -R runner:runner /nix
 
       - name: "Maximize Disk Space"
         if: matrix.os == 'ubuntu-latest'
@@ -70,6 +69,12 @@ jobs:
           temp-reserve-mb: "100"
           swap-size-mb: "4096"
           root-reserve-mb: "1024"
+
+      - name: "Adjust permissions for /nix"
+        if: matrix.os == 'ubuntu-latest'
+        run: |
+          sudo chown -R root:root /nix
+          sudo chmod -R 755 /nix
 
       - name: "Install Nix"
         uses: DeterminateSystems/nix-installer-action@v10
