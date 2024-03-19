@@ -34,7 +34,41 @@ jobs:
             os-name: "macOS Apple Silicon"
             flake-attr: darwinConfigurations.macbook.config.system.build.toplevel
     steps:
-      - uses: actions/checkout@v4
+      - name: "Checkout Repo"
+        uses: actions/checkout@v4
+
+      - name: Free Disk Space (Ubuntu)
+        if: matrix.os == 'ubuntu-latest'
+        uses: jlumbroso/free-disk-space@main
+        with:
+          # this might remove tools that are actually needed,
+          # when set to "true" but frees about 6 GB
+          tool-cache: true
+
+          # all of these default to true, but feel free to set to
+          # "false" if necessary for your workflow
+          android: true
+          dotnet: true
+          haskell: true
+          large-packages: true
+          swap-storage: true
+
+      - name: "Create Dir for Mounting moar Disk Space"
+        if: matrix.os == 'ubuntu-latest'
+        run: |
+          sudo mkdir /nix
+
+      - name: "Maximize Disk Space"
+        if: matrix.os == 'ubuntu-latest'
+        uses: easimon/maximize-build-space@v8
+        with:
+          build-mount-path: /nix
+          remove-dotnet: "true"
+          remove-android: "true"
+          remove-haskell: "true"
+          temp-reserve-mb: "100"
+          swap-size-mb: "4096"
+          root-reserve-mb: "1024"
 
       - name: "Install Nix"
         uses: DeterminateSystems/nix-installer-action@v10
