@@ -60,7 +60,7 @@ jobs:
 
       - name: "Maximize Disk Space"
         if: matrix.os == 'ubuntu-latest'
-        uses: easimon/maximize-build-space@v8
+        uses: easimon/maximize-build-space@v10
         with:
           build-mount-path: /nix
           remove-dotnet: "true"
