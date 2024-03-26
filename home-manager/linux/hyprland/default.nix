@@ -3,6 +3,7 @@
 {
   imports = [
     ./variables.nix
+    ./config.nix
     ./wallpaper.nix
     ./scripts
     ./waybar
@@ -30,7 +31,5 @@
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.enable = true;
-    enableNvidiaPatches = false;
-    extraConfig = (builtins.readFile ./hyprland.conf);
   };
 }
