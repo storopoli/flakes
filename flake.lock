@@ -531,11 +531,11 @@
         "pre-commit-hooks": "pre-commit-hooks_2"
       },
       "locked": {
-        "lastModified": 1710863937,
-        "narHash": "sha256-2OGhGbSiGZrBVTYHsUgudk8E3I1jY6sb90lSvgBw+Nk=",
+        "lastModified": 1710968684,
+        "narHash": "sha256-9A9jqwkqzAtU5om7fG3It36t6w+Hi2HYciepiU8ddQw=",
         "owner": "storopoli",
         "repo": "neovix",
-        "rev": "db85cdc7c17c65a45cf3ac7f85718fde20bea63e",
+        "rev": "d4e099644ac91e34af9cccd0866989ae7784556a",
         "type": "github"
       },
       "original": {
