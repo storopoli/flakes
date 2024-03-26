@@ -125,8 +125,13 @@
                 self.nixosModules.linux
                 # Secure Boot
                 inputs.lanzaboote.nixosModules.lanzaboote
-                # Desktop specific nixos-hardware
-                #inputs.nixos-hardware.nixosModules.framework-13-7040-amd
+                # AMD
+                inputs.nixos-hardware.nixosModules.common-cpu-amd
+                inputs.nixos-hardware.nixosModules.common-cpu-amd-pstate
+                # SSD fstrim
+                inputs.nixos-hardware.nixosModules.common-pc-ssd
+                # Nvidia stuff
+                ./linux/nvidia.nix
                 # Your home-manager configuration
                 self.nixosModules.home-manager
                 {
