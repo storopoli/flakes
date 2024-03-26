@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
   # Home-manager waybar config
@@ -23,6 +23,7 @@
       ];
       modules-center = [ "clock" ];
       modules-right = [
+        "custom/yubikey"
         "pulseaudio"
         "backlight"
         "sway/language"
@@ -58,6 +59,10 @@
           "deactivated" = "";
         };
         "tooltip" = false;
+      };
+      "custom/yubikey" = {
+        "exec" = "waybar_yubikey";
+        "return-type" = "json";
       };
       "pulseaudio" = {
         "scroll-step" = 1;
@@ -157,4 +162,8 @@
       };
     }];
   };
+
+  home.packages = with pkgs; [
+    yubikey-touch-detector
+  ];
 }
