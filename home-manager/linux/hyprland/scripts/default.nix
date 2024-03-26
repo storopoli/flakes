@@ -7,6 +7,7 @@ let
   dynamic_wallpaper = pkgs.writeShellScriptBin "dynamic_wallpaper" (builtins.readFile ./dynamic_wallpaper.sh);
   default_wall = pkgs.writeShellScriptBin "default_wall" (builtins.readFile ./default_wall.sh);
   waybar_yubikey = pkgs.writeShellScriptBin "waybar_yubikey" (builtins.readFile ./waybar_yubikey.sh);
+  waybar_mullvad = pkgs.writeShellScriptBin "waybar_mullvad" (builtins.readFile ./waybar_mullvad.sh);
   launch_waybar = pkgs.writeShellScriptBin "launch_waybar" (builtins.readFile ./launch_waybar.sh);
 in
 {
@@ -17,6 +18,7 @@ in
     dynamic_wallpaper
     default_wall
     waybar_yubikey
+    waybar_mullvad
     launch_waybar
   ];
 }

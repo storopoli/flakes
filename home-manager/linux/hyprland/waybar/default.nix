@@ -29,6 +29,7 @@
         "sway/language"
         "memory"
         "cpu"
+        "custom/mullvad"
         "network"
         "battery"
         "custom/powermenu"
@@ -136,6 +137,10 @@
         "smooth-scrolling-threshold" = 5;
         "tooltip-format" =
           "{title} - {artist} ({elapsedTime:%M:%S}/{totalTime:%H:%M:%S})";
+      };
+      "custom/mullvad" = {
+        "exec" = "waybar_mullvad";
+        "return-type" = "json";
       };
       "network" = {
         "format-disconnected" = "󰯡 Disconnected";

@@ -92,6 +92,7 @@ tooltip label {
 #battery,
 #custom-powermenu,
 #custom-yubikey,
+#custom-mullvad,
 
 /* #mode { */
 /* 	margin-left: 10px; */
@@ -172,6 +173,11 @@ tooltip label {
 #custom-yubikey {
     /* #ddb6f2 */
     color: rgb(221, 182, 242);
+}
+
+#custom-mullvad {
+    /* #f8bd96 */
+    color: rgb(248, 189, 150);
 }
 
 #tray {
