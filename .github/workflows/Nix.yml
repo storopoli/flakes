@@ -25,8 +25,11 @@ jobs:
       matrix:
         include:
           - os: ubuntu-latest
-            os-name: "Linux x86"
+            os-name: "Framework Laptop"
             flake-attr: nixosConfigurations.framework.config.system.build.toplevel
+          - os: ubuntu-latest
+            os-name: "Nvidia Desktop"
+            flake-attr: nixosConfigurations.desktop.config.system.build.toplevel
           - os: macos-latest
             os-name: "macOS x86"
             flake-attr: darwinConfigurations.macbook_x86.config.system.build.toplevel
