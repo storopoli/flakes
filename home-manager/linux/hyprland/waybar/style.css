@@ -1,79 +1,79 @@
 * {
-  font-family: "Hack Nerd Font Propo";
-  font-size: 12pt;
-  font-weight: bold;
-  border-radius: 0px;
-  transition-property: background-color;
-  transition-duration: 0.5s;
+    font-family: "Hack Nerd Font Propo";
+    font-size: 12pt;
+    font-weight: bold;
+    border-radius: 0px;
+    transition-property: background-color;
+    transition-duration: 0.5s;
 }
 
 @keyframes blink_red {
-  to {
-    background-color: rgb(242, 143, 173);
-    color: rgb(26, 24, 38);
-  }
+    to {
+        background-color: rgb(242, 143, 173);
+        color: rgb(26, 24, 38);
+    }
 }
 
 .warning,
 .critical,
 .urgent {
-  animation-name: blink_red;
-  animation-duration: 1s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
+    animation-name: blink_red;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
 }
 
 window#waybar {
-  background-color: transparent;
+    background-color: transparent;
 }
 
-window > box {
-  margin-left: 5px;
-  margin-right: 5px;
-  margin-top: 5px;
-  background-color: rgb(30, 30, 46);
+window>box {
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 5px;
+    background-color: rgb(30, 30, 46);
 }
 
 #workspaces {
-  padding-left: 0px;
-  padding-right: 4px;
+    padding-left: 0px;
+    padding-right: 4px;
 }
 
 #workspaces button {
-  padding-top: 5px;
-  padding-bottom: 5px;
-  padding-left: 6px;
-  padding-right: 6px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 6px;
+    padding-right: 6px;
 }
 
 #workspaces button.active {
-  background-color: rgb(181, 232, 224);
-  color: rgb(26, 24, 38);
+    background-color: rgb(181, 232, 224);
+    color: rgb(26, 24, 38);
 }
 
 #workspaces button.urgent {
-  color: rgb(26, 24, 38);
+    color: rgb(26, 24, 38);
 }
 
 #workspaces button:hover {
-  background-color: rgb(248, 189, 150);
-  color: rgb(26, 24, 38);
+    background-color: rgb(248, 189, 150);
+    color: rgb(26, 24, 38);
 }
 
 tooltip {
-  background: rgb(48, 45, 65);
+    background: rgb(48, 45, 65);
 }
 
 tooltip label {
-  color: rgb(217, 224, 238);
+    color: rgb(217, 224, 238);
 }
 
 #custom-launcher {
-  font-size: 20px;
-  padding-left: 8px;
-  padding-right: 6px;
-  color: #7ebae4;
+    font-size: 20px;
+    padding-left: 8px;
+    padding-right: 6px;
+    color: #7ebae4;
 }
 
 #mode,
@@ -91,6 +91,8 @@ tooltip label {
 #network,
 #battery,
 #custom-powermenu,
+#custom-yubikey,
+#custom-mullvad,
 
 /* #mode { */
 /* 	margin-left: 10px; */
@@ -98,90 +100,113 @@ tooltip label {
 /*     color: rgb(26, 24, 38); */
 /* } */
 #memory {
-  color: rgb(181, 232, 224);
+    /* #b5e8e0 */
+    color: rgb(181, 232, 224);
 }
 
 #cpu {
-  color: rgb(245, 194, 231);
+    /* #f5c2e7 */
+    color: rgb(245, 194, 231);
 }
 
 #clock {
-  color: rgb(217, 224, 238);
+    /* #d9e0ee */
+    color: rgb(217, 224, 238);
 }
 
 #idle_inhibitor {
-  color: rgb(221, 182, 242);
+    /* #ddb6f2 */
+    color: rgb(221, 182, 242);
 }
 
 #custom-wall {
-  color: rgb(221, 182, 242);
+    /* #ddb6f2 */
+    color: rgb(221, 182, 242);
 }
 
 #temperature {
-  color: rgb(150, 205, 251);
+    /* #96cdfb */
+    color: rgb(150, 205, 251);
 }
 
 #backlight {
-  color: rgb(248, 189, 150);
+    /* #f8bd96 */
+    color: rgb(248, 189, 150);
 }
 
 #pulseaudio {
-  color: rgb(245, 224, 220);
+    /* #f5e0dc */
+    color: rgb(245, 224, 220);
 }
 
 #language {
-  color: rgb(221, 182, 242);
+    /* #ddb6f2 */
+    color: rgb(221, 182, 242);
 }
 
 #network {
-  color: #abe9b3;
+    color: #abe9b3;
 }
 
 #network.disconnected {
-  color: rgb(255, 255, 255);
+    /* #ffffff */
+    color: rgb(255, 255, 255);
 }
 
 #battery.charging,
 #battery.full,
 #battery.discharging {
-  color: rgb(250, 227, 176);
+    /* #fae3b0 */
+    color: rgb(250, 227, 176);
 }
 
 #battery.critical:not(.charging) {
-  color: rgb(242, 143, 173);
+    /* #f28ad */
+    color: rgb(242, 143, 173);
 }
 
 #custom-powermenu {
-  color: rgb(242, 143, 173);
+    /* #f28ad */
+    color: rgb(242, 143, 173);
+}
+
+#custom-yubikey {
+    /* #ddb6f2 */
+    color: rgb(221, 182, 242);
+}
+
+#custom-mullvad {
+    /* #f8bd96 */
+    color: rgb(248, 189, 150);
 }
 
 #tray {
-  padding-right: 8px;
-  padding-left: 10px;
+    padding-right: 8px;
+    padding-left: 10px;
 }
 
 #mpris.paused {
-  color: #414868;
-  font-style: italic;
+    color: #414868;
+    font-style: italic;
 }
 
 #mpris.stopped {
-  background: transparent;
+    background: transparent;
 }
 
 #mpris {
-  color: #c0caf5;
+    color: #c0caf5;
 }
 
 #mpd.paused {
-  color: #414868;
-  font-style: italic;
+    color: #414868;
+    font-style: italic;
 }
 
 #mpd.stopped {
-  background: transparent;
+    background: transparent;
 }
 
 #mpd {
-  color: #c0caf5;
+    color: #c0caf5;
 }

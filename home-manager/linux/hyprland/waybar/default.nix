@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
   # Home-manager waybar config
@@ -23,11 +23,13 @@
       ];
       modules-center = [ "clock" ];
       modules-right = [
+        "custom/yubikey"
         "pulseaudio"
         "backlight"
         "sway/language"
         "memory"
         "cpu"
+        "custom/mullvad"
         "network"
         "battery"
         "custom/powermenu"
@@ -58,6 +60,10 @@
           "deactivated" = "";
         };
         "tooltip" = false;
+      };
+      "custom/yubikey" = {
+        "exec" = "waybar_yubikey";
+        "return-type" = "json";
       };
       "pulseaudio" = {
         "scroll-step" = 1;
@@ -132,6 +138,10 @@
         "tooltip-format" =
           "{title} - {artist} ({elapsedTime:%M:%S}/{totalTime:%H:%M:%S})";
       };
+      "custom/mullvad" = {
+        "exec" = "waybar_mullvad";
+        "return-type" = "json";
+      };
       "network" = {
         "format-disconnected" = "󰯡 Disconnected";
         "format-ethernet" = "󰀂 {ifname} ({ipaddr})";
@@ -157,4 +167,8 @@
       };
     }];
   };
+
+  home.packages = with pkgs; [
+    yubikey-touch-detector
+  ];
 }
