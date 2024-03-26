@@ -8,5 +8,5 @@
     WLR_NO_HARDWARE_CURSORS = "1";
   };
 
-  wayland.windowManager.hyprland.enableNvidiaPatches = true;
+  #wayland.windowManager.hyprland.enableNvidiaPatches = true; # FIXME: The option `enableNvidiaPatches` has been removed
 }
