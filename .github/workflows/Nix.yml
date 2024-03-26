@@ -40,45 +40,6 @@ jobs:
       - name: "Checkout Repo"
         uses: actions/checkout@v4
 
-      - name: Free Disk Space (Ubuntu)
-        if: matrix.os == 'ubuntu-latest'
-        uses: jlumbroso/free-disk-space@main
-        with:
-          # this might remove tools that are actually needed,
-          # when set to "true" but frees about 6 GB
-          tool-cache: true
-
-          # all of these default to true, but feel free to set to
-          # "false" if necessary for your workflow
-          android: true
-          dotnet: true
-          haskell: true
-          large-packages: true
-          swap-storage: true
-
-      - name: "Create dir for mounting moar disk Space"
-        if: matrix.os == 'ubuntu-latest'
-        run: |
-          sudo mkdir /nix
-
-      - name: "Maximize Disk Space"
-        if: matrix.os == 'ubuntu-latest'
-        uses: easimon/maximize-build-space@v10
-        with:
-          build-mount-path: /nix
-          remove-dotnet: "true"
-          remove-android: "true"
-          remove-haskell: "true"
-          temp-reserve-mb: "100"
-          swap-size-mb: "4096"
-          root-reserve-mb: "1024"
-
-      - name: "Adjust permissions for /nix"
-        if: matrix.os == 'ubuntu-latest'
-        run: |
-          sudo chown -R root:root /nix
-          sudo chmod -R 755 /nix
-
       - name: "Install Nix"
         uses: DeterminateSystems/nix-installer-action@v10
 
@@ -86,5 +47,5 @@ jobs:
         uses: DeterminateSystems/magic-nix-cache-action@v4
 
       - name: "Test Nix config"
-        run: nix build -L '.#${{ matrix.flake-attr }}'
+        run: nix build --dry-run -L '.#${{ matrix.flake-attr }}' --show-trace
 
