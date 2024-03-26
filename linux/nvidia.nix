@@ -55,7 +55,6 @@
 
   environment.systemPackages = with pkgs; [
     glxinfo
-    nvtopPackages.nvidia
     cudaPackages.cudatoolkit
   ];
 }

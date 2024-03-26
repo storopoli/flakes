@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 {
   home.sessionVariables = {
     LIBVA_DRIVER_NAME = "nvidia";
@@ -9,4 +9,9 @@
   };
 
   #wayland.windowManager.hyprland.enableNvidiaPatches = true; # FIXME: The option `enableNvidiaPatches` has been removed
+
+  home.packages = with pkgs; [
+    #nvtopPackages.nvidia #FIXME: this will be the default in 24.05
+    nvtop-nvidia
+  ];
 }
