@@ -117,6 +117,36 @@
                 }
               ];
             };
+
+            desktop = self.nixos-flake.lib.mkLinuxSystem {
+              nixpkgs.hostPlatform = "x86_64-linux";
+              imports = [
+                self.nixosModules.common
+                self.nixosModules.linux
+                # Secure Boot
+                inputs.lanzaboote.nixosModules.lanzaboote
+                # Desktop specific nixos-hardware
+                #inputs.nixos-hardware.nixosModules.framework-13-7040-amd
+                # Your home-manager configuration
+                self.nixosModules.home-manager
+                {
+                  home-manager = {
+                    useGlobalPkgs = true;
+                    useUserPackages = true;
+                    users.user = {
+                      imports = [
+                        self.homeModules.common
+                        self.homeModules.linux
+                        inputs.agenix.homeManagerModules.age
+                        ./home-manager/linux/hyprland/nvidia.nix
+                      ];
+                      home.stateVersion = "${stateVersion}";
+                      systemd.user.startServices = "sd-switch";
+                    };
+                  };
+                }
+              ];
+            };
           };
 
           # Configurations for macOS machines
