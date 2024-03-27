@@ -38,6 +38,18 @@
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKU4O0J7gdU1+0/IoVZUtajfmWGGNmA3TFXTsbnQfpwt openpgp:0xC116F831"
   ];
 
-  # Open port 22 in Firewall
-  networking.firewall.allowedTCPPorts = [ 22 ];
+  # Mosh
+  programs.mosh.enable = true;
+
+  networking.firewall = {
+    allowedTCPPorts = [
+      # Open port 22 in Firewall
+      22
+    ];
+
+    allowedUDPPortRanges = [
+      # Open port 60000-61000 for Mosh
+      { from = 60000; to = 61000; }
+    ];
+  };
 }

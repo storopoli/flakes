@@ -27,6 +27,7 @@ in
     # ssh
     openssh
     ssh-copy-id
+    mosh
 
     # age
     age-plugin-yubikey
