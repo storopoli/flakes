@@ -188,7 +188,7 @@ As root:
    (don't forget to clone the repo first):
 
    ```bash
-   nix run github:nix-community/disko -- --mode disko linux/disko.nix
+   nix run github:nix-community/disko -- --mode disko linux/filesystem/<hostname>/disko.nix
    # verify the mount
    mount | grep /mnt
    # you may need to skip some commands in the next "mount" step
@@ -340,6 +340,9 @@ As root:
    1. Select "Erease all Secure Boot Settings"
    1. When you are done, press `F10` to save and exit.
 
+   On ASUS Desktop Motherboards, there is no explicit option to enter Setup Mode.
+   Instead, choose the option to erase the existing Platform Key
+
 ##### Step 3: Enrolling Keys
 
 Once you've booted your system into NixOS again,
@@ -386,7 +389,8 @@ System:
 ### Wireguard VPN Configs
 
 > Sources: [manpage of `wg-quick`](https://manpages.debian.org/unstable/wireguard-tools/wg-quick.8.en.html),
-> [Mullvad WireGuard on Linux terminal](https://mullvad.net/en/help/easy-wireguard-mullvad-setup-linux/) > [IVPN Autostart WireGuard in systemd](https://www.ivpn.net/knowledgebase/linux/linux-autostart-wireguard-in-systemd/),
+> [Mullvad WireGuard on Linux terminal](https://mullvad.net/en/help/easy-wireguard-mullvad-setup-linux/)
+> [IVPN Autostart WireGuard in systemd](https://www.ivpn.net/knowledgebase/linux/linux-autostart-wireguard-in-systemd/),
 > and [IVPN WireGuard Kill Switch](https://www.ivpn.net/knowledgebase/linux/linux-wireguard-kill-switch/)
 
 For the extra paranoid, you can use VPNs without installing their apps.

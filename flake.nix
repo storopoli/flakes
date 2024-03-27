@@ -98,6 +98,8 @@
                 inputs.lanzaboote.nixosModules.lanzaboote
                 # Framework nixos-hardware
                 inputs.nixos-hardware.nixosModules.framework-13-7040-amd
+                # Filesystem
+                ./linux/filesystem/framework/filesystem.nix
                 # Your home-manager configuration
                 self.nixosModules.home-manager
                 {
@@ -130,6 +132,8 @@
                 inputs.nixos-hardware.nixosModules.common-cpu-amd-pstate
                 # SSD fstrim
                 inputs.nixos-hardware.nixosModules.common-pc-ssd
+                # Filesystem
+                ./linux/filesystem/desktop/filesystem.nix
                 # Nvidia stuff
                 ./linux/nvidia.nix
                 # Your home-manager configuration
