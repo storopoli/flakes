@@ -34,9 +34,11 @@
   ];
 
   services.xserver = {
-    layout = "us";
-    xkbVariant = "colemak";
-    xkbOptions = "caps:escape";
+    xkb = {
+      layout = "us";
+      variant = "colemak";
+      options = "caps:escape";
+    };
     autoRepeatDelay = 200;
     autoRepeatInterval = 30;
   };
