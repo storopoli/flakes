@@ -29,5 +29,12 @@
     options = [ "bind" ];
   };
 
+  # HDD 4TB
+  fileSystems."/hdd" = {
+    device = "/dev/mapper/hdd";
+    fsType = "ext4";
+    options = [ "defaults" "noatime" ];
+  };
+
   swapDevices = [ ];
 }
