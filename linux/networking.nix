@@ -49,8 +49,6 @@
   services = {
     resolved.enable = true;
 
-    openssh.enable = false;
-
     tor.enable = true;
   };
 
