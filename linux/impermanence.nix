@@ -16,6 +16,7 @@
 
     files = [
       "/etc/machine-id"
+      "/etc/hdd_luks.key"
       "/var/lib/NetworkManager/NetworkManager.state"
       "/var/lib/NetworkManager/secret_key"
       "/var/lib/NetworkManager/seen-bssids"
