@@ -7,7 +7,9 @@
       userName = "Jose Storopoli";
       userEmail = "jose@storopoli.io";
       signing = {
-        key = "0x01BE853A206518CC!";
+        # let git figure out the key
+        key = null;
+        #key = "0x01BE853A206518CC!";
         signByDefault = true;
       };
       ignores = [

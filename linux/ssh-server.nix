@@ -36,6 +36,7 @@
   # Authorized Keys
   users.users."user".openssh.authorizedKeys.keys = [
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKU4O0J7gdU1+0/IoVZUtajfmWGGNmA3TFXTsbnQfpwt openpgp:0xC116F831"
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINJxv4Hr9OPL1ZMx+jVm2vp4kjJIJVGVIkpnfBO3+Zr8 openpgp:0x4849012F"
   ];
 
   # Mosh
