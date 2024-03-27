@@ -134,6 +134,8 @@
                 inputs.nixos-hardware.nixosModules.common-pc-ssd
                 # Filesystem
                 ./linux/filesystem/desktop/filesystem.nix
+                # Server
+                ./linux/ssh-server.nix
                 # Nvidia stuff
                 ./linux/nvidia.nix
                 # Your home-manager configuration
