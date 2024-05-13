@@ -67,7 +67,7 @@
         g = "grep";
         m = "merge";
         p = "pull";
-        pu = "push";
+        pu = ''!"git fetch origin -v; git fetch upstream -v; git merge upstream/master"'';
         rv = "revert";
         s = "status";
         st = "status";
