@@ -44,7 +44,7 @@ jobs:
         uses: DeterminateSystems/nix-installer-action@v12
 
       - name: "Nix Cache"
-        uses: DeterminateSystems/magic-nix-cache-action@v6
+        uses: DeterminateSystems/magic-nix-cache-action@v7
 
       - name: "Test Nix config"
         run: nix build --dry-run -L '.#${{ matrix.flake-attr }}' --show-trace
